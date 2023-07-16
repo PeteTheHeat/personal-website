@@ -22,6 +22,11 @@ const links = [
     to: "/",
     active: "home",
   },
+  {
+    name: "Bar Menu",
+    to: "/menu",
+    active: "menu",
+  },
   //   {
   //     name: "Portfolio",
   //     to: "/portfolio",
