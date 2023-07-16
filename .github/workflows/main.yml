@@ -23,6 +23,16 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: npm-${{ hashFiles('package-lock.json') }}
+          restore-keys: npm-
+
+      - name: Install 🔧
+        run: npm install
+
       - name: Build 🏗️
         run: npm run build
 
