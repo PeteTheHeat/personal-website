@@ -32,8 +32,6 @@ jobs:
 
       - name: Install 🔧
         run: npm install
-        env:
-          CI: ""
 
       - name: Build 🏗️
         run: npm run build

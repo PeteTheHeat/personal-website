@@ -17,7 +17,8 @@ export default function BaseLayout() {
   }
 
   useEffect(() => {
-    let detectedDarkMode = eval(localStorage.getItem("darkMode"));
+    // let detectedDarkMode = eval(localStorage.getItem("darkMode")); Fails CI, breaks build
+    let detectedDarkMode = false;
 
     if (detectedDarkMode) {
       setDarkMode(detectedDarkMode);
