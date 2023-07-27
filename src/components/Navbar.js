@@ -23,15 +23,15 @@ const links = [
     active: "home",
   },
   {
-    name: "Bar Menu",
-    to: "/menu",
-    active: "menu",
+    name: "Retool apps",
+    to: "/retool",
+    active: "retool",
   },
-  //   {
-  //     name: "Portfolio",
-  //     to: "/portfolio",
-  //     active: "portfolio",
-  //   },
+  // {
+  //   name: "Portfolio",
+  //   to: "/portfolio",
+  //   active: "portfolio",
+  // },
 ];
 
 export default function Navbar({ darkMode, handleClick }) {

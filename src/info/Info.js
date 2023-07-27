@@ -24,7 +24,11 @@ export const info = {
     },
     {
       emoji: "🌎",
-      text: "based in San Francisco, CA",
+      text: "based in San Francisco, California",
+    },
+    {
+      emoji: "🍁",
+      text: "from Toronto, Canada",
     },
     {
       emoji: "💼",
@@ -52,7 +56,7 @@ export const info = {
       label: "twitter",
     },
   ],
-  bio: "Hello! I'm Peter. I'm a software engineer at Retool. I studied Computer Engineering at Waterloo. I enjoy going deep into rabbit holes and learning new things.",
+  bio: "Hi! I'm Peter. I'm a software engineer at Retool. I studied Computer Engineering at the University of Waterloo. I enjoy going down rabbit holes and learning new things.",
   skills: {
     proficientWith: [
       "react",

@@ -3,6 +3,7 @@ import Style from "./BaseLayout.module.scss";
 import Navbar from "./Navbar";
 import Home from "./home/Home";
 import About from "./about/About";
+import Retool from "./retool/retool";
 import { Route, Routes } from "react-router-dom";
 import { Box, Grid } from "@mui/material";
 
@@ -43,6 +44,8 @@ export default function BaseLayout() {
           <Routes>
             <Route exact path={"/"} element={<Home />} />
             <Route exact path={"/about"} element={<About />} />
+            <Route exact path={"/retool"} element={<Retool />} />
+            {/* <Route exact path={"/portfolio"} element={<Portfolio />} /> */}
           </Routes>
         </Grid>
       </Grid>
