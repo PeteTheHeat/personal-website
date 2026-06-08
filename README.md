@@ -42,3 +42,35 @@ The target production setup is:
 
 DNS can stay managed at Network Solutions. The Vercel domain screen will provide
 the exact A/CNAME/TXT records to set there.
+
+## Project apps
+
+Standalone project apps live in their own source folders and are published as
+static build snapshots through this repo.
+
+Current sources:
+
+- `gender-reveal`: `/Users/peterargany/workspace/gender-reveal-pokemon-2`
+- `character-select`: `/Users/peterargany/workspace/names-chooser`
+
+To refresh the deployed snapshots:
+
+```bash
+npm run sync:projects
+npm run build
+git add .
+git commit -m "Sync project apps"
+git push origin main
+npx --yes vercel deploy --prod --yes
+```
+
+`npm run sync:projects` builds each app with `--base=./` and copies its `dist`
+folder into `public/projects/<slug>`. The route pages in `app/<slug>/page.jsx`
+load those builds with `app/project-frame.jsx`.
+
+To add another project:
+
+1. Add it to the homepage `projects` array in `app/page.jsx`.
+2. Add its local source path to `scripts/sync-projects.mjs`.
+3. Add a route page under `app/<slug>/page.jsx` using `ProjectFrame`.
+4. Run `npm run sync:projects` and `npm run build`.
