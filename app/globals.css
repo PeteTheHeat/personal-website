@@ -66,14 +66,12 @@ a {
   border: 0;
 }
 
-.openai-hotspot,
 .logo-hotspot,
 .terminal-route {
   position: absolute;
   z-index: 2;
 }
 
-.openai-hotspot,
 .logo-hotspot {
   display: grid;
   place-items: center;
@@ -86,8 +84,6 @@ a {
     filter 160ms ease;
 }
 
-.openai-hotspot:hover,
-.openai-hotspot:focus-visible,
 .logo-hotspot:hover,
 .logo-hotspot:focus-visible {
   color: var(--green-bright);
@@ -96,29 +92,11 @@ a {
   transform: translateY(-2%);
 }
 
-.openai-hotspot {
-  left: 2.55%;
-  top: 39.6%;
-  width: 2.45%;
-  aspect-ratio: 1;
-  font-size: clamp(1rem, 2.45vw, 2.35rem);
-}
-
 .logo-hotspot {
   top: 53.55%;
   width: 3.75%;
   aspect-ratio: 1;
-  border: 2px solid rgba(244, 237, 221, 0.48);
-  background: rgba(3, 6, 6, 0.42);
   font-size: clamp(1rem, 2vw, 2rem);
-}
-
-.logo-hotspot::before {
-  content: "";
-  position: absolute;
-  inset: 12%;
-  background: rgba(3, 5, 5, 0.58);
-  z-index: -1;
 }
 
 .github-hotspot {
@@ -205,14 +183,11 @@ a {
     object-fit: cover;
   }
 
-  .openai-hotspot,
   .logo-hotspot {
     transform: scale(1.15);
     transform-origin: center;
   }
 
-  .openai-hotspot:hover,
-  .openai-hotspot:focus-visible,
   .logo-hotspot:hover,
   .logo-hotspot:focus-visible {
     transform: scale(1.15) translateY(-2%);

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
-import { SiOpenai, SiX } from "react-icons/si";
+import { SiX } from "react-icons/si";
 
 const socialLinks = [
   {
@@ -29,17 +29,9 @@ export default function Home() {
       <section className="scene-stage" aria-label="Peter Argany personal site">
         <img
           className="scene-image"
-          src="/pixel-studio-reference.png"
+          src="/pixel-studio-v2.png"
           alt="Pixel art desktop studio with Peter Argany's personal site in a terminal"
         />
-
-        <a
-          className="openai-hotspot"
-          href="https://openai.com"
-          aria-label="OpenAI"
-        >
-          <SiOpenai />
-        </a>
 
         <nav className="social-hotspots" aria-label="Social links">
           {socialLinks.map(({ href, label, Icon, className }) => (

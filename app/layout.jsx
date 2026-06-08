@@ -11,7 +11,7 @@ export const metadata = {
     siteName: "Peter Argany",
     images: [
       {
-        url: "/pixel-studio-reference.png",
+        url: "/pixel-studio-v2.png",
         width: 1536,
         height: 1024,
         alt: "Pixel art software studio",
