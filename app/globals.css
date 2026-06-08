@@ -5,7 +5,7 @@
   --green-bright: #34f46e;
   --cyan: #75cfff;
   --screen: #061411;
-  --stage-ratio: 1.5;
+  --stage-ratio: 1.4990234375;
 }
 
 * {
@@ -45,6 +45,7 @@ a {
   overflow: hidden;
   background: #030504;
   box-shadow: 0 0 6rem rgba(0, 0, 0, 0.55);
+  --stage-scale: 0;
 }
 
 .scene-image {
@@ -57,27 +58,129 @@ a {
   pointer-events: none;
 }
 
-.desktop-live-time {
+.stage-coordinate-plane {
   position: absolute;
+  inset: 0;
   z-index: 3;
-  left: 39.65%;
-  width: 18.6%;
-  height: 2.25%;
-  padding: 0.1% 0.25%;
-  background: #06110f;
+  width: 1535px;
+  height: 1024px;
+  pointer-events: none;
+  transform: scale(var(--stage-scale));
+  transform-origin: left top;
+}
+
+.desktop-terminal {
+  position: absolute;
+  left: 609px;
+  top: 211px;
+  width: 514px;
+  min-height: 445px;
   color: var(--ink);
-  font-size: min(1.6vw, 1.6svh);
-  line-height: 1.15;
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 1.18;
   letter-spacing: 0;
-  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.42);
+  text-shadow:
+    0 2px 0 rgba(0, 0, 0, 0.65),
+    0 0 10px rgba(101, 212, 91, 0.11);
 }
 
-.desktop-live-time-top {
-  top: 23.6%;
+.terminal-prompt p {
+  margin: 0;
 }
 
-.desktop-live-time-bottom {
-  top: 66.25%;
+.terminal-identity {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.terminal-identity span {
+  color: var(--green-bright);
+}
+
+.terminal-identity b {
+  color: var(--ink);
+  font-weight: inherit;
+}
+
+.terminal-identity em {
+  color: var(--cyan);
+  font-style: normal;
+}
+
+.terminal-identity i {
+  font-style: normal;
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+  font-size: 0.86em;
+}
+
+.terminal-command {
+  margin-top: 8px;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.desktop-projects {
+  display: grid;
+  gap: 26px;
+  margin: 38px 0 50px;
+}
+
+.desktop-project {
+  display: grid;
+  grid-template-columns: 44px 250px 1fr;
+  align-items: start;
+  gap: 0;
+  color: var(--ink);
+  text-decoration: none;
+  pointer-events: auto;
+}
+
+.desktop-project:hover,
+.desktop-project:focus-visible {
+  color: var(--green-bright);
+  outline: none;
+}
+
+.desktop-project:focus-visible {
+  box-shadow: 0 0 0 3px rgba(52, 244, 110, 0.7);
+}
+
+.desktop-project-icon {
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.desktop-project-name {
+  color: var(--green);
+  white-space: nowrap;
+}
+
+.desktop-project-description {
+  color: var(--ink);
+  font-size: 0.88em;
+  line-height: 1.22;
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 14px;
+  height: 26px;
+  margin-left: 4px;
+  translate: 0 5px;
+  background: var(--ink);
+  box-shadow: 0 0 0.7rem rgba(233, 223, 202, 0.2);
+  animation: terminal-blink 1.05s steps(2, start) infinite;
+}
+
+@keyframes terminal-blink {
+  50% {
+    opacity: 0;
+  }
 }
 
 .sr-only {
@@ -92,10 +195,9 @@ a {
   border: 0;
 }
 
-.logo-hotspot,
-.terminal-route {
+.logo-hotspot {
   position: absolute;
-  z-index: 2;
+  z-index: 4;
 }
 
 .logo-hotspot {
@@ -135,20 +237,6 @@ a {
 
 .x-hotspot {
   left: 12.2%;
-}
-
-.terminal-route {
-  left: 42%;
-  top: 29%;
-  width: 9%;
-  height: 4%;
-  border-radius: 0.25rem;
-  text-decoration: none;
-}
-
-.terminal-route:focus-visible {
-  outline: 2px solid var(--green-bright);
-  outline-offset: 0.25rem;
 }
 
 .app-placeholder {
@@ -443,6 +531,8 @@ a {
 
 .phone-project-list {
   display: grid;
+  align-content: start;
+  grid-auto-rows: minmax(3.85rem, auto);
   height: calc(100% - 5.45rem);
   overflow: auto;
   scrollbar-width: none;

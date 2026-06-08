@@ -1,35 +1,24 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
 import { SiOpenai, SiX } from "react-icons/si";
 
-const activities = [
+const STAGE_WIDTH = 1535;
+
+const projects = [
   {
-    icon: "⛳",
-    label: "golf",
-    description: "Track rounds, stats, and improve your game.",
+    icon: "🐣",
+    label: "gender-reveal",
+    description: "Find out our baby's gender!",
+    href: "/gender-reveal",
   },
   {
-    icon: "🏋️",
-    label: "weightlifting",
-    description: "Log workouts and progress over time.",
-  },
-  {
-    icon: "📖",
-    label: "reading",
-    description: "Track books, notes, and reading goals.",
-  },
-  {
-    icon: "🌶️",
-    label: "cooking",
-    description: "Save recipes and plan your meals.",
-  },
-  {
-    icon: "🍸",
-    label: "cocktails",
-    description: "Browse and save your favorite recipes.",
+    icon: "📋",
+    label: "character-select",
+    description: "A baby name chooser app",
+    href: "/character-select",
   },
 ];
 
@@ -97,12 +86,79 @@ function useClock() {
   );
 }
 
+function useStageScale(stageRef) {
+  const [scale, setScale] = useState(0);
+
+  useEffect(() => {
+    const stage = stageRef.current;
+    if (!stage) {
+      return undefined;
+    }
+
+    const updateScale = () => {
+      setScale(stage.clientWidth / STAGE_WIDTH);
+    };
+
+    updateScale();
+    const observer = new ResizeObserver(updateScale);
+    observer.observe(stage);
+    window.addEventListener("resize", updateScale);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", updateScale);
+    };
+  }, [stageRef]);
+
+  return scale;
+}
+
 function SocialLink({ href, label, Icon, className = "" }) {
   return (
     <a className={`logo-hotspot ${className}`} href={href} aria-label={label}>
       <Icon aria-hidden="true" />
       <span className="sr-only">{label}</span>
     </a>
+  );
+}
+
+function DesktopPrompt({ time, command }) {
+  return (
+    <div className="terminal-prompt">
+      <p className="terminal-identity">
+        <span>peterargany</span>
+        <b>@</b>
+        <em>~/workspace</em>
+        <i aria-hidden="true">🐣</i>
+      </p>
+      <p className="terminal-command">
+        [{time}] &gt; {command}
+      </p>
+    </div>
+  );
+}
+
+function DesktopTerminal({ time }) {
+  return (
+    <div className="stage-coordinate-plane" aria-hidden={false}>
+      <section className="desktop-terminal" aria-label="Projects terminal">
+        <DesktopPrompt time={time} command="ls" />
+
+        <div className="desktop-projects">
+          {projects.map((project) => (
+            <Link key={project.label} className="desktop-project" href={project.href}>
+              <span className="desktop-project-icon" aria-hidden="true">
+                {project.icon}
+              </span>
+              <span className="desktop-project-name">{project.label}</span>
+              <span className="desktop-project-description">{project.description}</span>
+            </Link>
+          ))}
+        </div>
+
+        <DesktopPrompt time={time} command={<span className="terminal-cursor" />} />
+      </section>
+    </div>
   );
 }
 
@@ -200,31 +256,23 @@ function MobileProjectsScreen({ time, onBack }) {
         <span>~/workspace</span>
       </div>
       <section className="phone-project-list" aria-label="Projects">
-        {activities.map((activity, index) => {
+        {projects.map((project) => {
           const content = (
             <>
               <span className="project-icon" aria-hidden="true">
-                {activity.icon}
+                {project.icon}
               </span>
               <span>
-                <strong>{activity.label}</strong>
-                <small>{activity.description}</small>
+                <strong>{project.label}</strong>
+                <small>{project.description}</small>
               </span>
             </>
           );
 
-          if (index === 0) {
-            return (
-              <Link key={activity.label} className="phone-project" href="/world-cup-bracket">
-                {content}
-              </Link>
-            );
-          }
-
           return (
-            <div key={activity.label} className="phone-project">
+            <Link key={project.label} className="phone-project" href={project.href}>
               {content}
-            </div>
+            </Link>
           );
         })}
       </section>
@@ -251,22 +299,24 @@ function MobileExperience({ clock }) {
 
 export default function Home() {
   const clock = useClock();
+  const stageRef = useRef(null);
+  const stageScale = useStageScale(stageRef);
 
   return (
     <main className="studio-shell">
-      <section className="scene-stage" aria-label="Peter Argany personal site">
+      <section
+        ref={stageRef}
+        className="scene-stage"
+        style={{ "--stage-scale": stageScale }}
+        aria-label="Peter Argany personal site"
+      >
         <img
           className="scene-image"
-          src="/pixel-studio-v2.png"
+          src="/pixel-studio-v3.png"
           alt="Pixel art desktop studio with Peter Argany's personal site in a terminal"
         />
 
-        <span className="desktop-live-time desktop-live-time-top">
-          [{clock.terminal}]
-        </span>
-        <span className="desktop-live-time desktop-live-time-bottom">
-          [{clock.terminal}]
-        </span>
+        <DesktopTerminal time={clock.terminal} />
 
         <nav className="social-hotspots" aria-label="Social links">
           {socialLinks.map(({ href, label, Icon, className }) => (
@@ -280,11 +330,6 @@ export default function Home() {
           ))}
         </nav>
 
-        <Link
-          className="terminal-route route-golf"
-          href="/world-cup-bracket"
-          aria-label="Open world cup bracket app"
-        />
       </section>
 
       <MobileExperience clock={clock} />
