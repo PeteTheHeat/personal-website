@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
-import { SiOpenai, SiX } from "react-icons/si";
+import { SiX } from "react-icons/si";
 
 const STAGE_WIDTH = 1535;
 
@@ -87,6 +87,7 @@ function useClock() {
       terminal: now ? formatTerminalTime(now) : "---- -- -- --:--:--",
       loadedTerminal: loadedAt ? formatTerminalTime(loadedAt) : "---- -- -- --:--:--",
       phone: now ? formatPhoneTime(now) : "--:--",
+      loadedPhone: loadedAt ? formatPhoneTime(loadedAt) : "--:--",
     }),
     [loadedAt, now],
   );
@@ -168,104 +169,60 @@ function DesktopTerminal({ loadedTime, liveTime }) {
   );
 }
 
-function PhoneShell({ children }) {
+function MobileScene({ variant, children }) {
   return (
-    <div className="phone-shell" aria-label="Mobile personal site mock phone">
-      <div className="phone-speaker" aria-hidden="true" />
-      <div className="phone-screen">{children}</div>
-      <div className="phone-controls" aria-hidden="true">
-        <span className="call-key" />
-        <span className="nav-key">
-          <i />
-        </span>
-        <span className="end-key" />
-        <span>1 ∞</span>
-        <span>2 abc</span>
-        <span>3 def</span>
-        <span>4 ghi</span>
-        <span>5 jkl</span>
-        <span>6 mno</span>
-      </div>
+    <div className={`mobile-scene mobile-scene-${variant}`}>
+      <img
+        className="mobile-scene-image"
+        src={variant === "home" ? "/mobile-home-bg.png" : "/mobile-projects-bg.png"}
+        alt=""
+      />
+      <div className="mobile-overlay">{children}</div>
     </div>
   );
 }
 
-function PhoneStatus({ time }) {
+function MobileSocialLink({ href, label, Icon }) {
   return (
-    <div className="phone-status" aria-hidden="true">
-      <span className="signal-bars">
-        <i />
-        <i />
-        <i />
-        <i />
-      </span>
-      <span>{time}</span>
-      <span className="battery">
-        <i />
-      </span>
-    </div>
+    <a className="mobile-social-link" href={href} aria-label={label}>
+      <Icon aria-hidden="true" />
+    </a>
   );
 }
 
 function MobileHomeScreen({ time, onOpenProjects }) {
   return (
-    <PhoneShell>
-      <PhoneStatus time={time} />
-      <section className="phone-content phone-home">
-        <img className="phone-portrait" src="/mobile-portrait.png" alt="" />
-        <p className="phone-eyebrow">Hi! I'm</p>
-        <h1>Peter</h1>
-        <p className="phone-tagline">I build software.</p>
+    <MobileScene variant="home">
+      <time className="mobile-load-time">{time}</time>
 
-        <div className="phone-bio">
-          <p>
-            <span aria-hidden="true">🌎</span>
-            <span>
-              Based in
-              <br />
-              San Francisco, CA
-            </span>
-          </p>
-          <p>
-            <SiOpenai aria-hidden="true" />
-            <span>
-              Software Engineer
-              <br />
-              at OpenAI
-            </span>
-          </p>
-        </div>
+      <nav className="mobile-socials" aria-label="Social links">
+        {socialLinks.map(({ href, label, Icon }) => (
+          <MobileSocialLink key={href} href={href} label={label} Icon={Icon} />
+        ))}
+      </nav>
 
-        <nav className="phone-socials" aria-label="Social links">
-          {socialLinks.map(({ href, label, Icon }) => (
-            <a key={href} href={href} aria-label={label}>
-              <Icon aria-hidden="true" />
-            </a>
-          ))}
-        </nav>
-      </section>
-      <button className="soft-key soft-key-projects" onClick={onOpenProjects}>
+      <button className="mobile-projects-button" onClick={onOpenProjects}>
         Projects
       </button>
-    </PhoneShell>
+    </MobileScene>
   );
 }
 
-function MobileProjectsScreen({ time, onBack }) {
+function MobileProjectsScreen({ onBack }) {
   return (
-    <PhoneShell>
-      <PhoneStatus time={time} />
-      <div className="phone-titlebar">
-        <button onClick={onBack} aria-label="Back to home">
-          ←
-        </button>
-        <span>~/workspace</span>
-      </div>
-      <section className="phone-project-list" aria-label="Projects">
+    <MobileScene variant="projects">
+      <button className="mobile-back-arrow" onClick={onBack} aria-label="Back to home">
+        ←
+      </button>
+
+      <section className="mobile-projects-panel" aria-label="Projects">
+        <span className="mobile-workspace" aria-hidden="true">
+          ~/workspace
+        </span>
         {projects.map((project) => {
           const content = (
             <>
-              <span className="project-icon" aria-hidden="true">
+              <span className="mobile-project-icon" aria-hidden="true">
                 {project.icon}
               </span>
               <span>
@@ -276,16 +233,17 @@ function MobileProjectsScreen({ time, onBack }) {
           );
 
           return (
-            <Link key={project.label} className="phone-project" href={project.href}>
+            <Link key={project.label} className="mobile-project" href={project.href}>
               {content}
             </Link>
           );
         })}
       </section>
-      <button className="soft-key soft-key-back" onClick={onBack}>
+
+      <button className="mobile-back-button" onClick={onBack}>
         Back
       </button>
-    </PhoneShell>
+    </MobileScene>
   );
 }
 
@@ -295,9 +253,12 @@ function MobileExperience({ clock }) {
   return (
     <section className="mobile-stage" aria-label="Peter Argany mobile site">
       {screen === "home" ? (
-        <MobileHomeScreen time={clock.phone} onOpenProjects={() => setScreen("projects")} />
+        <MobileHomeScreen
+          time={clock.loadedPhone}
+          onOpenProjects={() => setScreen("projects")}
+        />
       ) : (
-        <MobileProjectsScreen time={clock.phone} onBack={() => setScreen("home")} />
+        <MobileProjectsScreen onBack={() => setScreen("home")} />
       )}
     </section>
   );

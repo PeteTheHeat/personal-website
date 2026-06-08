@@ -278,6 +278,187 @@ a {
   display: none;
 }
 
+.mobile-scene {
+  position: relative;
+  width: min(100vw, calc(100svh * var(--mobile-ratio)));
+  aspect-ratio: var(--mobile-ratio);
+  container-type: size;
+  overflow: hidden;
+  filter: drop-shadow(0 1.2rem 2.4rem rgba(0, 0, 0, 0.58));
+}
+
+.mobile-scene-home {
+  --mobile-ratio: 0.613366646;
+}
+
+.mobile-scene-projects {
+  --mobile-ratio: 0.66449935;
+}
+
+.mobile-scene-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  user-select: none;
+  pointer-events: none;
+}
+
+.mobile-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.mobile-load-time {
+  position: absolute;
+  top: 10.75%;
+  left: 50%;
+  translate: -50% 0;
+  color: var(--ink);
+  font-size: min(4.2cqh, 2rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  text-shadow: 0 0.15rem 0 rgba(0, 0, 0, 0.58);
+  white-space: nowrap;
+}
+
+.mobile-socials {
+  position: absolute;
+  left: 15.7%;
+  top: 54.35%;
+  display: flex;
+  gap: min(2.1cqh, 1.15rem);
+}
+
+.mobile-social-link {
+  display: grid;
+  place-items: center;
+  width: min(7.4cqh, 4rem);
+  aspect-ratio: 1;
+  border: min(0.32cqh, 0.18rem) solid rgba(233, 223, 202, 0.72);
+  background: rgba(4, 8, 8, 0.56);
+  color: rgba(244, 237, 221, 0.96);
+  font-size: min(3.6cqh, 1.95rem);
+  text-decoration: none;
+  box-shadow:
+    inset 0 0 0 min(0.18cqh, 0.1rem) rgba(0, 0, 0, 0.65),
+    0 0.24rem 0 rgba(0, 0, 0, 0.42);
+}
+
+.mobile-social-link:hover,
+.mobile-social-link:focus-visible,
+.mobile-projects-button:hover,
+.mobile-projects-button:focus-visible,
+.mobile-back-arrow:hover,
+.mobile-back-arrow:focus-visible,
+.mobile-back-button:hover,
+.mobile-back-button:focus-visible {
+  color: var(--green-bright);
+  outline: min(0.3cqh, 0.18rem) solid rgba(52, 244, 110, 0.72);
+  outline-offset: min(0.45cqh, 0.24rem);
+}
+
+.mobile-projects-button,
+.mobile-back-button,
+.mobile-back-arrow {
+  border: 0;
+  background: transparent;
+  color: var(--green);
+  font: inherit;
+  font-weight: 700;
+  letter-spacing: 0;
+  cursor: pointer;
+  text-shadow: 0 0.12rem 0 rgba(0, 0, 0, 0.58);
+}
+
+.mobile-projects-button {
+  position: absolute;
+  right: 15.9%;
+  top: 66.9%;
+  font-size: min(3.6cqh, 1.85rem);
+  line-height: 1;
+}
+
+.mobile-back-arrow {
+  position: absolute;
+  left: 15.2%;
+  top: 14.3%;
+  font-size: min(4.6cqh, 2.35rem);
+  line-height: 1;
+}
+
+.mobile-projects-panel {
+  position: absolute;
+  left: 14.6%;
+  top: 13.6%;
+  width: 70.4%;
+  display: grid;
+  gap: min(2.2cqh, 1.2rem);
+}
+
+.mobile-workspace {
+  justify-self: center;
+  margin-bottom: min(2.5cqh, 1.35rem);
+  color: var(--cyan);
+  font-size: min(3.9cqh, 2rem);
+  line-height: 1;
+  text-shadow: 0 0.12rem 0 rgba(0, 0, 0, 0.58);
+  white-space: nowrap;
+}
+
+.mobile-project {
+  display: grid;
+  grid-template-columns: min(7cqh, 3.6rem) 1fr;
+  gap: min(2cqh, 1.05rem);
+  align-items: start;
+  min-height: min(10.8cqh, 5.6rem);
+  padding: min(1.4cqh, 0.75rem) 0;
+  border-bottom: min(0.18cqh, 0.1rem) solid rgba(233, 223, 202, 0.13);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.mobile-project:hover,
+.mobile-project:focus-visible {
+  outline: none;
+  background: rgba(76, 155, 82, 0.08);
+}
+
+.mobile-project:focus-visible {
+  box-shadow: 0 0 0 min(0.3cqh, 0.18rem) rgba(52, 244, 110, 0.68);
+}
+
+.mobile-project-icon {
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+  font-size: min(3.9cqh, 2rem);
+  line-height: 1;
+}
+
+.mobile-project strong {
+  display: block;
+  color: var(--green);
+  font-size: min(3.6cqh, 1.85rem);
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.mobile-project small {
+  display: block;
+  margin-top: min(0.6cqh, 0.32rem);
+  color: var(--ink);
+  font-size: min(2.35cqh, 1.2rem);
+  line-height: 1.18;
+}
+
+.mobile-back-button {
+  position: absolute;
+  right: 17.4%;
+  top: 78.2%;
+  font-size: min(3.3cqh, 1.7rem);
+  line-height: 1;
+}
+
 .phone-shell {
   position: relative;
   width: min(88vw, 22rem);
@@ -637,7 +818,7 @@ a {
     min-height: 100svh;
     place-items: center;
     overflow: hidden;
-    padding: 0.6rem;
+    padding: 0;
     background:
       radial-gradient(circle at 50% 20%, rgba(40, 83, 72, 0.22), transparent 20rem),
       #07100f;
@@ -652,6 +833,7 @@ a {
     width: 100%;
     min-height: 100svh;
     place-items: center;
+    overflow: hidden;
   }
 
   .app-placeholder section {
