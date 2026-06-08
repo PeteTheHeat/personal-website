@@ -1,170 +1,60 @@
 import Link from "next/link";
-import { MapPin, Sparkles } from "lucide-react";
-
-const activities = [
-  {
-    icon: "⛳",
-    label: "golf",
-    description: "Track rounds, stats, and improve your game.",
-  },
-  {
-    icon: "🏋️",
-    label: "weightlifting",
-    description: "Log workouts and progress over time.",
-  },
-  {
-    icon: "📖",
-    label: "reading",
-    description: "Track books, notes, and reading goals.",
-  },
-  {
-    icon: "🌶️",
-    label: "cooking",
-    description: "Save recipes and plan your meals.",
-  },
-  {
-    icon: "🍸",
-    label: "cocktails",
-    description: "Browse and save your favorite recipes.",
-  },
-];
+import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
+import { SiOpenai, SiX } from "react-icons/si";
 
 const socialLinks = [
   {
     href: "https://github.com/PeteTheHeat",
     label: "GitHub",
-    shortLabel: "GH",
+    Icon: FaGithub,
+    className: "github-hotspot",
   },
   {
     href: "https://www.linkedin.com/in/peterargany/",
     label: "LinkedIn",
-    shortLabel: "in",
+    Icon: FaLinkedinIn,
+    className: "linkedin-hotspot",
   },
   {
     href: "https://twitter.com/peterargany",
-    label: "Twitter",
-    shortLabel: "X",
+    label: "X",
+    Icon: SiX,
+    className: "x-hotspot",
   },
 ];
 
 export default function Home() {
   return (
     <main className="studio-shell">
-      <div className="studio-backdrop" aria-hidden="true" />
-      <div className="scanlines" aria-hidden="true" />
+      <section className="scene-stage" aria-label="Peter Argany personal site">
+        <img
+          className="scene-image"
+          src="/pixel-studio-reference.png"
+          alt="Pixel art desktop studio with Peter Argany's personal site in a terminal"
+        />
 
-      <section className="hero-grid" aria-label="Peter Argany personal site">
-        <aside className="intro-panel">
-          <p className="eyebrow">Hi! I'm</p>
-          <h1>Peter</h1>
-          <p className="tagline">I build software.</p>
+        <a
+          className="openai-hotspot"
+          href="https://openai.com"
+          aria-label="OpenAI"
+        >
+          <SiOpenai />
+        </a>
 
-          <div className="bio-list">
-            <p>
-              <span className="bio-icon" aria-hidden="true">
-                🌎
-              </span>
-              <span>
-                Based in
-                <br />
-                San Francisco, CA
-              </span>
-            </p>
-            <p>
-              <span className="bio-icon openai-mark" aria-hidden="true">
-                ✺
-              </span>
-              <span>
-                Software Engineer
-                <br />
-                at OpenAI
-              </span>
-            </p>
-          </div>
+        <nav className="social-hotspots" aria-label="Social links">
+          {socialLinks.map(({ href, label, Icon, className }) => (
+            <a key={href} className={`logo-hotspot ${className}`} href={href}>
+              <Icon aria-hidden="true" />
+              <span className="sr-only">{label}</span>
+            </a>
+          ))}
+        </nav>
 
-          <nav className="socials" aria-label="Social links">
-            {socialLinks.map(({ href, label, shortLabel }) => (
-              <a key={href} href={href} aria-label={label}>
-                <span>{shortLabel}</span>
-              </a>
-            ))}
-          </nav>
-        </aside>
-
-        <section className="monitor-wrap" aria-label="Terminal workspace">
-          <div className="monitor-bezel">
-            <div className="monitor-screen">
-              <div className="terminal-glow" aria-hidden="true" />
-              <div className="terminal-line prompt">
-                <span className="terminal-user">peterargany</span>
-                <span className="muted"> @ </span>
-                <span className="terminal-path">~/workspace</span>
-                <span className="fish" aria-hidden="true">
-                  🐟
-                </span>
-              </div>
-              <div className="terminal-line">
-                <span className="timestamp">[2024-05-16 15:47:32]</span>
-                <span className="command"> &gt; ls</span>
-              </div>
-
-              <div className="activity-list">
-                {activities.map((item) => (
-                  <div className="activity-row" key={item.label}>
-                    <div className="activity-title">
-                      <span aria-hidden="true">{item.icon}</span>
-                      <span>{item.label}</span>
-                    </div>
-                    <p>{item.description}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="terminal-line prompt prompt-bottom">
-                <span className="terminal-user">peterargany</span>
-                <span className="muted"> @ </span>
-                <span className="terminal-path">~/workspace</span>
-                <span className="fish" aria-hidden="true">
-                  🐟
-                </span>
-              </div>
-              <div className="terminal-line">
-                <span className="timestamp">[2024-05-16 15:47:32]</span>
-                <span className="command"> &gt; </span>
-                <span className="cursor" aria-hidden="true" />
-              </div>
-            </div>
-            <div className="monitor-light" aria-hidden="true" />
-          </div>
-        </section>
-
-        <aside className="side-console" aria-label="Project shortcuts">
-          <div className="window-card">
-            <span className="moon" aria-hidden="true">
-              ◑
-            </span>
-            <div className="skyline" aria-hidden="true">
-              <span />
-              <span />
-              <span />
-              <span />
-            </div>
-          </div>
-          <div className="mini-device">
-            <span>2026</span>
-            <strong>BUILDING</strong>
-            <strong>COOL</strong>
-            <strong>THINGS</strong>
-          </div>
-          <Link className="app-link" href="/world-cup-bracket">
-            <Sparkles size={16} />
-            world-cup-bracket
-          </Link>
-          <p className="location-chip">
-            <MapPin size={14} />
-            peterargany.com
-          </p>
-        </aside>
+        <Link
+          className="terminal-route route-golf"
+          href="/world-cup-bracket"
+          aria-label="Open world cup bracket app"
+        />
       </section>
     </main>
   );
