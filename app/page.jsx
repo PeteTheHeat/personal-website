@@ -69,9 +69,14 @@ function formatPhoneTime(date) {
 
 function useClock() {
   const [now, setNow] = useState(null);
+  const [loadedAt, setLoadedAt] = useState(null);
 
   useEffect(() => {
-    const tick = () => setNow(new Date());
+    const tick = () => {
+      const nextNow = new Date();
+      setNow(nextNow);
+      setLoadedAt((currentLoadedAt) => currentLoadedAt ?? nextNow);
+    };
     tick();
     const interval = window.setInterval(tick, 1000);
     return () => window.clearInterval(interval);
@@ -80,9 +85,10 @@ function useClock() {
   return useMemo(
     () => ({
       terminal: now ? formatTerminalTime(now) : "---- -- -- --:--:--",
+      loadedTerminal: loadedAt ? formatTerminalTime(loadedAt) : "---- -- -- --:--:--",
       phone: now ? formatPhoneTime(now) : "--:--",
     }),
-    [now],
+    [loadedAt, now],
   );
 }
 
@@ -138,11 +144,11 @@ function DesktopPrompt({ time, command }) {
   );
 }
 
-function DesktopTerminal({ time }) {
+function DesktopTerminal({ loadedTime, liveTime }) {
   return (
     <div className="stage-coordinate-plane" aria-hidden={false}>
       <section className="desktop-terminal" aria-label="Projects terminal">
-        <DesktopPrompt time={time} command="ls" />
+        <DesktopPrompt time={loadedTime} command="ls" />
 
         <div className="desktop-projects">
           {projects.map((project) => (
@@ -156,7 +162,7 @@ function DesktopTerminal({ time }) {
           ))}
         </div>
 
-        <DesktopPrompt time={time} command={<span className="terminal-cursor" />} />
+        <DesktopPrompt time={liveTime} command={<span className="terminal-cursor" />} />
       </section>
     </div>
   );
@@ -316,7 +322,7 @@ export default function Home() {
           alt="Pixel art desktop studio with Peter Argany's personal site in a terminal"
         />
 
-        <DesktopTerminal time={clock.terminal} />
+        <DesktopTerminal loadedTime={clock.loadedTerminal} liveTime={clock.terminal} />
 
         <nav className="social-hotspots" aria-label="Social links">
           {socialLinks.map(({ href, label, Icon, className }) => (

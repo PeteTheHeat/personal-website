@@ -71,9 +71,9 @@ a {
 
 .desktop-terminal {
   position: absolute;
-  left: 609px;
-  top: 211px;
-  width: 514px;
+  left: 580px;
+  top: 195px;
+  width: 560px;
   min-height: 445px;
   color: var(--ink);
   font-size: 23px;
@@ -221,22 +221,22 @@ a {
 }
 
 .logo-hotspot {
-  top: 53.55%;
-  width: 3.75%;
+  top: 53.7%;
+  width: 3.58%;
   aspect-ratio: 1;
   font-size: clamp(1rem, 2vw, 2rem);
 }
 
 .github-hotspot {
-  left: 2.4%;
+  left: 1.9%;
 }
 
 .linkedin-hotspot {
-  left: 7.3%;
+  left: 6.6%;
 }
 
 .x-hotspot {
-  left: 12.2%;
+  left: 11.35%;
 }
 
 .app-placeholder {
