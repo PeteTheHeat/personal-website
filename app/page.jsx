@@ -129,7 +129,7 @@ function DesktopPrompt({ time, command }) {
         <span>peterargany</span>
         <b>@</b>
         <em>~/workspace</em>
-        <i aria-hidden="true">🐣</i>
+        <i aria-hidden="true">🐠</i>
       </p>
       <p className="terminal-command">
         [{time}] &gt; {command}
