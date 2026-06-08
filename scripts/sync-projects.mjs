@@ -33,7 +33,7 @@ for (const project of projects) {
   }
 
   console.log(`\nSyncing ${project.slug}`);
-  run("npm", ["run", "build", "--", "--base=./"], project.source);
+  run("npm", ["run", "build", "--", `--base=/projects/${project.slug}/`], project.source);
 
   if (!existsSync(dist)) {
     throw new Error(`Build did not create dist: ${dist}`);

@@ -64,9 +64,9 @@ git push origin main
 npx --yes vercel deploy --prod --yes
 ```
 
-`npm run sync:projects` builds each app with `--base=./` and copies its `dist`
-folder into `public/projects/<slug>`. The route pages in `app/<slug>/page.jsx`
-load those builds with `app/project-frame.jsx`.
+`npm run sync:projects` builds each app with `--base=/projects/<slug>/` and
+copies its `dist` folder into `public/projects/<slug>`. The route pages in
+`app/<slug>/page.jsx` load those builds with `app/project-frame.jsx`.
 
 To add another project:
 
