@@ -5,6 +5,7 @@
   --green-bright: #34f46e;
   --cyan: #75cfff;
   --screen: #061411;
+  --page-bg: #07100f;
   --stage-ratio: 1.4990234375;
 }
 
@@ -16,7 +17,7 @@ html,
 body {
   margin: 0;
   min-height: 100%;
-  background: #030504;
+  background: var(--page-bg);
   color: var(--ink);
   font-family: "Courier New", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     monospace;
@@ -35,7 +36,7 @@ a {
   min-height: 100svh;
   place-items: center;
   overflow: hidden;
-  background: #030504;
+  background: var(--page-bg);
 }
 
 .scene-stage {
@@ -43,7 +44,7 @@ a {
   width: min(100vw, calc(100svh * var(--stage-ratio)));
   height: min(100svh, calc(100vw / var(--stage-ratio)));
   overflow: hidden;
-  background: #030504;
+  background: var(--page-bg);
   box-shadow: 0 0 6rem rgba(0, 0, 0, 0.55);
   --stage-scale: 0;
 }
