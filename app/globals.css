@@ -41,22 +41,40 @@ a {
 
 .scene-stage {
   position: relative;
-  width: min(100vw, calc(100svh * var(--stage-ratio)));
-  height: min(100svh, calc(100vw / var(--stage-ratio)));
+  width: 100vw;
+  height: 100svh;
   overflow: hidden;
   background: var(--page-bg);
-  box-shadow: 0 0 6rem rgba(0, 0, 0, 0.55);
   --stage-scale: 0;
+  --stage-x: 0px;
+  --stage-y: 0px;
+}
+
+.scene-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(20px) brightness(0.5) saturate(0.78);
+  pointer-events: none;
+  transform: scale(1.04);
+  user-select: none;
 }
 
 .scene-image {
   display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  position: absolute;
+  inset: 0 auto auto 0;
+  z-index: 1;
+  width: 1535px;
+  height: 1024px;
+  box-shadow: 0 0 2.5rem rgba(0, 0, 0, 0.38);
   image-rendering: auto;
   user-select: none;
   pointer-events: none;
+  transform: translate(var(--stage-x), var(--stage-y)) scale(var(--stage-scale));
+  transform-origin: left top;
 }
 
 .stage-coordinate-plane {
@@ -66,7 +84,7 @@ a {
   width: 1535px;
   height: 1024px;
   pointer-events: auto;
-  transform: scale(var(--stage-scale));
+  transform: translate(var(--stage-x), var(--stage-y)) scale(var(--stage-scale));
   transform-origin: left top;
 }
 
@@ -223,9 +241,9 @@ a {
 
 .logo-hotspot {
   top: 53.7%;
-  width: 3.58%;
+  width: 55px;
   aspect-ratio: 1;
-  font-size: clamp(1rem, 2vw, 2rem);
+  font-size: 32px;
 }
 
 .github-hotspot {

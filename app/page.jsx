@@ -6,6 +6,7 @@ import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
 import { SiX } from "react-icons/si";
 
 const STAGE_WIDTH = 1535;
+const STAGE_HEIGHT = 1024;
 
 const projects = [
   {
@@ -93,8 +94,8 @@ function useClock() {
   );
 }
 
-function useStageScale(stageRef) {
-  const [scale, setScale] = useState(0);
+function useStageGeometry(stageRef) {
+  const [geometry, setGeometry] = useState({ scale: 0, x: 0, y: 0 });
 
   useEffect(() => {
     const stage = stageRef.current;
@@ -102,22 +103,33 @@ function useStageScale(stageRef) {
       return undefined;
     }
 
-    const updateScale = () => {
-      setScale(stage.clientWidth / STAGE_WIDTH);
+    const updateGeometry = () => {
+      const scale = Math.min(
+        stage.clientWidth / STAGE_WIDTH,
+        stage.clientHeight / STAGE_HEIGHT,
+      );
+      const width = STAGE_WIDTH * scale;
+      const height = STAGE_HEIGHT * scale;
+
+      setGeometry({
+        scale,
+        x: (stage.clientWidth - width) / 2,
+        y: (stage.clientHeight - height) / 2,
+      });
     };
 
-    updateScale();
-    const observer = new ResizeObserver(updateScale);
+    updateGeometry();
+    const observer = new ResizeObserver(updateGeometry);
     observer.observe(stage);
-    window.addEventListener("resize", updateScale);
+    window.addEventListener("resize", updateGeometry);
 
     return () => {
       observer.disconnect();
-      window.removeEventListener("resize", updateScale);
+      window.removeEventListener("resize", updateGeometry);
     };
   }, [stageRef]);
 
-  return scale;
+  return geometry;
 }
 
 function SocialLink({ href, label, Icon, className = "" }) {
@@ -145,7 +157,7 @@ function DesktopPrompt({ time, command }) {
   );
 }
 
-function DesktopTerminal({ loadedTime, liveTime }) {
+function DesktopOverlay({ loadedTime, liveTime }) {
   return (
     <div className="stage-coordinate-plane" aria-hidden={false}>
       <section className="desktop-terminal" aria-label="Projects terminal">
@@ -165,6 +177,18 @@ function DesktopTerminal({ loadedTime, liveTime }) {
 
         <DesktopPrompt time={liveTime} command={<span className="terminal-cursor" />} />
       </section>
+
+      <nav className="social-hotspots" aria-label="Social links">
+        {socialLinks.map(({ href, label, Icon, className }) => (
+          <SocialLink
+            key={href}
+            href={href}
+            label={label}
+            Icon={Icon}
+            className={className}
+          />
+        ))}
+      </nav>
     </div>
   );
 }
@@ -267,36 +291,34 @@ function MobileExperience({ clock }) {
 export default function Home() {
   const clock = useClock();
   const stageRef = useRef(null);
-  const stageScale = useStageScale(stageRef);
+  const stageGeometry = useStageGeometry(stageRef);
 
   return (
     <main className="studio-shell">
       <section
         ref={stageRef}
         className="scene-stage"
-        style={{ "--stage-scale": stageScale }}
+        style={{
+          "--stage-scale": stageGeometry.scale,
+          "--stage-x": `${stageGeometry.x}px`,
+          "--stage-y": `${stageGeometry.y}px`,
+        }}
         aria-label="Peter Argany personal site"
       >
+        <img
+          className="scene-backdrop"
+          src="/pixel-studio-v3.png"
+          alt=""
+          aria-hidden="true"
+        />
+
         <img
           className="scene-image"
           src="/pixel-studio-v3.png"
           alt="Pixel art desktop studio with Peter Argany's personal site in a terminal"
         />
 
-        <DesktopTerminal loadedTime={clock.loadedTerminal} liveTime={clock.terminal} />
-
-        <nav className="social-hotspots" aria-label="Social links">
-          {socialLinks.map(({ href, label, Icon, className }) => (
-            <SocialLink
-              key={href}
-              href={href}
-              label={label}
-              Icon={Icon}
-              className={className}
-            />
-          ))}
-        </nav>
-
+        <DesktopOverlay loadedTime={clock.loadedTerminal} liveTime={clock.terminal} />
       </section>
 
       <MobileExperience clock={clock} />
