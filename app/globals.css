@@ -337,28 +337,27 @@ a {
 
 .mobile-scene {
   position: relative;
-  width: min(100vw, calc(100svh * var(--mobile-ratio)));
-  aspect-ratio: var(--mobile-ratio);
+  width: min(100vw, calc(100svh * 0.613366646));
+  aspect-ratio: 0.613366646;
   container-type: size;
   overflow: hidden;
   filter: drop-shadow(0 1.2rem 2.4rem rgba(0, 0, 0, 0.58));
 }
 
-.mobile-scene-home {
-  --mobile-ratio: 0.613366646;
-}
-
-.mobile-scene-projects {
-  --mobile-ratio: 0.66449935;
-}
-
 .mobile-scene-image {
   display: block;
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: fill;
+  object-fit: cover;
+  object-position: center top;
   user-select: none;
   pointer-events: none;
+}
+
+.mobile-scene-projects .mobile-scene-image {
+  object-position: center top;
 }
 
 .mobile-overlay {
@@ -368,11 +367,11 @@ a {
 
 .mobile-load-time {
   position: absolute;
-  top: 10.75%;
+  top: 11.05%;
   left: 50%;
   translate: -50% 0;
   color: var(--ink);
-  font-size: min(4.2cqh, 2rem);
+  font-size: min(3.55cqh, 1.72rem);
   font-weight: 700;
   line-height: 1;
   letter-spacing: 0;
@@ -383,21 +382,27 @@ a {
 .mobile-socials {
   position: absolute;
   left: 15.7%;
-  top: 54.35%;
+  top: 54.05%;
   display: flex;
-  gap: min(2.1cqh, 1.15rem);
+  gap: min(2cqh, 1.05rem);
 }
 
 .mobile-social-link {
   display: grid;
   place-items: center;
-  width: min(7.4cqh, 4rem);
+  width: min(7.15cqh, 3.72rem);
   aspect-ratio: 1;
   border: min(0.32cqh, 0.18rem) solid rgba(233, 223, 202, 0.72);
   background: rgba(4, 8, 8, 0.56);
   color: rgba(244, 237, 221, 0.96);
-  font-size: min(3.6cqh, 1.95rem);
+  font-size: min(3.35cqh, 1.74rem);
   text-decoration: none;
+  transition:
+    color 150ms ease,
+    border-color 150ms ease,
+    background 150ms ease,
+    filter 150ms ease,
+    transform 150ms ease;
   box-shadow:
     inset 0 0 0 min(0.18cqh, 0.1rem) rgba(0, 0, 0, 0.65),
     0 0.24rem 0 rgba(0, 0, 0, 0.42);
@@ -412,107 +417,176 @@ a {
 .mobile-back-button:hover,
 .mobile-back-button:focus-visible {
   color: var(--green-bright);
-  outline: min(0.3cqh, 0.18rem) solid rgba(52, 244, 110, 0.72);
-  outline-offset: min(0.45cqh, 0.24rem);
+  outline: none;
 }
 
 .mobile-projects-button,
 .mobile-back-button,
 .mobile-back-arrow {
-  border: 0;
-  background: transparent;
+  display: inline-grid;
+  place-items: center;
+  border: min(0.18cqh, 0.1rem) solid rgba(101, 212, 91, 0.3);
+  background: rgba(3, 13, 11, 0.64);
   color: var(--green);
   font: inherit;
   font-weight: 700;
   letter-spacing: 0;
   cursor: pointer;
   text-shadow: 0 0.12rem 0 rgba(0, 0, 0, 0.58);
+  transition:
+    color 150ms ease,
+    border-color 150ms ease,
+    background 150ms ease,
+    filter 150ms ease,
+    transform 150ms ease;
+  box-shadow:
+    inset 0 0 0 min(0.16cqh, 0.09rem) rgba(0, 0, 0, 0.55),
+    0 0.22rem 0 rgba(0, 0, 0, 0.34);
+}
+
+.mobile-social-link:hover,
+.mobile-social-link:focus-visible,
+.mobile-projects-button:hover,
+.mobile-projects-button:focus-visible,
+.mobile-back-arrow:hover,
+.mobile-back-arrow:focus-visible,
+.mobile-back-button:hover,
+.mobile-back-button:focus-visible {
+  border-color: rgba(52, 244, 110, 0.72);
+  background: rgba(10, 31, 20, 0.82);
+  filter: drop-shadow(0 0 min(1.2cqh, 0.65rem) rgba(52, 244, 110, 0.28));
+  transform: translateY(max(-0.28cqh, -0.16rem));
 }
 
 .mobile-projects-button {
   position: absolute;
-  right: 15.9%;
-  top: 66.9%;
-  font-size: min(3.6cqh, 1.85rem);
+  right: 30.2%;
+  top: 65.25%;
+  width: min(17.4cqh, 8.35rem);
+  min-height: min(4.9cqh, 2.52rem);
+  padding: 0 min(1cqh, 0.52rem);
+  font-size: min(2.7cqh, 1.38rem);
   line-height: 1;
 }
 
 .mobile-back-arrow {
   position: absolute;
-  left: 15.2%;
-  top: 14.3%;
-  font-size: min(4.6cqh, 2.35rem);
+  left: 15.9%;
+  top: 14.2%;
+  width: min(5.5cqh, 2.85rem);
+  height: min(4.9cqh, 2.54rem);
+  font-size: min(3.9cqh, 2rem);
   line-height: 1;
 }
 
 .mobile-projects-panel {
   position: absolute;
-  left: 14.6%;
-  top: 13.6%;
-  width: 70.4%;
+  left: 16.1%;
+  top: 14.25%;
+  width: 67.8%;
   display: grid;
-  gap: min(2.2cqh, 1.2rem);
+  gap: min(1.25cqh, 0.65rem);
 }
 
 .mobile-workspace {
   justify-self: center;
-  margin-bottom: min(2.5cqh, 1.35rem);
+  min-height: min(5cqh, 2.6rem);
+  margin-bottom: min(1.2cqh, 0.62rem);
+  padding-top: min(0.4cqh, 0.22rem);
   color: var(--cyan);
-  font-size: min(3.9cqh, 2rem);
+  font-size: min(3.35cqh, 1.72rem);
   line-height: 1;
   text-shadow: 0 0.12rem 0 rgba(0, 0, 0, 0.58);
   white-space: nowrap;
 }
 
 .mobile-project {
+  position: relative;
   display: grid;
-  grid-template-columns: min(7cqh, 3.6rem) 1fr;
-  gap: min(2cqh, 1.05rem);
+  grid-template-columns: min(6.2cqh, 3.25rem) 1fr;
+  gap: min(1.45cqh, 0.76rem);
   align-items: start;
-  min-height: min(10.8cqh, 5.6rem);
-  padding: min(1.4cqh, 0.75rem) 0;
+  min-height: min(11.1cqh, 5.78rem);
+  padding: min(1.35cqh, 0.7rem) min(1.3cqh, 0.68rem);
+  border-radius: min(0.8cqh, 0.42rem);
   border-bottom: min(0.18cqh, 0.1rem) solid rgba(233, 223, 202, 0.13);
   color: var(--ink);
   text-decoration: none;
+  transition:
+    background 150ms ease,
+    box-shadow 150ms ease,
+    transform 150ms ease;
+}
+
+.mobile-project::before {
+  content: "";
+  position: absolute;
+  left: min(0.2cqh, 0.1rem);
+  top: 50%;
+  width: min(0.42cqh, 0.22rem);
+  height: 0;
+  translate: 0 -50%;
+  background: var(--green-bright);
+  opacity: 0;
+  box-shadow: 0 0 min(1cqh, 0.52rem) rgba(52, 244, 110, 0.62);
+  transition:
+    height 150ms ease,
+    opacity 150ms ease;
 }
 
 .mobile-project:hover,
 .mobile-project:focus-visible {
   outline: none;
-  background: rgba(76, 155, 82, 0.08);
+  background:
+    linear-gradient(90deg, rgba(52, 244, 110, 0.17), rgba(52, 244, 110, 0.055) 70%, transparent);
+  box-shadow:
+    inset 0 0 0 min(0.16cqh, 0.09rem) rgba(52, 244, 110, 0.28),
+    0 0 min(1.4cqh, 0.72rem) rgba(52, 244, 110, 0.08);
+  transform: translateX(min(0.38cqh, 0.2rem));
+}
+
+.mobile-project:hover::before,
+.mobile-project:focus-visible::before {
+  height: calc(100% - min(2.2cqh, 1.15rem));
+  opacity: 1;
 }
 
 .mobile-project:focus-visible {
-  box-shadow: 0 0 0 min(0.3cqh, 0.18rem) rgba(52, 244, 110, 0.68);
+  box-shadow:
+    inset 0 0 0 min(0.2cqh, 0.1rem) rgba(52, 244, 110, 0.54),
+    0 0 min(1.6cqh, 0.84rem) rgba(52, 244, 110, 0.15);
 }
 
 .mobile-project-icon {
   font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
-  font-size: min(3.9cqh, 2rem);
+  font-size: min(3.45cqh, 1.78rem);
   line-height: 1;
 }
 
 .mobile-project strong {
   display: block;
   color: var(--green);
-  font-size: min(3.6cqh, 1.85rem);
+  font-size: min(3.05cqh, 1.58rem);
   font-weight: 700;
   line-height: 1.05;
 }
 
 .mobile-project small {
   display: block;
-  margin-top: min(0.6cqh, 0.32rem);
+  margin-top: min(0.5cqh, 0.26rem);
   color: var(--ink);
-  font-size: min(2.35cqh, 1.2rem);
-  line-height: 1.18;
+  font-size: min(2.18cqh, 1.13rem);
+  line-height: 1.2;
 }
 
 .mobile-back-button {
   position: absolute;
-  right: 17.4%;
-  top: 78.2%;
-  font-size: min(3.3cqh, 1.7rem);
+  right: 18.6%;
+  top: 71.7%;
+  min-width: min(13cqh, 6.75rem);
+  min-height: min(4.7cqh, 2.44rem);
+  padding: 0 min(1.4cqh, 0.74rem);
+  font-size: min(2.9cqh, 1.5rem);
   line-height: 1;
 }
 
