@@ -309,28 +309,6 @@ a {
   background: #050808;
 }
 
-.project-frame-home {
-  position: fixed;
-  z-index: 10;
-  top: 0.85rem;
-  left: 0.85rem;
-  padding: 0.42rem 0.65rem;
-  border: 1px solid rgba(233, 223, 202, 0.42);
-  background: rgba(4, 8, 8, 0.78);
-  color: var(--ink);
-  font-size: 0.82rem;
-  line-height: 1;
-  text-decoration: none;
-  box-shadow: 0 0.35rem 1rem rgba(0, 0, 0, 0.32);
-}
-
-.project-frame-home:hover,
-.project-frame-home:focus-visible {
-  color: var(--green-bright);
-  outline: 2px solid rgba(52, 244, 110, 0.62);
-  outline-offset: 0.2rem;
-}
-
 .mobile-stage {
   display: none;
 }
@@ -367,11 +345,11 @@ a {
 
 .mobile-load-time {
   position: absolute;
-  top: 11.05%;
+  top: 11.42%;
   left: 50%;
-  translate: -50% 0;
+  translate: -50% -50%;
   color: var(--ink);
-  font-size: min(3.55cqh, 1.72rem);
+  font-size: min(3.02cqh, 1.48rem);
   font-weight: 700;
   line-height: 1;
   letter-spacing: 0;
@@ -412,8 +390,6 @@ a {
 .mobile-social-link:focus-visible,
 .mobile-projects-button:hover,
 .mobile-projects-button:focus-visible,
-.mobile-back-arrow:hover,
-.mobile-back-arrow:focus-visible,
 .mobile-back-button:hover,
 .mobile-back-button:focus-visible {
   color: var(--green-bright);
@@ -421,12 +397,11 @@ a {
 }
 
 .mobile-projects-button,
-.mobile-back-button,
-.mobile-back-arrow {
+.mobile-back-button {
   display: inline-grid;
   place-items: center;
-  border: min(0.18cqh, 0.1rem) solid rgba(101, 212, 91, 0.3);
-  background: rgba(3, 13, 11, 0.64);
+  border: 0;
+  background: transparent;
   color: var(--green);
   font: inherit;
   font-weight: 700;
@@ -439,62 +414,47 @@ a {
     background 150ms ease,
     filter 150ms ease,
     transform 150ms ease;
-  box-shadow:
-    inset 0 0 0 min(0.16cqh, 0.09rem) rgba(0, 0, 0, 0.55),
-    0 0.22rem 0 rgba(0, 0, 0, 0.34);
+  box-shadow: none;
 }
 
 .mobile-social-link:hover,
 .mobile-social-link:focus-visible,
 .mobile-projects-button:hover,
 .mobile-projects-button:focus-visible,
-.mobile-back-arrow:hover,
-.mobile-back-arrow:focus-visible,
 .mobile-back-button:hover,
 .mobile-back-button:focus-visible {
-  border-color: rgba(52, 244, 110, 0.72);
-  background: rgba(10, 31, 20, 0.82);
+  background: transparent;
   filter: drop-shadow(0 0 min(1.2cqh, 0.65rem) rgba(52, 244, 110, 0.28));
   transform: translateY(max(-0.28cqh, -0.16rem));
 }
 
 .mobile-projects-button {
   position: absolute;
-  right: 30.2%;
-  top: 65.25%;
-  width: min(17.4cqh, 8.35rem);
-  min-height: min(4.9cqh, 2.52rem);
+  right: 16.8%;
+  top: 66.95%;
+  width: min(19.4cqh, 8.95rem);
+  min-height: min(4.45cqh, 2.28rem);
   padding: 0 min(1cqh, 0.52rem);
-  font-size: min(2.7cqh, 1.38rem);
-  line-height: 1;
-}
-
-.mobile-back-arrow {
-  position: absolute;
-  left: 15.9%;
-  top: 14.2%;
-  width: min(5.5cqh, 2.85rem);
-  height: min(4.9cqh, 2.54rem);
-  font-size: min(3.9cqh, 2rem);
+  font-size: min(2.45cqh, 1.2rem);
   line-height: 1;
 }
 
 .mobile-projects-panel {
   position: absolute;
   left: 16.1%;
-  top: 14.25%;
+  top: 16.35%;
   width: 67.8%;
   display: grid;
-  gap: min(1.25cqh, 0.65rem);
+  gap: min(1.05cqh, 0.54rem);
 }
 
 .mobile-workspace {
   justify-self: center;
-  min-height: min(5cqh, 2.6rem);
-  margin-bottom: min(1.2cqh, 0.62rem);
-  padding-top: min(0.4cqh, 0.22rem);
+  min-height: min(4.35cqh, 2.24rem);
+  margin-bottom: min(0.8cqh, 0.42rem);
+  padding-top: min(0.25cqh, 0.14rem);
   color: var(--cyan);
-  font-size: min(3.35cqh, 1.72rem);
+  font-size: min(2.86cqh, 1.48rem);
   line-height: 1;
   text-shadow: 0 0.12rem 0 rgba(0, 0, 0, 0.58);
   white-space: nowrap;
@@ -503,11 +463,11 @@ a {
 .mobile-project {
   position: relative;
   display: grid;
-  grid-template-columns: min(6.2cqh, 3.25rem) 1fr;
-  gap: min(1.45cqh, 0.76rem);
+  grid-template-columns: min(5.45cqh, 2.84rem) 1fr;
+  gap: min(1.2cqh, 0.62rem);
   align-items: start;
-  min-height: min(11.1cqh, 5.78rem);
-  padding: min(1.35cqh, 0.7rem) min(1.3cqh, 0.68rem);
+  min-height: min(9.8cqh, 5.08rem);
+  padding: min(1.05cqh, 0.55rem) min(1.05cqh, 0.55rem);
   border-radius: min(0.8cqh, 0.42rem);
   border-bottom: min(0.18cqh, 0.1rem) solid rgba(233, 223, 202, 0.13);
   color: var(--ink);
@@ -559,34 +519,34 @@ a {
 
 .mobile-project-icon {
   font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
-  font-size: min(3.45cqh, 1.78rem);
+  font-size: min(3.05cqh, 1.58rem);
   line-height: 1;
 }
 
 .mobile-project strong {
   display: block;
   color: var(--green);
-  font-size: min(3.05cqh, 1.58rem);
+  font-size: min(2.72cqh, 1.42rem);
   font-weight: 700;
   line-height: 1.05;
 }
 
 .mobile-project small {
   display: block;
-  margin-top: min(0.5cqh, 0.26rem);
+  margin-top: min(0.42cqh, 0.22rem);
   color: var(--ink);
-  font-size: min(2.18cqh, 1.13rem);
+  font-size: min(1.92cqh, 1rem);
   line-height: 1.2;
 }
 
 .mobile-back-button {
   position: absolute;
   right: 18.6%;
-  top: 71.7%;
-  min-width: min(13cqh, 6.75rem);
-  min-height: min(4.7cqh, 2.44rem);
+  top: 66.95%;
+  min-width: min(13.2cqh, 6.85rem);
+  min-height: min(4.45cqh, 2.28rem);
   padding: 0 min(1.4cqh, 0.74rem);
-  font-size: min(2.9cqh, 1.5rem);
+  font-size: min(2.45cqh, 1.2rem);
   line-height: 1;
 }
 

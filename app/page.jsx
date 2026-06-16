@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
 import { SiX } from "react-icons/si";
+import { MOBILE_HOME_BG, MOBILE_PROJECTS_BG } from "./phone-assets";
 
 const STAGE_WIDTH = 1535;
 const STAGE_HEIGHT = 1024;
@@ -198,7 +199,7 @@ function MobileScene({ variant, children }) {
     <div className={`mobile-scene mobile-scene-${variant}`}>
       <img
         className="mobile-scene-image"
-        src={variant === "home" ? "/mobile-home-bg.png" : "/mobile-projects-bg.png"}
+        src={variant === "home" ? MOBILE_HOME_BG : MOBILE_PROJECTS_BG}
         alt=""
       />
       <div className="mobile-overlay">{children}</div>
@@ -232,12 +233,10 @@ function MobileHomeScreen({ time, onOpenProjects }) {
   );
 }
 
-function MobileProjectsScreen({ onBack }) {
+function MobileProjectsScreen({ time, onBack }) {
   return (
     <MobileScene variant="projects">
-      <button className="mobile-back-arrow" onClick={onBack} aria-label="Back to home">
-        ←
-      </button>
+      <time className="mobile-load-time">{time}</time>
 
       <section className="mobile-projects-panel" aria-label="Projects">
         <span className="mobile-workspace" aria-hidden="true">
@@ -282,7 +281,10 @@ function MobileExperience({ clock }) {
           onOpenProjects={() => setScreen("projects")}
         />
       ) : (
-        <MobileProjectsScreen onBack={() => setScreen("home")} />
+        <MobileProjectsScreen
+          time={clock.loadedPhone}
+          onBack={() => setScreen("home")}
+        />
       )}
     </section>
   );

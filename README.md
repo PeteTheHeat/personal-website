@@ -1,6 +1,6 @@
 # Peter Argany Personal Website
 
-This is the source for `peterargany.com`.
+This is the source for my personal website.
 
 The site is a Next.js app intended to deploy on Vercel. The homepage lives at
 `app/page.jsx`, and future small apps can be added as normal route folders under
@@ -8,8 +8,8 @@ The site is a Next.js app intended to deploy on Vercel. The homepage lives at
 
 Examples:
 
-- `app/world-cup-bracket/page.jsx` serves `peterargany.com/world-cup-bracket`
-- `app/baby-name-picker/page.jsx` would serve `peterargany.com/baby-name-picker`
+- `app/world-cup-bracket/page.jsx` serves `/world-cup-bracket`
+- `app/baby-name-picker/page.jsx` would serve `/baby-name-picker`
 
 ## Local development
 
@@ -33,25 +33,15 @@ Vercel should use the default Next.js settings:
 - Install command: `npm install`
 - Output directory: handled by Vercel
 
-## Domain
-
-The target production setup is:
-
-- `peterargany.com` as the primary Vercel domain
-- `www.peterargany.com` redirecting to `peterargany.com`
-
-DNS can stay managed at Network Solutions. The Vercel domain screen will provide
-the exact A/CNAME/TXT records to set there.
-
 ## Project apps
 
 Standalone project apps live in their own source folders and are published as
 static build snapshots through this repo.
 
-Current sources:
+Current project routes:
 
-- `gender-reveal`: `/Users/peterargany/workspace/gender-reveal-pokemon-2`
-- `character-select`: `/Users/peterargany/workspace/names-chooser`
+- `/gender-reveal`
+- `/character-select`
 
 To refresh the deployed snapshots:
 
@@ -65,8 +55,11 @@ npx --yes vercel deploy --prod --yes
 ```
 
 `npm run sync:projects` builds each app with `--base=/projects/<slug>/` and
-copies its `dist` folder into `public/projects/<slug>`. The route pages in
-`app/<slug>/page.jsx` load those builds with `app/project-frame.jsx`.
+copies its `dist` folder into `public/projects/<slug>`. Source project paths are
+configured in `scripts/sync-projects.mjs`. The route pages in
+`app/<slug>/page.jsx` load those builds with `app/project-frame.jsx`. The shared
+frame is intentionally chrome-free; do not add a floating Home button on top of
+embedded project apps.
 
 To add another project:
 
