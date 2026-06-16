@@ -22,7 +22,7 @@ export const metadata = {
       {
         url: "/og-image.jpg",
         width: 1200,
-        height: 801,
+        height: 800,
         alt: "Pixel art software studio",
       },
     ],

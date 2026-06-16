@@ -2,11 +2,22 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { preload } from "react-dom";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
 import { SiX } from "react-icons/si";
 
-const STAGE_WIDTH = 1535;
+const STAGE_WIDTH = 1536;
 const STAGE_HEIGHT = 1024;
+
+function PreloadMobileProjectsBackground() {
+  preload("/mobile-projects-bg-2.webp", {
+    as: "image",
+    type: "image/webp",
+    media: "(max-width: 760px)",
+  });
+
+  return null;
+}
 
 const projects = [
   {
@@ -302,6 +313,8 @@ export default function Home() {
 
   return (
     <main className="studio-shell">
+      <PreloadMobileProjectsBackground />
+
       <section
         ref={stageRef}
         className="scene-stage"
