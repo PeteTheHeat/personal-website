@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
 import { SiX } from "react-icons/si";
-import { MOBILE_HOME_BG, MOBILE_PROJECTS_BG } from "./phone-assets";
 
 const STAGE_WIDTH = 1535;
 const STAGE_HEIGHT = 1024;
@@ -166,7 +165,12 @@ function DesktopOverlay({ loadedTime, liveTime }) {
 
         <div className="desktop-projects">
           {projects.map((project) => (
-            <Link key={project.label} className="desktop-project" href={project.href}>
+            <Link
+              key={project.label}
+              className="desktop-project"
+              href={project.href}
+              prefetch={false}
+            >
               <span className="desktop-project-icon" aria-hidden="true">
                 {project.icon}
               </span>
@@ -197,11 +201,7 @@ function DesktopOverlay({ loadedTime, liveTime }) {
 function MobileScene({ variant, children }) {
   return (
     <div className={`mobile-scene mobile-scene-${variant}`}>
-      <img
-        className="mobile-scene-image"
-        src={variant === "home" ? MOBILE_HOME_BG : MOBILE_PROJECTS_BG}
-        alt=""
-      />
+      <div className="mobile-scene-image" aria-hidden="true" />
       <div className="mobile-overlay">{children}</div>
     </div>
   );
@@ -256,7 +256,12 @@ function MobileProjectsScreen({ time, onBack }) {
           );
 
           return (
-            <Link key={project.label} className="mobile-project" href={project.href}>
+            <Link
+              key={project.label}
+              className="mobile-project"
+              href={project.href}
+              prefetch={false}
+            >
               {content}
             </Link>
           );
@@ -307,17 +312,15 @@ export default function Home() {
         }}
         aria-label="Peter Argany personal site"
       >
-        <img
+        <div
           className="scene-backdrop"
-          src="/pixel-studio-v3.png"
-          alt=""
           aria-hidden="true"
         />
 
-        <img
+        <div
           className="scene-image"
-          src="/pixel-studio-v3.png"
-          alt="Pixel art desktop studio with Peter Argany's personal site in a terminal"
+          role="img"
+          aria-label="Pixel art desktop studio with Peter Argany's personal site in a terminal"
         />
 
         <DesktopOverlay loadedTime={clock.loadedTerminal} liveTime={clock.terminal} />
