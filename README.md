@@ -67,3 +67,44 @@ To add another project:
 2. Add its local source path to `scripts/sync-projects.mjs`.
 3. Add a route page under `app/<slug>/page.jsx` using `ProjectFrame`.
 4. Run `npm run sync:projects` and `npm run build`.
+
+## Sacko Tracker
+
+The public tracker is available at `/sacko-tracker`. Score changes are made at
+`/sacko-tracker-admin`; the admin route is intentionally omitted from the site
+navigation and marked `noindex`.
+
+For local development, tracker state is persisted in the ignored `.data/`
+directory. Production uses an Upstash Redis REST database so data survives
+Vercel function restarts. Configure the variables shown in `.env.example`:
+
+- `SACKO_ADMIN_PASSWORD`: a unique password of at least 12 characters used to
+  enter the admin page
+- `SACKO_SESSION_SECRET`: a separate, random secret of at least 32 characters used
+  to sign the secure admin session cookie
+- `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`: injected when an
+  Upstash Redis resource is connected through the Vercel Marketplace
+
+Legacy `KV_REST_API_URL` and `KV_REST_API_TOKEN` variable names are also
+accepted. Tracker keys are isolated by Vercel environment by default so preview
+updates cannot overwrite production state; `SACKO_REDIS_KEY` can override the
+key when needed. Production deliberately fails closed when credentials or
+durable storage are not configured.
+
+To create and connect the intended free, non-auto-upgrading Redis resource:
+
+```bash
+npx vercel integration add upstash/upstash-kv \
+  --name sacko-tracker \
+  --environment production \
+  --environment preview \
+  --environment development \
+  --metadata primaryRegion=sfo1 \
+  --metadata eviction=false \
+  --metadata prodPack=false \
+  --metadata autoUpgrade=false
+```
+
+The Vercel account owner must accept the provider marketplace terms before the
+CLI can finish provisioning. Add the two admin secrets with `vercel env add` or
+in Project Settings, redeploy, then smoke-test both tracker routes.

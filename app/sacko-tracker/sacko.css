@@ -1,0 +1,1050 @@
+.sacko-page {
+  --sacko-paper: #f3ebdc;
+  --sacko-paper-light: #faf5e9;
+  --sacko-ink: #19231f;
+  --sacko-dark: #172821;
+  --sacko-dark-2: #20342b;
+  --sacko-pink: #983f4d;
+  --sacko-green: #386a32;
+  --sacko-lime: #9bcf59;
+  --sacko-blue: #316b98;
+  --sacko-red: #a94338;
+  width: 100%;
+  height: 100svh;
+  overflow-x: clip;
+  overflow-y: auto;
+  padding: clamp(0.75rem, 2.3vw, 1.8rem);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(30, 92, 70, 0.28), transparent 43rem),
+    #071914;
+  color: var(--sacko-ink);
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  scrollbar-color: #4e6f5f #071914;
+}
+
+.sacko-page *,
+.sacko-page *::before,
+.sacko-page *::after {
+  box-sizing: border-box;
+}
+
+.sacko-error-page {
+  display: grid;
+  place-items: center;
+}
+
+.sacko-error-card {
+  width: min(100%, 34rem);
+  padding: clamp(1.4rem, 5vw, 2.5rem);
+  border: 1px solid rgba(55, 49, 37, 0.65);
+  border-radius: 1.15rem;
+  background: var(--sacko-paper);
+  box-shadow: 0 1.8rem 5rem rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+
+.sacko-error-card h1,
+.sacko-error-card p {
+  margin: 0;
+}
+
+.sacko-error-card > p:first-child {
+  color: var(--sacko-green);
+  font-family: "Comic Sans MS", "Bradley Hand", cursive;
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.sacko-error-card h1 {
+  margin-top: 0.4rem;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: clamp(2.4rem, 9vw, 4.2rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.sacko-error-card h1 + p {
+  margin-top: 1rem;
+  line-height: 1.55;
+}
+
+.sacko-error-card button,
+.sacko-error-card a {
+  display: inline-grid;
+  place-items: center;
+  min-height: 2.8rem;
+  margin-top: 1.25rem;
+  padding: 0.65rem 1rem;
+  border: 2px solid var(--sacko-dark);
+  border-radius: 0.65rem;
+  background: var(--sacko-dark);
+  color: #fff7e9;
+  font: inherit;
+  font-weight: 900;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.sacko-error-card button:focus-visible,
+.sacko-error-card a:focus-visible {
+  outline: 3px solid #d65b69;
+  outline-offset: 3px;
+}
+
+.sacko-poster {
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 70rem);
+  min-width: 0;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid rgba(55, 49, 37, 0.55);
+  border-radius: clamp(0.9rem, 2vw, 1.6rem);
+  background-color: var(--sacko-paper);
+  background-image:
+    radial-gradient(circle, rgba(43, 36, 26, 0.08) 0.7px, transparent 0.9px),
+    repeating-linear-gradient(3deg, rgba(102, 78, 46, 0.018) 0 1px, transparent 1px 4px),
+    linear-gradient(110deg, rgba(255, 255, 255, 0.5), transparent 42%, rgba(125, 100, 62, 0.05));
+  background-size: 7px 7px, 100% 5px, auto;
+  box-shadow:
+    0 1.8rem 5rem rgba(0, 0, 0, 0.4),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.sacko-poster::after {
+  position: absolute;
+  z-index: 20;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 3rem rgba(78, 58, 31, 0.07);
+  content: "";
+  pointer-events: none;
+}
+
+.sacko-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(20rem, 0.88fr);
+  min-height: 25.5rem;
+  padding: clamp(2rem, 4.8vw, 4rem) clamp(1.6rem, 5vw, 4.5rem) 0;
+  overflow: hidden;
+}
+
+.sacko-hero-copy {
+  position: relative;
+  z-index: 4;
+  min-width: 0;
+  padding-bottom: 2.2rem;
+}
+
+.sacko-kicker,
+.sacko-rule,
+.sacko-hero h1,
+.sacko-formula,
+.sacko-doodle,
+.sacko-progress-card h2,
+.sacko-progress-card p,
+.sacko-metric h3,
+.sacko-metric p,
+.sacko-calories p,
+.sacko-footer p {
+  margin: 0;
+}
+
+.sacko-kicker {
+  margin-bottom: 0.45rem;
+  color: #8e3d48;
+  font-family: "Comic Sans MS", "Bradley Hand", cursive;
+  font-size: clamp(0.75rem, 1.3vw, 0.95rem);
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.sacko-hero h1 {
+  display: grid;
+  color: #17211c;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: clamp(4.5rem, 7.7vw, 7rem);
+  font-weight: 900;
+  line-height: 0.82;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  text-wrap: balance;
+  text-shadow: 1px 2px 0 rgba(44, 36, 25, 0.14);
+}
+
+.sacko-hero h1 span:first-child {
+  transform: rotate(-1deg);
+}
+
+.sacko-hero h1 span:last-child {
+  font-size: 0.72em;
+  letter-spacing: 0.035em;
+  line-height: 1.02;
+}
+
+.sacko-formula {
+  position: relative;
+  display: inline-block;
+  margin-top: 1.25rem;
+  color: var(--sacko-green);
+  font-family: "Comic Sans MS", "Bradley Hand", cursive;
+  font-size: clamp(1rem, 2vw, 1.45rem);
+  font-weight: 900;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+  transform: rotate(-1deg);
+}
+
+.sacko-formula::after {
+  position: absolute;
+  right: -0.2rem;
+  bottom: -0.45rem;
+  left: 0;
+  height: 0.18rem;
+  border-radius: 999px;
+  background: var(--sacko-pink);
+  content: "";
+  transform: rotate(-1deg);
+}
+
+.sacko-rule {
+  max-width: 34rem;
+  margin-top: 1rem;
+  color: #34443c;
+  font-size: clamp(0.8rem, 1.3vw, 0.95rem);
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.sacko-hero-visual {
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+  min-height: 23rem;
+  margin: 0;
+}
+
+.sacko-halftone {
+  position: absolute;
+  right: -8%;
+  bottom: -5%;
+  width: 108%;
+  aspect-ratio: 1.25;
+  background-image: radial-gradient(circle, rgba(100, 151, 63, 0.75) 1.35px, transparent 1.55px);
+  background-size: 7px 7px;
+  mask-image: radial-gradient(ellipse at center, #000 15%, rgba(0, 0, 0, 0.82) 52%, transparent 74%);
+  transform: rotate(-5deg);
+}
+
+.sacko-dave {
+  position: absolute;
+  z-index: 2;
+  right: -1rem;
+  bottom: -9.2rem;
+  width: auto;
+  height: 34rem;
+  object-fit: contain;
+  filter: drop-shadow(0.2rem 0.35rem 0 rgba(19, 33, 26, 0.42));
+}
+
+.sacko-doodle {
+  position: absolute;
+  z-index: 3;
+  width: min-content;
+  color: #131b17;
+  font-family: "Comic Sans MS", "Bradley Hand", cursive;
+  font-size: clamp(0.8rem, 1.45vw, 1.08rem);
+  font-weight: 900;
+  line-height: 1.05;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.sacko-doodle-left {
+  top: 3.5rem;
+  left: -1.6rem;
+  transform: rotate(-8deg);
+}
+
+.sacko-doodle-right {
+  top: 6rem;
+  right: -2rem;
+  transform: rotate(5deg);
+}
+
+.sacko-progress-card {
+  position: relative;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "main score"
+    "main live";
+  gap: 0.25rem 2rem;
+  align-items: center;
+  min-height: 9.2rem;
+  margin: 0 clamp(1rem, 2.6vw, 1.8rem);
+  padding: 1.25rem clamp(1.2rem, 3.5vw, 2.8rem);
+  overflow: hidden;
+  border: 1px solid #0c1712;
+  border-radius: 1.6rem;
+  background:
+    radial-gradient(circle at 70% 10%, rgba(151, 198, 91, 0.1), transparent 20rem),
+    var(--sacko-dark);
+  color: #f8f2e5;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 0.45rem 0 rgba(61, 47, 32, 0.1);
+}
+
+.sacko-progress-main {
+  grid-area: main;
+  min-width: 0;
+}
+
+.sacko-progress-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.sacko-progress-card h2,
+.sacko-live-label,
+.sacko-progress-score > span,
+.sacko-metric h3,
+.sacko-calorie-stat p > span,
+.sacko-calorie-balance > span:first-child,
+.sacko-footer > p:first-child {
+  font-family: "Comic Sans MS", "Bradley Hand", cursive;
+  font-weight: 900;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+}
+
+.sacko-progress-card h2 {
+  font-size: clamp(0.9rem, 1.7vw, 1.15rem);
+}
+
+.sacko-progress-heading p {
+  min-width: 0;
+  color: #c9d7c9;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+  text-align: right;
+}
+
+.sacko-progress-track {
+  display: flex;
+  position: relative;
+  height: 2.7rem;
+  overflow: hidden;
+  border: 1px solid rgba(247, 241, 228, 0.55);
+  border-radius: 999px;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 calc(25% - 1px), rgba(255, 255, 255, 0.15) calc(25% - 1px) 25%),
+    #38423d;
+  box-shadow: inset 0 0.35rem 0.8rem rgba(0, 0, 0, 0.25);
+}
+
+.sacko-segment {
+  display: block;
+  flex: 0 0 auto;
+  height: 100%;
+}
+
+.sacko-segment-donut {
+  background: #c66f78;
+}
+
+.sacko-segment-beer {
+  background: #83ae54;
+}
+
+.sacko-segment-mile {
+  background: #5e82a4;
+}
+
+.sacko-track-icon {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+  font-size: 1.75rem;
+  line-height: 1;
+  filter: drop-shadow(0 2px 0 rgba(0, 0, 0, 0.35));
+  transform: translate(-50%, -50%);
+}
+
+.sacko-track-icon svg {
+  display: block;
+  width: 1.15em;
+  height: 1.15em;
+  stroke-width: 2.4;
+}
+
+.sacko-track-mile {
+  color: #b9dbfa;
+}
+
+.sacko-can-icon {
+  display: inline-grid;
+  position: relative;
+  width: 0.54em;
+  height: 0.82em;
+  place-items: center;
+  border: 0.055em solid #173b2b;
+  border-radius: 0.12em 0.12em 0.16em 0.16em;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.3), transparent 28% 73%, rgba(0, 0, 0, 0.18)),
+    #129653;
+  color: #f1f5df;
+  box-shadow:
+    inset 0 0.055em 0 #d6ddd6,
+    inset 0 -0.055em 0 #cbd5cd,
+    0 0.04em 0 rgba(0, 0, 0, 0.3);
+  font-family: Impact, sans-serif;
+  line-height: 1;
+  transform: rotate(-1deg);
+}
+
+.sacko-can-icon::before {
+  position: absolute;
+  top: 0.05em;
+  width: 0.28em;
+  height: 0.07em;
+  border-radius: 50%;
+  background: #66716d;
+  content: "";
+}
+
+.sacko-can-icon > span {
+  font-size: 0.22em;
+  letter-spacing: -0.02em;
+}
+
+.sacko-progress-score {
+  grid-area: score;
+  align-self: end;
+  min-width: 11rem;
+  text-align: center;
+}
+
+.sacko-progress-score p {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  min-width: 0;
+  white-space: nowrap;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  line-height: 0.85;
+}
+
+.sacko-progress-score-long p {
+  flex-wrap: wrap;
+  white-space: normal;
+}
+
+.sacko-progress-score-long strong {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.sacko-progress-score strong {
+  color: #f8f2e5;
+  font-size: clamp(3.5rem, 6.5vw, 5rem);
+  font-weight: 900;
+}
+
+.sacko-progress-score p span {
+  font-size: clamp(1.8rem, 3.8vw, 2.8rem);
+}
+
+.sacko-progress-score > span {
+  display: block;
+  margin-top: 0.45rem;
+  color: var(--sacko-lime);
+  font-size: clamp(0.8rem, 1.8vw, 1.12rem);
+}
+
+.sacko-live-status {
+  grid-area: live;
+  align-self: start;
+  min-width: 11rem;
+  margin-top: 0.35rem;
+  text-align: center;
+}
+
+.sacko-live-status span,
+.sacko-live-status strong,
+.sacko-countdown {
+  display: block;
+}
+
+.sacko-live-label {
+  color: #b9cabd;
+  font-size: 0.65rem;
+}
+
+.sacko-live-status strong,
+.sacko-countdown {
+  margin-top: 0.15rem;
+  color: #fff8e9;
+  font-family: "Courier New", monospace;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+}
+
+.sacko-live-status-complete strong { color: var(--sacko-lime); }
+.sacko-live-status-expired strong { color: #ef8a83; }
+
+.sacko-state-announcement {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sacko-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin: 1rem clamp(1rem, 2.6vw, 1.8rem);
+}
+
+.sacko-metric {
+  --metric-color: var(--sacko-pink);
+  --metric-wash: rgba(184, 95, 105, 0.13);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas:
+    "icon copy percent"
+    "icon line line"
+    "detail detail detail";
+  gap: 0.35rem 0.7rem;
+  align-items: center;
+  min-width: 0;
+  padding: 1rem 0.8rem 0.75rem;
+  border: 1px solid rgba(69, 61, 47, 0.66);
+  border-radius: 1rem;
+  background: rgba(255, 252, 243, 0.38);
+}
+
+.sacko-metric-green {
+  --metric-color: var(--sacko-green);
+  --metric-wash: rgba(94, 138, 66, 0.14);
+}
+
+.sacko-metric-blue {
+  --metric-color: #245f8d;
+  --metric-wash: rgba(49, 107, 152, 0.13);
+}
+
+.sacko-metric-icon {
+  grid-area: icon;
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+  font-size: clamp(2.7rem, 5.2vw, 4.5rem);
+  line-height: 1;
+  filter: drop-shadow(0 2px 0 rgba(63, 49, 30, 0.18));
+}
+
+.sacko-metric-icon svg {
+  display: block;
+  width: 1em;
+  height: 1em;
+  color: var(--metric-color);
+  fill: color-mix(in srgb, var(--metric-color) 18%, transparent);
+  stroke-width: 2;
+}
+
+.sacko-metric-copy {
+  grid-area: copy;
+  min-width: 0;
+}
+
+.sacko-metric h3 {
+  color: var(--metric-color);
+  font-size: clamp(0.78rem, 1.45vw, 1rem);
+}
+
+.sacko-metric-value {
+  display: flex;
+  align-items: baseline;
+  margin-top: 0.15rem !important;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.sacko-metric-long .sacko-metric-value strong {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.sacko-metric-long .sacko-metric-value {
+  flex-wrap: wrap;
+  white-space: normal;
+}
+
+.sacko-metric-value strong {
+  font-size: clamp(2rem, 4.2vw, 3rem);
+}
+
+.sacko-metric-value span {
+  font-size: clamp(1.15rem, 2.5vw, 1.7rem);
+}
+
+.sacko-metric-percent {
+  grid-area: percent;
+  align-self: end;
+  color: var(--metric-color);
+  font-size: clamp(0.85rem, 1.8vw, 1.15rem);
+  font-weight: 900;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.sacko-metric-line {
+  grid-area: line;
+  height: 0.35rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(43, 46, 41, 0.18);
+}
+
+.sacko-metric-line span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--metric-color);
+}
+
+.sacko-metric-detail {
+  grid-area: detail;
+  margin-top: 0.35rem !important;
+  padding: 0.4rem 0.5rem;
+  border-radius: 0.55rem;
+  background: var(--metric-wash);
+  color: color-mix(in srgb, var(--metric-color) 82%, #121c17);
+  font-family: "Comic Sans MS", "Bradley Hand", cursive;
+  font-size: clamp(0.75rem, 1.5vw, 0.95rem);
+  font-weight: 900;
+  line-height: 1.1;
+  text-align: center;
+  text-transform: uppercase;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.sacko-calories {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr 1.05fr;
+  align-items: stretch;
+  min-height: 9.3rem;
+  margin: 0 clamp(1rem, 2.6vw, 1.8rem);
+  overflow: hidden;
+  border: 1px solid rgba(64, 55, 41, 0.7);
+  border-radius: 1.15rem;
+  background: #efddb6;
+}
+
+.sacko-calorie-stat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  min-width: 0;
+  padding: 1rem;
+}
+
+.sacko-calorie-icon {
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+  font-size: clamp(2.3rem, 5vw, 4rem);
+  line-height: 1;
+}
+
+.sacko-calorie-shoe {
+  display: block;
+  width: clamp(2.8rem, 5.7vw, 4.7rem);
+  color: var(--sacko-blue);
+}
+
+.sacko-calorie-shoe svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  fill: rgba(49, 107, 152, 0.12);
+  stroke-width: 1.8;
+}
+
+.sacko-calorie-stat p > span,
+.sacko-calorie-balance > span:first-child {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: clamp(0.68rem, 1.4vw, 0.92rem);
+}
+
+.sacko-calorie-stat strong,
+.sacko-calorie-balance strong {
+  color: var(--sacko-red);
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: clamp(2.1rem, 4.3vw, 3.25rem);
+  letter-spacing: 0.025em;
+}
+
+.sacko-calorie-stat small,
+.sacko-calorie-balance small {
+  font-family: "Comic Sans MS", "Bradley Hand", cursive;
+  font-size: clamp(0.7rem, 1.4vw, 0.95rem);
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.sacko-calorie-burned strong {
+  color: var(--sacko-blue);
+}
+
+.sacko-versus {
+  align-self: center;
+  padding: 0.75rem;
+  border-radius: 50%;
+  background: var(--sacko-dark);
+  color: #fff7e8;
+  font-family: Impact, sans-serif;
+  font-size: 1.25rem;
+  font-style: italic;
+  line-height: 1;
+  text-transform: uppercase;
+  transform: rotate(-7deg);
+}
+
+.sacko-calorie-balance {
+  position: relative;
+  display: grid;
+  place-content: center;
+  padding: 1rem 3.4rem 1rem 1rem;
+  background: var(--sacko-dark);
+  color: #f8f2e5;
+  text-align: center;
+}
+
+.sacko-calorie-balance strong {
+  color: #ea7064;
+  line-height: 0.95;
+}
+
+.sacko-skull {
+  position: absolute;
+  right: 1rem;
+  bottom: 0.8rem;
+  font-size: 2.4rem;
+  transform: rotate(7deg);
+}
+
+.sacko-footer {
+  padding: 1.05rem 1rem 1.25rem;
+  text-align: center;
+}
+
+.sacko-footer > p:first-child {
+  position: relative;
+  display: inline-block;
+  font-size: clamp(0.95rem, 2vw, 1.3rem);
+  transform: rotate(-0.5deg);
+}
+
+.sacko-footer > p:first-child::after {
+  position: absolute;
+  right: 10%;
+  bottom: -0.35rem;
+  left: 10%;
+  height: 0.12rem;
+  border-radius: 999px;
+  background: var(--sacko-pink);
+  content: "";
+}
+
+.sacko-timing {
+  margin-top: 0.75rem !important;
+  color: #415047;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.sacko-calorie-note {
+  margin-top: 0.25rem !important;
+  color: #56615a;
+  font-size: 0.68rem;
+}
+
+@media (max-width: 900px) {
+  .sacko-hero {
+    grid-template-columns: minmax(0, 1.05fr) minmax(17rem, 0.95fr);
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+
+  .sacko-hero h1 {
+    font-size: clamp(4rem, 8.5vw, 5.6rem);
+  }
+
+  .sacko-doodle-left { left: -0.5rem; }
+  .sacko-doodle-right { right: -0.8rem; }
+  .sacko-progress-card { gap: 0.25rem 1.2rem; }
+  .sacko-calorie-stat { gap: 0.35rem; padding: 0.75rem; }
+  .sacko-calorie-icon { font-size: 2.5rem; }
+}
+
+@media (max-width: 760px) {
+  .sacko-page {
+    padding: 0.55rem;
+  }
+
+  .sacko-poster {
+    border-radius: 1.1rem;
+  }
+
+  .sacko-hero {
+    display: block;
+    min-height: 0;
+    padding: 1.65rem 1rem 0;
+  }
+
+  .sacko-hero-copy {
+    padding-bottom: 0;
+    text-align: center;
+  }
+
+  .sacko-kicker {
+    margin-bottom: 0.35rem;
+    font-size: 0.68rem;
+  }
+
+  .sacko-hero h1 {
+    font-size: clamp(3rem, 15.2vw, 5rem);
+    line-height: 0.86;
+  }
+
+  .sacko-hero h1 span:last-child {
+    font-size: 0.64em;
+  }
+
+  .sacko-formula {
+    margin-top: 0.75rem;
+    font-size: clamp(0.78rem, 3.8vw, 1.1rem);
+  }
+
+  .sacko-rule {
+    width: min(100%, 30rem);
+    margin: 0.85rem auto 0;
+    font-size: 0.72rem;
+  }
+
+  .sacko-hero-visual {
+    width: min(100%, 25rem);
+    min-height: 17.5rem;
+    margin: 0 auto;
+  }
+
+  .sacko-halftone {
+    right: 0;
+    bottom: -5%;
+    width: 100%;
+  }
+
+  .sacko-dave {
+    right: 50%;
+    bottom: -6.2rem;
+    height: 24rem;
+    transform: translateX(50%);
+  }
+
+  .sacko-doodle {
+    font-size: clamp(0.65rem, 3.3vw, 0.9rem);
+  }
+
+  .sacko-doodle-left {
+    top: 4rem;
+    left: 0.3rem;
+  }
+
+  .sacko-doodle-right {
+    top: 6.3rem;
+    right: 0;
+  }
+
+  .sacko-progress-card {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "main main"
+      "score live";
+    gap: 0.75rem 0.8rem;
+    min-height: 0;
+    margin: 0 0.55rem;
+    padding: 1rem;
+    border-radius: 1.1rem;
+  }
+
+  .sacko-progress-heading {
+    margin-bottom: 0.6rem;
+  }
+
+  .sacko-progress-card h2 { font-size: 0.82rem; }
+  .sacko-progress-heading p { font-size: 0.66rem; }
+  .sacko-progress-track { height: 2rem; }
+  .sacko-track-icon { font-size: 1.35rem; }
+
+  .sacko-progress-score {
+    align-self: center;
+    justify-self: start;
+    min-width: 0;
+    text-align: left;
+  }
+
+  .sacko-progress-score p { justify-content: flex-start; }
+  .sacko-progress-score strong { font-size: clamp(2.3rem, 11vw, 3.2rem); }
+  .sacko-progress-score p span { font-size: clamp(1.2rem, 5.8vw, 1.8rem); }
+  .sacko-progress-score > span { margin-top: 0.25rem; font-size: 0.75rem; }
+
+  .sacko-live-status {
+    align-self: center;
+    justify-self: end;
+    min-width: 8.8rem;
+    margin-top: 0;
+    text-align: right;
+  }
+
+  .sacko-live-status strong,
+  .sacko-countdown {
+    font-size: 0.95rem;
+  }
+
+  .sacko-metrics {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    margin: 0.65rem 0.55rem;
+  }
+
+  .sacko-metric {
+    grid-template-columns: 3rem minmax(0, 1fr) 2.5rem minmax(5.2rem, 0.8fr);
+    grid-template-areas:
+      "icon copy percent detail"
+      "icon line line detail";
+    gap: 0.25rem 0.5rem;
+    min-height: 4.35rem;
+    padding: 0.55rem 0.6rem;
+    border-radius: 0.75rem;
+  }
+
+  .sacko-metric-icon { font-size: 2.35rem; text-align: center; }
+  .sacko-metric h3 { font-size: 0.66rem; }
+  .sacko-metric-value strong { font-size: 1.75rem; }
+  .sacko-metric-value span { font-size: 1rem; }
+  .sacko-metric-percent { font-size: 0.72rem; }
+  .sacko-metric-line { height: 0.2rem; }
+  .sacko-metric-detail {
+    align-self: stretch;
+    display: grid;
+    place-items: center;
+    margin-top: 0 !important;
+    padding: 0.3rem;
+    font-size: 0.62rem;
+  }
+
+  .sacko-calories {
+    grid-template-columns: 1fr 1fr;
+    min-height: 0;
+    margin: 0 0.55rem;
+    border-radius: 0.85rem;
+  }
+
+  .sacko-calorie-stat {
+    min-height: 6rem;
+    padding: 0.6rem 0.4rem;
+    text-align: center;
+  }
+
+  .sacko-calorie-icon { display: none; }
+  .sacko-calorie-stat p > span { font-size: 0.61rem; }
+  .sacko-calorie-stat strong { font-size: clamp(1.8rem, 9vw, 2.5rem); }
+  .sacko-calorie-stat small { font-size: 0.65rem; }
+  .sacko-versus {
+    position: absolute;
+    top: 2.55rem;
+    left: 50%;
+    z-index: 2;
+    padding: 0.55rem;
+    font-size: 0.9rem;
+    transform: translateX(-50%) rotate(-7deg);
+  }
+
+  .sacko-calorie-balance {
+    grid-column: 1 / -1;
+    min-height: 5.2rem;
+    padding: 0.75rem 3.2rem 0.75rem 1rem;
+  }
+
+  .sacko-calorie-balance > span:first-child { font-size: 0.7rem; }
+  .sacko-calorie-balance strong { font-size: 2.4rem; }
+  .sacko-skull { right: 1rem; bottom: 0.65rem; font-size: 2rem; }
+  .sacko-footer { padding: 1rem 0.65rem 1.2rem; }
+  .sacko-timing { font-size: 0.67rem; line-height: 1.45; }
+}
+
+@media (max-width: 360px) {
+  .sacko-hero { padding-right: 0.65rem; padding-left: 0.65rem; }
+  .sacko-hero h1 { font-size: 2.9rem; }
+  .sacko-rule { max-width: 17rem; }
+  .sacko-hero-visual { min-height: 16.5rem; }
+  .sacko-dave { bottom: -5.6rem; height: 22.5rem; }
+  .sacko-progress-card {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "main"
+      "score"
+      "live";
+    padding: 0.8rem;
+  }
+  .sacko-progress-score,
+  .sacko-live-status {
+    justify-self: start;
+    min-width: 0;
+    text-align: left;
+  }
+  .sacko-progress-score p { justify-content: flex-start; }
+  .sacko-live-status strong,
+  .sacko-countdown { font-size: 0.82rem; }
+  .sacko-metric {
+    grid-template-columns: 2.7rem minmax(0, 1fr) 2.2rem minmax(4.6rem, 0.78fr);
+    gap: 0.2rem 0.35rem;
+    padding: 0.5rem 0.45rem;
+  }
+  .sacko-metric-icon { font-size: 2.05rem; }
+  .sacko-metric-value strong { font-size: 1.55rem; }
+  .sacko-metric-detail { font-size: 0.56rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sacko-page *,
+  .sacko-page *::before,
+  .sacko-page *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
