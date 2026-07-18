@@ -49,6 +49,18 @@ function parseDecimal(value) {
   return Number.isFinite(number) && number >= 0 ? number : null;
 }
 
+function parseCompletionTiming(value) {
+  if (value === "recorded") {
+    return null;
+  }
+
+  if (value === "before-deadline" || value === "after-deadline") {
+    return value;
+  }
+
+  return undefined;
+}
+
 async function getLoginFingerprint() {
   const requestHeaders = await headers();
   const forwardedFor = requestHeaders.get("x-forwarded-for")?.split(",")[0]?.trim();
@@ -102,13 +114,25 @@ export async function updateSackoChallenge(formData) {
   const donuts = parseWholeNumber(getFormText(formData, "donuts"));
   const beers = parseWholeNumber(getFormText(formData, "beers"));
   const miles = parseDecimal(getFormText(formData, "miles"));
+  const completionTiming = parseCompletionTiming(
+    getFormText(formData, "completionTiming"),
+  );
 
-  if (donuts === null || beers === null || miles === null) {
+  if (
+    donuts === null ||
+    beers === null ||
+    miles === null ||
+    completionTiming === undefined
+  ) {
     redirectWithResult("error", "invalid-progress");
   }
 
   try {
-    await updateChallengeProgress({ donuts, beers, miles }, new Date());
+    await updateChallengeProgress(
+      { donuts, beers, miles },
+      new Date(),
+      completionTiming,
+    );
   } catch (error) {
     console.error("Unable to update Sacko challenge progress.", error);
     redirectWithResult("error", "save-failed");

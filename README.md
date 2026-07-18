@@ -72,7 +72,9 @@ To add another project:
 
 The public tracker is available at `/sacko-tracker`. Score changes are made at
 `/sacko-tracker-admin`; the admin route is intentionally omitted from the site
-navigation and marked `noindex`.
+navigation and marked `noindex`. The admin form can also store a verified
+before- or after-deadline result when the exact completion timestamp was not
+captured.
 
 For local development, tracker state is persisted in the ignored `.data/`
 directory. Production uses an Upstash Redis REST database so data survives

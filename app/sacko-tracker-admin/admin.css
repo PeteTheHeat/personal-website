@@ -134,7 +134,8 @@
   text-transform: uppercase;
 }
 
-.sacko-admin-field input {
+.sacko-admin-field input,
+.sacko-admin-field select {
   width: 100%;
   min-width: 0;
   min-height: 3rem;
@@ -148,11 +149,13 @@
   font-variant-numeric: tabular-nums;
 }
 
-.sacko-admin-field input:hover {
+.sacko-admin-field input:hover,
+.sacko-admin-field select:hover {
   border-color: #3f5449;
 }
 
 .sacko-admin-field input:focus-visible,
+.sacko-admin-field select:focus-visible,
 .sacko-admin-page button:focus-visible {
   outline: 3px solid #d65b69;
   outline-offset: 3px;

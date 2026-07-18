@@ -2,6 +2,7 @@
   "name": "personal-website",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
@@ -14,7 +15,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "test": "node --experimental-default-type=module --test",
+    "test": "node --test",
     "sync:projects": "node scripts/sync-projects.mjs",
     "start": "next start"
   }

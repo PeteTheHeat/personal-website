@@ -242,6 +242,25 @@ function AdminDashboard({ state, challenge, searchParams }) {
             <p className="sacko-admin-form-help">
               Donuts and beers must be whole numbers. Miles may include a decimal.
             </p>
+            <div className="sacko-admin-field">
+              <label htmlFor="sacko-admin-completion-timing">
+                Completion timing
+              </label>
+              <select
+                id="sacko-admin-completion-timing"
+                name="completionTiming"
+                defaultValue={state.completionTiming ?? "recorded"}
+              >
+                <option value="recorded">Use recorded completion time</option>
+                <option value="before-deadline">Verified before deadline</option>
+                <option value="after-deadline">Verified after deadline</option>
+              </select>
+            </div>
+            <p className="sacko-admin-form-help">
+              A verified result records whether Dave finished in time without
+              inventing an exact timestamp. It only applies when the total is at
+              least 24.
+            </p>
             <button className="sacko-admin-primary-button" type="submit">
               Save progress
             </button>
@@ -272,7 +291,7 @@ function AdminDashboard({ state, challenge, searchParams }) {
               </dd>
             </div>
             <div>
-              <dt>Completed</dt>
+              <dt>Exact completion time</dt>
               <dd>
                 <Timestamp value={state.completedAt} />
               </dd>

@@ -1,10 +1,12 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
+  COMPLETION_TIMING,
   SEED_STATE,
   START_AT,
   TARGET,
   deriveChallenge,
+  normalizeChallengeState,
   transitionChallengeState,
   validateProgress,
 } from "../lib/sacko/domain.js";
@@ -27,6 +29,19 @@ test("uses the specified target, start time, and mockup seed values", () => {
     },
     { donuts: 8, beers: 6, miles: 2 },
   );
+  assert.equal(SEED_STATE.completionTiming, null);
+});
+
+test("normalizes legacy state without completion timing and rejects invalid values", () => {
+  const { completionTiming: _completionTiming, ...legacyState } = state();
+
+  assert.equal(normalizeChallengeState(legacyState).completionTiming, null);
+
+  for (const completionTiming of [false, true, "before", "after", 0]) {
+    assert.throws(() =>
+      normalizeChallengeState(state({ completionTiming })),
+    );
+  }
 });
 
 test("calculates total, remaining, and uncapped percentage inputs", () => {
@@ -151,6 +166,50 @@ test("reports completion timing only when both timestamps are known", () => {
   );
 });
 
+test("uses verified completion timing without inventing an exact timestamp", () => {
+  const verifiedBefore = deriveChallenge(
+    state({
+      donuts: 12,
+      beers: 8,
+      miles: 4,
+      completedAt: null,
+      completionTiming: COMPLETION_TIMING.BEFORE_DEADLINE,
+    }),
+    "2026-07-18T00:00:00.000Z",
+  );
+  const verifiedAfter = deriveChallenge(
+    state({
+      donuts: 12,
+      beers: 8,
+      miles: 4,
+      completedAt: null,
+      completionTiming: COMPLETION_TIMING.AFTER_DEADLINE,
+    }),
+    "2026-07-18T00:00:00.000Z",
+  );
+
+  assert.equal(verifiedBefore.status, "complete");
+  assert.equal(verifiedBefore.completedAt, null);
+  assert.equal(verifiedBefore.completedBeforeDeadline, true);
+  assert.equal(verifiedAfter.completedBeforeDeadline, false);
+});
+
+test("ignores completion timing when progress is below the target", () => {
+  const challenge = deriveChallenge(
+    state({
+      donuts: 7,
+      beers: 5,
+      miles: 1,
+      completedAt: null,
+      completionTiming: COMPLETION_TIMING.BEFORE_DEADLINE,
+    }),
+    "2026-07-18T00:00:00.000Z",
+  );
+
+  assert.equal(challenge.status, "time-expired");
+  assert.equal(challenge.completedBeforeDeadline, null);
+});
+
 test("clears a mistaken completion on correction and timestamps the next crossing", () => {
   const completed = transitionChallengeState(
     state(),
@@ -176,4 +235,49 @@ test("clears a mistaken completion on correction and timestamps the next crossin
     "2026-07-11T06:10:00.000Z",
   );
   assert.equal(completedAgain.completedAt, "2026-07-11T06:10:00.000Z");
+});
+
+test("atomically applies, preserves, and clears verified completion timing", () => {
+  const verified = transitionChallengeState(
+    state({
+      donuts: 12,
+      beers: 8,
+      miles: 4,
+      completedAt: "2026-07-12T17:44:47.000Z",
+    }),
+    { donuts: 12, beers: 8, miles: 4 },
+    "2026-07-18T18:00:00.000Z",
+    COMPLETION_TIMING.BEFORE_DEADLINE,
+  );
+
+  assert.equal(verified.completedAt, null);
+  assert.equal(
+    verified.completionTiming,
+    COMPLETION_TIMING.BEFORE_DEADLINE,
+  );
+  assert.equal(
+    deriveChallenge(verified, "2026-07-18T18:00:00.000Z")
+      .completedBeforeDeadline,
+    true,
+  );
+
+  const overTarget = transitionChallengeState(
+    verified,
+    { donuts: 12, beers: 8, miles: 4.5 },
+    "2026-07-18T18:05:00.000Z",
+  );
+  assert.equal(overTarget.completedAt, null);
+  assert.equal(
+    overTarget.completionTiming,
+    COMPLETION_TIMING.BEFORE_DEADLINE,
+  );
+
+  const correctedBelowTarget = transitionChallengeState(
+    overTarget,
+    { donuts: 7, beers: 5, miles: 1 },
+    "2026-07-18T18:10:00.000Z",
+    COMPLETION_TIMING.BEFORE_DEADLINE,
+  );
+  assert.equal(correctedBelowTarget.completedAt, null);
+  assert.equal(correctedBelowTarget.completionTiming, null);
 });
