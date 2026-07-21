@@ -1,20 +1,19 @@
 .ff-page {
-  --ff-night: #07120e;
-  --ff-night-2: #0a1b14;
-  --ff-field: #113829;
-  --ff-field-light: #1c533d;
-  --ff-ink: #f5f0e4;
-  --ff-paper: #efe8d8;
-  --ff-paper-light: #f8f4ea;
-  --ff-paper-ink: #1a241f;
-  --ff-muted: #9baaa1;
-  --ff-paper-muted: #68746d;
-  --ff-gold: #f4bd50;
-  --ff-gold-dark: #9d6c18;
-  --ff-green: #72d398;
-  --ff-red: #e9725d;
-  --ff-blue: #6fb0ff;
-  --ff-border: rgba(245, 240, 228, 0.14);
+  --ff-night: #00111f;
+  --ff-night-2: #001a2f;
+  --ff-field: #003b5c;
+  --ff-field-light: #0b5f87;
+  --ff-ink: #f7f9fa;
+  --ff-paper: #dfe3e5;
+  --ff-paper-light: #f7f9fa;
+  --ff-paper-ink: #002244;
+  --ff-muted: #a5acaf;
+  --ff-paper-muted: #65727a;
+  --ff-action: #69be28;
+  --ff-action-dark: #3f7f13;
+  --ff-wolf: #a5acaf;
+  --ff-blue: #4f93c7;
+  --ff-border: rgba(165, 172, 175, 0.22);
   width: 100%;
   height: 100svh;
   overflow-x: clip;
@@ -23,7 +22,7 @@
   color: var(--ff-ink);
   font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
-  scrollbar-color: #466655 var(--ff-night);
+  scrollbar-color: #3f647f var(--ff-night);
   scroll-behavior: smooth;
 }
 
@@ -50,7 +49,7 @@
 }
 
 .ff-page :focus-visible {
-  outline: 3px solid var(--ff-gold);
+  outline: 3px solid var(--ff-action);
   outline-offset: 3px;
 }
 
@@ -59,7 +58,7 @@
   z-index: 100;
   top: 0;
   border-bottom: 1px solid var(--ff-border);
-  background: rgba(7, 18, 14, 0.92);
+  background: rgba(0, 17, 31, 0.92);
   backdrop-filter: blur(18px);
 }
 
@@ -77,7 +76,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  color: #bdc8c1;
+  color: #c6cdd1;
   font-size: 0.74rem;
   font-weight: 750;
   letter-spacing: 0.04em;
@@ -88,7 +87,7 @@
 
 .ff-back-link:hover,
 .ff-header-inner nav a:hover {
-  color: var(--ff-gold);
+  color: var(--ff-action);
 }
 
 .ff-brand {
@@ -104,14 +103,14 @@
   place-items: center;
   width: 2.2rem;
   aspect-ratio: 1;
-  border: 1px solid rgba(244, 189, 80, 0.78);
+  border: 1px solid rgba(105, 190, 40, 0.78);
   border-radius: 50%;
-  background: var(--ff-gold);
-  color: #152017;
+  background: var(--ff-action);
+  color: #002244;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 0.9rem;
   letter-spacing: 0.05em;
-  box-shadow: 0 0 0 0.22rem rgba(244, 189, 80, 0.1);
+  box-shadow: 0 0 0 0.22rem rgba(105, 190, 40, 0.1);
 }
 
 .ff-brand strong {
@@ -130,7 +129,7 @@
 }
 
 .ff-header-inner nav a {
-  color: #a9b6ae;
+  color: #a5acaf;
   font-size: 0.75rem;
   font-weight: 750;
   letter-spacing: 0.055em;
@@ -145,8 +144,8 @@
   overflow: hidden;
   border-bottom: 1px solid var(--ff-border);
   background:
-    radial-gradient(circle at 75% 30%, rgba(48, 117, 83, 0.34), transparent 30rem),
-    linear-gradient(135deg, #07130e 0%, #0d2a1e 54%, #07130e 100%);
+    radial-gradient(circle at 75% 30%, rgba(105, 190, 40, 0.18), transparent 30rem),
+    linear-gradient(135deg, #00111f 0%, #002b4a 54%, #00111f 100%);
 }
 
 .ff-hero::before {
@@ -168,7 +167,7 @@
   right: -7rem;
   width: min(72vw, 64rem);
   aspect-ratio: 1.75;
-  border: 1px solid rgba(245, 240, 228, 0.08);
+  border: 1px solid rgba(165, 172, 175, 0.08);
   border-radius: 50%;
   opacity: 0.8;
   transform: rotate(-12deg);
@@ -178,7 +177,7 @@
 .ff-field-lines::after {
   position: absolute;
   inset: 12%;
-  border: 1px solid rgba(245, 240, 228, 0.065);
+  border: 1px solid rgba(165, 172, 175, 0.065);
   border-radius: inherit;
   content: "";
 }
@@ -201,7 +200,7 @@
 .ff-hero-copy > p:first-child,
 .ff-section-heading > div > p {
   margin: 0;
-  color: var(--ff-gold);
+  color: var(--ff-action);
   font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.16em;
@@ -222,7 +221,7 @@
 
 .ff-hero-copy h1 span {
   display: block;
-  color: var(--ff-gold);
+  color: var(--ff-action);
   font-size: 0.48em;
   line-height: 1.08;
   letter-spacing: 0.05em;
@@ -231,7 +230,7 @@
 .ff-hero-copy > p:nth-of-type(2) {
   max-width: 38rem;
   margin: 0;
-  color: #bdc9c1;
+  color: #c6cdd1;
   font-size: clamp(1rem, 1.7vw, 1.22rem);
   line-height: 1.65;
 }
@@ -244,8 +243,8 @@
   margin-top: 2rem;
   padding: 0.8rem 1.15rem;
   border-radius: 0.35rem;
-  background: var(--ff-gold);
-  color: #172018 !important;
+  background: var(--ff-action);
+  color: #002244 !important;
   font-size: 0.82rem;
   font-weight: 850;
   letter-spacing: 0.035em;
@@ -256,7 +255,7 @@
 }
 
 .ff-primary-link:hover {
-  background: #ffd06a;
+  background: #86d63b;
   transform: translateY(-2px);
 }
 
@@ -281,9 +280,9 @@
   min-height: 29rem;
   padding: 1.25rem clamp(0.9rem, 1.8vw, 1.45rem) 1.8rem;
   overflow: hidden;
-  border: 1px solid rgba(244, 189, 80, 0.42);
+  border: 1px solid rgba(105, 190, 40, 0.42);
   border-radius: 0.75rem;
-  background: rgba(6, 21, 15, 0.86);
+  background: rgba(0, 22, 40, 0.86);
   box-shadow:
     0 2rem 5rem rgba(0, 0, 0, 0.32),
     inset 0 0 0 1px rgba(255, 255, 255, 0.03);
@@ -301,10 +300,10 @@
   z-index: 1;
   background: linear-gradient(
     180deg,
-    rgba(4, 12, 8, 0.62) 0%,
-    rgba(4, 12, 8, 0.08) 34%,
-    rgba(4, 12, 8, 0.08) 52%,
-    rgba(4, 12, 8, 0.94) 100%
+    rgba(0, 12, 24, 0.76) 0%,
+    rgba(0, 12, 24, 0.08) 34%,
+    rgba(0, 12, 24, 0.08) 52%,
+    rgba(0, 12, 24, 0.94) 100%
   );
 }
 
@@ -312,7 +311,7 @@
   inset: auto 0 0;
   z-index: 3;
   height: 0.42rem;
-  background: var(--ff-gold);
+  background: var(--ff-action);
 }
 
 .ff-reigning-photo {
@@ -326,11 +325,11 @@
 }
 
 .ff-reigning-sacko {
-  border-color: rgba(233, 114, 93, 0.48);
+  border-color: rgba(165, 172, 175, 0.48);
 }
 
 .ff-reigning-sacko::after {
-  background: var(--ff-red);
+  background: var(--ff-wolf);
 }
 
 .ff-reigning-sacko .ff-reigning-photo {
@@ -347,20 +346,44 @@
   flex-wrap: wrap;
   width: 100%;
   padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(245, 240, 228, 0.1);
+  border-bottom: 1px solid rgba(165, 172, 175, 0.1);
   text-shadow: 0 0.1rem 0.8rem rgba(0, 0, 0, 0.75);
 }
 
 .ff-reigning-card header span {
-  color: #cbd5ce;
   font-size: 0.6rem;
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
+.ff-reigning-card header .ff-honor-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.8rem;
+  padding: 0.4rem 0.62rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: #002244;
+  line-height: 1;
+  text-shadow: none;
+  backdrop-filter: blur(10px);
+}
+
+.ff-reigning-card header .ff-honor-badge-champion {
+  border-color: rgba(134, 214, 59, 0.72);
+  background: rgba(105, 190, 40, 0.94);
+  box-shadow: 0 0.4rem 1.2rem rgba(105, 190, 40, 0.22);
+}
+
+.ff-reigning-card header .ff-honor-badge-sacko {
+  border-color: rgba(223, 227, 229, 0.72);
+  background: rgba(165, 172, 175, 0.94);
+  box-shadow: 0 0.4rem 1.2rem rgba(165, 172, 175, 0.18);
+}
+
 .ff-reigning-card header strong {
-  color: var(--ff-gold);
+  color: var(--ff-action);
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 1.5rem;
   font-weight: 400;
@@ -368,7 +391,7 @@
 }
 
 .ff-reigning-sacko header strong {
-  color: var(--ff-red);
+  color: var(--ff-wolf);
 }
 
 .ff-reigning-copy {
@@ -380,6 +403,10 @@
 }
 
 .ff-reigning-copy h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.28em;
   margin: 0;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: clamp(2.4rem, 3.4vw, 3.7rem);
@@ -389,9 +416,24 @@
   text-transform: uppercase;
 }
 
+.ff-name-award {
+  display: inline-grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 1.18em;
+  aspect-ratio: 1;
+  border: 1px solid rgba(247, 249, 250, 0.24);
+  border-radius: 50%;
+  background: rgba(0, 34, 68, 0.82);
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+  font-size: 0.58em;
+  line-height: 1;
+  filter: drop-shadow(0 0.12rem 0.2rem rgba(0, 0, 0, 0.75));
+}
+
 .ff-reigning-copy p {
   margin: 0.7rem 0 0;
-  color: #e1e7e2;
+  color: #eef1f3;
   font-size: 0.9rem;
 }
 
@@ -405,14 +447,14 @@
   border-radius: 50%;
   background:
     radial-gradient(circle at 34% 28%, rgba(255, 255, 255, 0.28), transparent 23%),
-    color-mix(in srgb, var(--owner-color), #18261f 42%);
-  color: #fffaf0;
+    color-mix(in srgb, var(--owner-color), #002244 64%);
+  color: #f7f9fa;
   font-family: "Arial Narrow", Impact, sans-serif;
   font-size: 0.82rem;
   font-weight: 900;
   letter-spacing: 0.04em;
   box-shadow:
-    inset 0 0 0 0.18rem rgba(7, 18, 14, 0.22),
+    inset 0 0 0 0.18rem rgba(0, 17, 31, 0.22),
     0 0.4rem 1.1rem rgba(0, 0, 0, 0.18);
 }
 
@@ -437,8 +479,8 @@
   border-width: 2px;
   font-size: 1.4rem;
   box-shadow:
-    inset 0 0 0 0.28rem rgba(7, 18, 14, 0.25),
-    0 0 0 0.4rem rgba(244, 189, 80, 0.09),
+    inset 0 0 0 0.28rem rgba(0, 17, 31, 0.25),
+    0 0 0 0.4rem rgba(105, 190, 40, 0.09),
     0 1rem 2rem rgba(0, 0, 0, 0.28);
 }
 
@@ -462,7 +504,7 @@
 .ff-league-totals dt,
 .ff-league-totals span {
   display: block;
-  color: #8fa098;
+  color: #8c989f;
   font-size: 0.65rem;
   font-weight: 750;
   letter-spacing: 0.08em;
@@ -479,7 +521,7 @@
 }
 
 .ff-league-totals span {
-  color: #bac6be;
+  color: #c6cdd1;
   font-size: 0.62rem;
 }
 
@@ -490,7 +532,7 @@
   margin: 0 auto;
   border-right: 1px solid var(--ff-border);
   border-left: 1px solid var(--ff-border);
-  background: #0a1812;
+  background: #001729;
 }
 
 .ff-story-strip article {
@@ -505,7 +547,7 @@
 .ff-story-strip span {
   display: block;
   margin-bottom: 0.45rem;
-  color: var(--ff-gold);
+  color: var(--ff-action);
   font-size: 0.62rem;
   font-weight: 800;
   letter-spacing: 0.11em;
@@ -522,7 +564,7 @@
 
 .ff-story-strip p {
   margin: 0.6rem 0 0;
-  color: #91a098;
+  color: #8f9aa1;
   font-size: 0.75rem;
   line-height: 1.45;
 }
@@ -576,7 +618,7 @@
   padding: 0.25rem;
   border: 1px solid var(--ff-border);
   border-radius: 0.35rem;
-  background: #0c2118;
+  background: #00213a;
 }
 
 .ff-ranking-controls button {
@@ -585,7 +627,7 @@
   border: 0;
   border-radius: 0.2rem;
   background: transparent;
-  color: #99a99f;
+  color: #a5acaf;
   font-size: 0.67rem;
   font-weight: 800;
   letter-spacing: 0.07em;
@@ -606,7 +648,7 @@
 .ff-ranking-controls > label > span,
 .ff-manager-select > span {
   margin: 0 0 0.35rem 0.2rem;
-  color: #83958a;
+  color: #8e9aa1;
   font-size: 0.58rem;
   font-weight: 800;
   letter-spacing: 0.11em;
@@ -620,7 +662,7 @@
   border: 1px solid var(--ff-border);
   border-radius: 0.35rem;
   appearance: none;
-  background: #0c2118;
+  background: #00213a;
   color: var(--ff-ink);
   font-size: 0.75rem;
   font-weight: 700;
@@ -634,7 +676,7 @@
   bottom: 0.88rem;
   width: 0.9rem;
   height: 0.9rem;
-  color: #8ea096;
+  color: #8e9aa1;
   pointer-events: none;
 }
 
@@ -660,7 +702,7 @@
   overflow: hidden;
   border: 1px solid var(--ff-border);
   border-radius: 0.55rem;
-  background: #0b1c15;
+  background: #001c31;
 }
 
 .ff-podium-card::after {
@@ -669,21 +711,21 @@
   bottom: -2rem;
   width: 8rem;
   aspect-ratio: 1;
-  border: 1px solid rgba(244, 189, 80, 0.08);
+  border: 1px solid rgba(105, 190, 40, 0.08);
   border-radius: 50%;
   content: "";
 }
 
 .ff-podium-1 {
-  border-color: rgba(244, 189, 80, 0.42);
+  border-color: rgba(105, 190, 40, 0.42);
   background:
-    radial-gradient(circle at 100% 100%, rgba(244, 189, 80, 0.1), transparent 14rem),
-    #0b1c15;
+    radial-gradient(circle at 100% 100%, rgba(105, 190, 40, 0.1), transparent 14rem),
+    #001c31;
 }
 
 .ff-podium-rank {
   grid-area: rank;
-  color: #6f8077;
+  color: #7f8b94;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 0.9rem;
   letter-spacing: 0.08em;
@@ -715,9 +757,9 @@
 
 .ff-owner-name small {
   padding: 0.2rem 0.35rem;
-  border: 1px solid rgba(245, 240, 228, 0.14);
+  border: 1px solid rgba(165, 172, 175, 0.14);
   border-radius: 999px;
-  color: #83938a;
+  color: #8e9aa1;
   font-size: 0.48rem;
   font-weight: 800;
   letter-spacing: 0.06em;
@@ -727,7 +769,7 @@
 .ff-podium-card > div > p {
   overflow: hidden;
   margin: 0.3rem 0 0;
-  color: #87978e;
+  color: #94a0a6;
   font-size: 0.65rem;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -736,7 +778,7 @@
 .ff-podium-wins {
   grid-area: wins;
   align-self: center;
-  color: var(--ff-gold);
+  color: var(--ff-action);
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 2.4rem;
   font-weight: 400;
@@ -746,7 +788,7 @@
 .ff-podium-label {
   grid-area: label;
   justify-self: end;
-  color: #7f9186;
+  color: #89969e;
   font-size: 0.55rem;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -772,7 +814,7 @@
 }
 
 .ff-podium-card dt {
-  color: #75877d;
+  color: #7f8b94;
   font-size: 0.52rem;
   font-weight: 750;
   letter-spacing: 0.06em;
@@ -789,7 +831,7 @@
   overflow: hidden;
   border: 1px solid var(--ff-border);
   border-radius: 0.55rem;
-  background: #0a1a13;
+  background: #00182b;
 }
 
 .ff-ranking-table {
@@ -799,21 +841,21 @@
 }
 
 .ff-ranking-table thead {
-  background: #12271d;
+  background: #002b49;
 }
 
 .ff-ranking-table th,
 .ff-ranking-table td {
   padding: 0.8rem 0.75rem;
-  border-bottom: 1px solid rgba(245, 240, 228, 0.075);
-  color: #cbd4ce;
+  border-bottom: 1px solid rgba(165, 172, 175, 0.075);
+  color: #d5dade;
   font-size: 0.72rem;
   text-align: right;
   white-space: nowrap;
 }
 
 .ff-ranking-table thead th {
-  color: #7f9186;
+  color: #89969e;
   font-size: 0.57rem;
   font-weight: 800;
   letter-spacing: 0.07em;
@@ -832,11 +874,11 @@
 }
 
 .ff-ranking-table tbody tr:hover {
-  background: rgba(114, 211, 152, 0.045);
+  background: rgba(105, 190, 40, 0.045);
 }
 
 .ff-table-rank {
-  color: #697b70;
+  color: #73818a;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 0.9rem;
   letter-spacing: 0.04em;
@@ -853,7 +895,7 @@
   width: 0.72rem;
   height: 0.72rem;
   margin-right: 0.28rem;
-  color: var(--ff-gold);
+  color: var(--ff-action);
   vertical-align: -0.1rem;
 }
 
@@ -867,8 +909,8 @@
   padding-right: max(1rem, calc((100vw - 78rem) / 2));
   padding-left: max(1rem, calc((100vw - 78rem) / 2));
   background:
-    radial-gradient(circle at 15% 10%, rgba(244, 189, 80, 0.08), transparent 28rem),
-    #0a1812;
+    radial-gradient(circle at 15% 10%, rgba(105, 190, 40, 0.08), transparent 28rem),
+    #001729;
 }
 
 .ff-record-grid {
@@ -885,7 +927,7 @@
   overflow: hidden;
   border-right: 1px solid var(--ff-border);
   border-bottom: 1px solid var(--ff-border);
-  background: rgba(7, 18, 14, 0.54);
+  background: rgba(0, 17, 31, 0.54);
 }
 
 .ff-record-card::after {
@@ -894,14 +936,14 @@
   bottom: -3.5rem;
   width: 10rem;
   aspect-ratio: 1;
-  border: 1px solid rgba(245, 240, 228, 0.05);
+  border: 1px solid rgba(165, 172, 175, 0.05);
   border-radius: 50%;
   content: "";
 }
 
 .ff-record-card > p {
   margin: 0;
-  color: #7d8f84;
+  color: #89969e;
   font-size: 0.58rem;
   font-weight: 800;
   letter-spacing: 0.11em;
@@ -932,7 +974,7 @@
 .ff-record-card > span {
   display: block;
   margin-top: 0.35rem;
-  color: #a7b4ac;
+  color: #b5bdc2;
   font-size: 0.78rem;
 }
 
@@ -941,7 +983,7 @@
   right: 1.4rem;
   bottom: 1.25rem;
   left: 1.4rem;
-  color: #64776b;
+  color: #6f7d86;
   font-size: 0.58rem;
   font-weight: 750;
   letter-spacing: 0.065em;
@@ -949,15 +991,15 @@
 }
 
 .ff-record-gold > strong {
-  color: var(--ff-gold);
+  color: var(--ff-action);
 }
 
 .ff-record-green > strong {
-  color: var(--ff-green);
+  color: var(--ff-action);
 }
 
 .ff-record-red > strong {
-  color: var(--ff-red);
+  color: var(--ff-wolf);
 }
 
 .ff-champion-scroll {
@@ -968,7 +1010,7 @@
   overflow-x: auto;
   padding: 0.15rem 0 1.2rem;
   scroll-snap-type: x mandatory;
-  scrollbar-color: #51675a #0a1812;
+  scrollbar-color: #496a82 #001729;
 }
 
 .ff-champion-card {
@@ -982,8 +1024,8 @@
   border: 1px solid var(--ff-border);
   border-radius: 0.5rem;
   background:
-    radial-gradient(circle at 50% 34%, rgba(244, 189, 80, 0.08), transparent 8rem),
-    #0b1c15;
+    radial-gradient(circle at 50% 34%, rgba(105, 190, 40, 0.08), transparent 8rem),
+    #001c31;
   scroll-snap-align: start;
   text-align: center;
 }
@@ -994,7 +1036,7 @@
   bottom: 0;
   left: 0;
   height: 0.28rem;
-  background: linear-gradient(90deg, transparent, var(--ff-gold), transparent);
+  background: linear-gradient(90deg, transparent, var(--ff-action), transparent);
   content: "";
   opacity: 0.65;
 }
@@ -1007,7 +1049,7 @@
 }
 
 .ff-champion-card header > span {
-  color: var(--ff-gold);
+  color: var(--ff-action);
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 1.35rem;
   letter-spacing: 0.04em;
@@ -1019,9 +1061,9 @@
   width: 3.5rem;
   aspect-ratio: 1;
   margin: 1.2rem 0 -0.6rem;
-  border: 1px solid rgba(244, 189, 80, 0.32);
+  border: 1px solid rgba(105, 190, 40, 0.32);
   border-radius: 50%;
-  color: var(--ff-gold);
+  color: var(--ff-action);
 }
 
 .ff-champion-trophy svg {
@@ -1046,7 +1088,7 @@
   width: 100%;
   overflow: hidden;
   margin: 0.35rem 0 0;
-  color: #82948a;
+  color: #8e9aa1;
   font-size: 0.65rem;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1066,7 +1108,7 @@
 }
 
 .ff-champion-card dt {
-  color: #71847a;
+  color: #7c8991;
   font-size: 0.5rem;
   font-weight: 750;
   letter-spacing: 0.06em;
@@ -1088,17 +1130,17 @@
   padding-right: max(1rem, calc((100vw - 78rem) / 2));
   padding-left: max(1rem, calc((100vw - 78rem) / 2));
   background:
-    linear-gradient(rgba(114, 211, 152, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(114, 211, 152, 0.025) 1px, transparent 1px),
-    #0a1d15;
+    linear-gradient(rgba(105, 190, 40, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(105, 190, 40, 0.025) 1px, transparent 1px),
+    #001c31;
   background-size: 32px 32px;
 }
 
 .ff-rivalry-shell {
   overflow: hidden;
-  border: 1px solid rgba(114, 211, 152, 0.22);
+  border: 1px solid rgba(105, 190, 40, 0.22);
   border-radius: 0.65rem;
-  background: rgba(7, 18, 14, 0.94);
+  background: rgba(0, 17, 31, 0.94);
   box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
 }
 
@@ -1113,7 +1155,7 @@
 .ff-rivalry-empty svg {
   width: 2rem;
   height: 2rem;
-  color: var(--ff-gold);
+  color: var(--ff-action);
 }
 
 .ff-rivalry-empty h3 {
@@ -1140,7 +1182,7 @@
   gap: 1.3rem;
   padding: 1.2rem;
   border-bottom: 1px solid var(--ff-border);
-  background: #0c2118;
+  background: #00213a;
 }
 
 .ff-manager-select {
@@ -1151,7 +1193,7 @@
 .ff-manager-select select {
   width: 100%;
   min-height: 3.25rem;
-  background: #07140e;
+  background: #001321;
   font-size: 0.9rem;
 }
 
@@ -1161,9 +1203,9 @@
   width: 2.5rem;
   aspect-ratio: 1;
   margin-bottom: 0.36rem;
-  border: 1px solid rgba(244, 189, 80, 0.35);
+  border: 1px solid rgba(105, 190, 40, 0.35);
   border-radius: 50%;
-  color: var(--ff-gold);
+  color: var(--ff-action);
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 0.82rem;
   letter-spacing: 0.04em;
@@ -1177,8 +1219,8 @@
   min-height: 18rem;
   padding: clamp(2rem, 5vw, 4rem);
   background:
-    radial-gradient(circle at 50% 50%, rgba(244, 189, 80, 0.08), transparent 18rem),
-    linear-gradient(90deg, rgba(114, 211, 152, 0.035), transparent 45%, transparent 55%, rgba(233, 114, 93, 0.035));
+    radial-gradient(circle at 50% 50%, rgba(105, 190, 40, 0.08), transparent 18rem),
+    linear-gradient(90deg, rgba(105, 190, 40, 0.035), transparent 45%, transparent 55%, rgba(165, 172, 175, 0.035));
 }
 
 .ff-rivalry-manager {
@@ -1209,7 +1251,7 @@
 .ff-rivalry-manager > div > small,
 .ff-rivalry-center span,
 .ff-rivalry-center small {
-  color: #73867a;
+  color: #7f8b94;
   font-size: 0.58rem;
   font-weight: 800;
   letter-spacing: 0.1em;
@@ -1231,7 +1273,7 @@
   width: 1.6rem;
   height: 1.6rem;
   margin-bottom: 0.55rem;
-  color: var(--ff-gold);
+  color: var(--ff-action);
 }
 
 .ff-rivalry-center strong {
@@ -1242,21 +1284,21 @@
 
 .ff-rivalry-center small {
   margin-top: 0.3rem;
-  color: var(--ff-gold);
+  color: var(--ff-action);
 }
 
 .ff-series-bar {
   display: flex;
   height: 0.42rem;
-  background: #18271f;
+  background: #00304e;
 }
 
 .ff-series-bar span:first-child {
-  background: var(--ff-green);
+  background: var(--ff-action);
 }
 
 .ff-series-bar span:last-child {
-  background: var(--ff-red);
+  background: var(--ff-wolf);
 }
 
 .ff-rivalry-facts {
@@ -1278,7 +1320,7 @@
 
 .ff-rivalry-facts span,
 .ff-rivalry-facts small {
-  color: #778a7e;
+  color: #839099;
   font-size: 0.55rem;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -1312,7 +1354,7 @@
 }
 
 .ff-recent-meetings header span {
-  color: #6f8176;
+  color: #7a8790;
   font-size: 0.55rem;
   font-weight: 750;
   letter-spacing: 0.06em;
@@ -1334,7 +1376,7 @@
   padding: 0.8rem;
   border: 1px solid var(--ff-border);
   border-radius: 0.35rem;
-  background: #0a1a13;
+  background: #00182b;
   font-variant-numeric: tabular-nums;
 }
 
@@ -1352,7 +1394,7 @@
 .ff-recent-meetings article p small {
   overflow: hidden;
   margin-top: 0.15rem;
-  color: #708278;
+  color: #7c8991;
   font-size: 0.48rem;
   text-overflow: ellipsis;
   text-transform: uppercase;
@@ -1360,16 +1402,16 @@
 }
 
 .ff-recent-meetings article > strong {
-  color: #8d9c93;
+  color: #98a3a9;
   font-size: 0.75rem;
 }
 
 .ff-recent-meetings article > strong.is-winner {
-  color: var(--ff-green);
+  color: var(--ff-action);
 }
 
 .ff-recent-meetings article > span {
-  color: #506158;
+  color: #60707a;
 }
 
 .ff-season-list {
@@ -1381,7 +1423,7 @@
   overflow: hidden;
   border: 1px solid var(--ff-border);
   border-radius: 0.45rem;
-  background: #0a1913;
+  background: #00172a;
 }
 
 .ff-season-list summary {
@@ -1401,11 +1443,11 @@
 
 .ff-season-list details[open] summary {
   border-bottom: 1px solid var(--ff-border);
-  background: #10231a;
+  background: #00243f;
 }
 
 .ff-season-year {
-  color: var(--ff-gold);
+  color: var(--ff-action);
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 1.8rem;
   letter-spacing: 0.04em;
@@ -1420,7 +1462,7 @@
 .ff-season-summary-champion > svg {
   width: 1.2rem;
   height: 1.2rem;
-  color: var(--ff-gold);
+  color: var(--ff-action);
 }
 
 .ff-season-summary-champion > span {
@@ -1428,7 +1470,7 @@
 }
 
 .ff-season-summary-champion small {
-  color: #71837a;
+  color: #7c8991;
   font-size: 0.53rem;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -1443,7 +1485,7 @@
 .ff-season-chevron {
   width: 1rem;
   height: 1rem;
-  color: #7f9187;
+  color: #89969e;
   transition: transform 160ms ease;
 }
 
@@ -1478,11 +1520,11 @@
 .ff-season-awards article > span:first-child {
   grid-row: 1 / span 3;
   width: 1.15rem;
-  color: var(--ff-gold);
+  color: var(--ff-action);
 }
 
 .ff-season-awards article > span:nth-child(2) {
-  color: #708278;
+  color: #7c8991;
   font-size: 0.5rem;
   font-weight: 800;
   letter-spacing: 0.07em;
@@ -1497,7 +1539,7 @@
 }
 
 .ff-season-awards article small {
-  color: #83958a;
+  color: #8e9aa1;
   font-size: 0.58rem;
 }
 
@@ -1521,12 +1563,12 @@
 
 .ff-season-table-head {
   min-height: 2.4rem;
-  background: #10231a;
+  background: #00243f;
 }
 
 .ff-season-table-head span {
   padding: 0.5rem 0.7rem;
-  color: #71837a;
+  color: #7c8991;
   font-size: 0.5rem;
   font-weight: 800;
   letter-spacing: 0.07em;
@@ -1541,7 +1583,7 @@
 
 .ff-season-team {
   min-height: 3.35rem;
-  border-top: 1px solid rgba(245, 240, 228, 0.065);
+  border-top: 1px solid rgba(165, 172, 175, 0.065);
 }
 
 .ff-season-table-head + .ff-season-team {
@@ -1550,14 +1592,14 @@
 
 .ff-season-team > span {
   padding: 0.55rem 0.7rem;
-  color: #bac5be;
+  color: #c0c7cb;
   font-size: 0.68rem;
   font-variant-numeric: tabular-nums;
   text-align: right;
 }
 
 .ff-season-team > span:first-child {
-  color: var(--ff-gold);
+  color: var(--ff-action);
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 0.9rem;
   text-align: left;
@@ -1589,7 +1631,7 @@
 
 .ff-season-team > span:nth-child(2) small {
   margin-top: 0.15rem;
-  color: #708278;
+  color: #7c8991;
   font-size: 0.54rem;
 }
 
@@ -1606,7 +1648,7 @@
 }
 
 .ff-footer > a {
-  color: #9dac9f;
+  color: #a5acaf;
   font-size: 0.62rem;
   font-weight: 800;
   letter-spacing: 0.06em;
@@ -1615,7 +1657,7 @@
 }
 
 .ff-footer > a:hover {
-  color: var(--ff-gold);
+  color: var(--ff-action);
 }
 
 @media (max-width: 1080px) {
@@ -1773,12 +1815,12 @@
     padding: 0.8rem;
     border: 1px solid var(--ff-border);
     border-radius: 0.45rem;
-    background: #0a1a13;
+    background: #00182b;
   }
 
   .ff-mobile-rank {
     grid-area: rank;
-    color: #718278;
+    color: #7c8991;
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     font-size: 1rem;
     text-align: center;
@@ -1796,7 +1838,7 @@
 
   .ff-mobile-owner > span:last-child {
     margin-top: 0.25rem;
-    color: #73857a;
+    color: #7f8b94;
     font-size: 0.57rem;
   }
 
@@ -1807,7 +1849,7 @@
   }
 
   .ff-mobile-record strong {
-    color: var(--ff-gold);
+    color: var(--ff-action);
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     font-size: 1.65rem;
     font-weight: 400;
@@ -1815,7 +1857,7 @@
   }
 
   .ff-mobile-record span {
-    color: #718278;
+    color: #7c8991;
     font-size: 0.5rem;
     font-weight: 800;
     letter-spacing: 0.08em;
@@ -1841,7 +1883,7 @@
   }
 
   .ff-mobile-ranking dt {
-    color: #6e8175;
+    color: #7a8790;
     font-size: 0.48rem;
     font-weight: 800;
     letter-spacing: 0.06em;
@@ -1923,7 +1965,7 @@
     grid-area: points;
     align-self: start;
     padding-top: 0.1rem;
-    color: #75887c;
+    color: #839099;
     font-size: 0.54rem;
   }
 
@@ -2107,6 +2149,17 @@
 
   .ff-footer .ff-brand strong {
     display: inline;
+  }
+}
+
+@media (max-width: 420px) {
+  .ff-reigning-honors {
+    grid-template-columns: 1fr;
+    width: min(100%, 22rem);
+  }
+
+  .ff-reigning-card {
+    min-height: 27rem;
   }
 }
 

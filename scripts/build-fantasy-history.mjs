@@ -21,41 +21,41 @@ const SLEEPER_LEAGUES = [
 ];
 
 const OWNER_CATALOG = {
-  peter: { name: "Peter", shortName: "Peter", color: "#f4bd50" },
-  ryan: { name: "Ryan", shortName: "Ryan", color: "#6fb0ff" },
+  peter: { name: "Peter", shortName: "Peter", color: "#69be28" },
+  ryan: { name: "Ryan", shortName: "Ryan", color: "#4f93c7" },
   david: {
     name: "David",
     shortName: "Dave",
-    color: "#e98765",
+    color: "#a5acaf",
     image: "/fantasy-football/dave-sacko.jpg",
   },
-  michael: { name: "Michael", shortName: "Michael", color: "#72c59c" },
-  kevin: { name: "Kevin", shortName: "Kevin", color: "#cf8cff" },
-  daniel: { name: "Daniel", shortName: "Daniel", color: "#ff7f9f" },
-  "peter-ho": { name: "Peter Ho", shortName: "Peter Ho", color: "#56c7d9" },
-  alex: { name: "Alex", shortName: "Alex", color: "#9dcf61" },
-  greg: { name: "Greg", shortName: "Greg", color: "#f08fb0" },
+  michael: { name: "Michael", shortName: "Michael", color: "#1d6a96" },
+  kevin: { name: "Kevin", shortName: "Kevin", color: "#7fd13b" },
+  daniel: { name: "Daniel", shortName: "Daniel", color: "#7f8b94" },
+  "peter-ho": { name: "Peter Ho", shortName: "Peter Ho", color: "#62a8d7" },
+  alex: { name: "Alex", shortName: "Alex", color: "#8bd557" },
+  greg: { name: "Greg", shortName: "Greg", color: "#527890" },
   alessandro: {
     name: "Alessandro",
     shortName: "Alessandro",
-    color: "#fb9b53",
+    color: "#3a779f",
   },
-  neil: { name: "Neil", shortName: "Neil", color: "#8f9dff" },
-  "mike-c": { name: "Mike C", shortName: "Mike C", color: "#4fc6a4" },
+  neil: { name: "Neil", shortName: "Neil", color: "#bec3c6" },
+  "mike-c": { name: "Mike C", shortName: "Mike C", color: "#5fae2b" },
   marc: {
     name: "Marc",
     shortName: "Marc",
-    color: "#ffc95e",
+    color: "#69be28",
     image: "/fantasy-football/marc-champion.png",
   },
-  jeremy: { name: "Jeremy", shortName: "Jeremy", color: "#de9073" },
-  raed: { name: "Raed", shortName: "Raed", color: "#8bb7e8" },
+  jeremy: { name: "Jeremy", shortName: "Jeremy", color: "#8096a5" },
+  raed: { name: "Raed", shortName: "Raed", color: "#7ab5dc" },
   christian: {
     name: "Christian",
     shortName: "Christian",
-    color: "#c2a4ef",
+    color: "#536b7f",
   },
-  johnny: { name: "Johnny", shortName: "Johnny", color: "#f07777" },
+  johnny: { name: "Johnny", shortName: "Johnny", color: "#9ac878" },
 };
 
 const NFL_NAME_MAP = {

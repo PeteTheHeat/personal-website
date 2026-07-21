@@ -14,7 +14,7 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "/fantasy-football/og-v2.png",
+        url: "/fantasy-football/og-v3.png",
         width: 1200,
         height: 630,
         alt: "Couch QBs History Books",
@@ -25,7 +25,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Couch QBs History Books",
     description: "All-time standings, champions, records, and rivalries.",
-    images: ["/fantasy-football/og-v2.png"],
+    images: ["/fantasy-football/og-v3.png"],
   },
 };
 

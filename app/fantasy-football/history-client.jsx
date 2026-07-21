@@ -578,7 +578,10 @@ export default function FantasyHistory({ data }) {
             role="group"
             aria-label="Current league title holders"
           >
-            <article className="ff-reigning-card ff-reigning-champion">
+            <article
+              className="ff-reigning-card ff-reigning-champion"
+              aria-labelledby="ff-reigning-champion-name"
+            >
               {reigningChampion.image && (
                 <Image
                   className="ff-reigning-photo"
@@ -587,20 +590,30 @@ export default function FantasyHistory({ data }) {
                   width={1122}
                   height={1402}
                   priority
-                  sizes="(max-width: 1080px) 44vw, 20vw"
+                  sizes="(max-width: 420px) 90vw, (max-width: 1080px) 44vw, 20vw"
                 />
               )}
               <header>
-                <span>Reigning champion</span>
+                <span className="ff-honor-badge ff-honor-badge-champion">
+                  Reigning champion
+                </span>
                 <strong>{data.league.currentChampionYear}</strong>
               </header>
               <div className="ff-reigning-copy">
-                <h2>{reigningChampion.name}</h2>
+                <h2 id="ff-reigning-champion-name">
+                  <span>{reigningChampion.name}</span>
+                  <span className="ff-name-award" aria-hidden="true">
+                    👑
+                  </span>
+                </h2>
                 <p>{data.league.currentChampionTeam}</p>
               </div>
             </article>
 
-            <article className="ff-reigning-card ff-reigning-sacko">
+            <article
+              className="ff-reigning-card ff-reigning-sacko"
+              aria-labelledby="ff-reigning-sacko-name"
+            >
               {reigningSacko.image && (
                 <Image
                   className="ff-reigning-photo"
@@ -609,15 +622,22 @@ export default function FantasyHistory({ data }) {
                   width={545}
                   height={553}
                   priority
-                  sizes="(max-width: 1080px) 44vw, 20vw"
+                  sizes="(max-width: 420px) 90vw, (max-width: 1080px) 44vw, 20vw"
                 />
               )}
               <header>
-                <span>Reigning Sacko</span>
+                <span className="ff-honor-badge ff-honor-badge-sacko">
+                  Reigning Sacko
+                </span>
                 <strong>{data.league.currentSackoYear}</strong>
               </header>
               <div className="ff-reigning-copy">
-                <h2>{reigningSacko.shortName}</h2>
+                <h2 id="ff-reigning-sacko-name">
+                  <span>{reigningSacko.shortName}</span>
+                  <span className="ff-name-award" aria-hidden="true">
+                    💩
+                  </span>
+                </h2>
                 <p>{data.league.currentSackoTeam}</p>
               </div>
             </article>
