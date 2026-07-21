@@ -491,6 +491,7 @@ export default function FantasyHistory({ data }) {
     [data.owners],
   );
   const reigningChampion = ownerById.get(data.league.currentChampion);
+  const reigningSacko = ownerById.get(data.league.currentSacko);
   const winRateLeader = [...data.owners]
     .filter((owner) => owner.seasons >= 5)
     .sort((left, right) => right.winPct - left.winPct)[0];
@@ -572,27 +573,55 @@ export default function FantasyHistory({ data }) {
             </a>
           </div>
 
-          <article className="ff-reigning-card">
-            {reigningChampion.image && (
-              <Image
-                className="ff-reigning-photo"
-                src={reigningChampion.image}
-                alt={`${reigningChampion.name} holding the Couch QBs championship trophy`}
-                width={1122}
-                height={1402}
-                priority
-                sizes="(max-width: 820px) 100vw, 38vw"
-              />
-            )}
-            <header>
-              <span>Reigning champion</span>
-              <strong>{data.league.currentChampionYear}</strong>
-            </header>
-            <div className="ff-reigning-copy">
-              <h2>{reigningChampion.name}</h2>
-              <p>{data.league.currentChampionTeam}</p>
-            </div>
-          </article>
+          <div
+            className="ff-reigning-honors"
+            role="group"
+            aria-label="Current league title holders"
+          >
+            <article className="ff-reigning-card ff-reigning-champion">
+              {reigningChampion.image && (
+                <Image
+                  className="ff-reigning-photo"
+                  src={reigningChampion.image}
+                  alt={`${reigningChampion.name} holding the Couch QBs championship trophy`}
+                  width={1122}
+                  height={1402}
+                  priority
+                  sizes="(max-width: 1080px) 44vw, 20vw"
+                />
+              )}
+              <header>
+                <span>Reigning champion</span>
+                <strong>{data.league.currentChampionYear}</strong>
+              </header>
+              <div className="ff-reigning-copy">
+                <h2>{reigningChampion.name}</h2>
+                <p>{data.league.currentChampionTeam}</p>
+              </div>
+            </article>
+
+            <article className="ff-reigning-card ff-reigning-sacko">
+              {reigningSacko.image && (
+                <Image
+                  className="ff-reigning-photo"
+                  src={reigningSacko.image}
+                  alt="Dave wearing a blue squid hat in a golf cart"
+                  width={545}
+                  height={553}
+                  priority
+                  sizes="(max-width: 1080px) 44vw, 20vw"
+                />
+              )}
+              <header>
+                <span>Reigning Sacko</span>
+                <strong>{data.league.currentSackoYear}</strong>
+              </header>
+              <div className="ff-reigning-copy">
+                <h2>{reigningSacko.shortName}</h2>
+                <p>{data.league.currentSackoTeam}</p>
+              </div>
+            </article>
+          </div>
         </div>
 
         <dl className="ff-league-totals">

@@ -11,7 +11,10 @@
     "regularSeasonPoints": 198581.7,
     "currentChampion": "marc",
     "currentChampionTeam": "Olave Garden",
-    "currentChampionYear": 2025
+    "currentChampionYear": 2025,
+    "currentSacko": "david",
+    "currentSackoTeam": "Drake It ’Til You Make It",
+    "currentSackoYear": 2025
   },
   "owners": [
     {
@@ -183,8 +186,9 @@
     {
       "id": "david",
       "name": "David",
-      "shortName": "David",
+      "shortName": "Dave",
       "color": "#e98765",
+      "image": "/fantasy-football/dave-sacko.jpg",
       "initials": "D",
       "seasons": 13,
       "wins": 90,

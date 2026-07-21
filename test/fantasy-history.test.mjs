@@ -78,6 +78,9 @@ test("includes Mike C in 2024 and Marc in 2025", () => {
   assert.equal(marc.seasons, 1);
   assert.equal(marc.championships, 1);
   assert.equal(data.league.currentChampion, "marc");
+  assert.equal(data.league.currentSacko, "david");
+  assert.equal(data.league.currentSackoYear, 2025);
+  assert.equal(data.league.currentSackoTeam, "Drake It ’Til You Make It");
 });
 
 test("keeps Mike C and Daniel attached to the correct recent-season rosters", () => {

@@ -189,9 +189,9 @@
 
 .ff-hero-inner {
   display: grid;
-  grid-template-columns: minmax(0, 1.28fr) minmax(19rem, 0.72fr);
+  grid-template-columns: minmax(0, 1.08fr) minmax(31rem, 0.92fr);
   align-items: center;
-  gap: clamp(2.5rem, 7vw, 7rem);
+  gap: clamp(2rem, 4vw, 4rem);
   width: min(100% - 2rem, 78rem);
   min-height: clamp(36rem, 76vh, 49rem);
   margin: 0 auto;
@@ -265,6 +265,12 @@
   height: 1rem;
 }
 
+.ff-reigning-honors {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.75rem, 1.4vw, 1.15rem);
+}
+
 .ff-reigning-card {
   position: relative;
   isolation: isolate;
@@ -273,7 +279,7 @@
   align-items: stretch;
   justify-content: space-between;
   min-height: 29rem;
-  padding: 1.4rem clamp(1.2rem, 3vw, 2.2rem) 2rem;
+  padding: 1.25rem clamp(0.9rem, 1.8vw, 1.45rem) 1.8rem;
   overflow: hidden;
   border: 1px solid rgba(244, 189, 80, 0.42);
   border-radius: 0.75rem;
@@ -319,12 +325,26 @@
   object-position: center 38%;
 }
 
+.ff-reigning-sacko {
+  border-color: rgba(233, 114, 93, 0.48);
+}
+
+.ff-reigning-sacko::after {
+  background: var(--ff-red);
+}
+
+.ff-reigning-sacko .ff-reigning-photo {
+  object-position: 58% center;
+}
+
 .ff-reigning-card header {
   position: relative;
   z-index: 2;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.35rem;
+  flex-wrap: wrap;
   width: 100%;
   padding-bottom: 1rem;
   border-bottom: 1px solid rgba(245, 240, 228, 0.1);
@@ -333,9 +353,9 @@
 
 .ff-reigning-card header span {
   color: #cbd5ce;
-  font-size: 0.68rem;
+  font-size: 0.6rem;
   font-weight: 800;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
@@ -345,6 +365,10 @@
   font-size: 1.5rem;
   font-weight: 400;
   letter-spacing: 0.05em;
+}
+
+.ff-reigning-sacko header strong {
+  color: var(--ff-red);
 }
 
 .ff-reigning-copy {
@@ -358,7 +382,7 @@
 .ff-reigning-copy h2 {
   margin: 0;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  font-size: clamp(2.8rem, 5vw, 4.4rem);
+  font-size: clamp(2.4rem, 3.4vw, 3.7rem);
   font-weight: 400;
   line-height: 0.9;
   letter-spacing: 0.03em;
@@ -1608,7 +1632,14 @@
   }
 
   .ff-hero-inner {
+    grid-template-columns: 1fr;
     gap: 3rem;
+    min-height: 0;
+  }
+
+  .ff-reigning-honors {
+    justify-self: center;
+    width: min(100%, 42rem);
   }
 
   .ff-record-grid {
@@ -1930,6 +1961,25 @@
 
   .ff-reigning-card {
     min-height: 25rem;
+    padding: 1rem 0.8rem 1.4rem;
+  }
+
+  .ff-reigning-card header span {
+    font-size: 0.53rem;
+    letter-spacing: 0.07em;
+  }
+
+  .ff-reigning-card header strong {
+    font-size: 1.25rem;
+  }
+
+  .ff-reigning-copy h2 {
+    font-size: clamp(2.1rem, 10vw, 3rem);
+  }
+
+  .ff-reigning-copy p {
+    font-size: 0.72rem;
+    line-height: 1.35;
   }
 
   .ff-league-totals,

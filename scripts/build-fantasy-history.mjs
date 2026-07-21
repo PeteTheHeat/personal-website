@@ -23,7 +23,12 @@ const SLEEPER_LEAGUES = [
 const OWNER_CATALOG = {
   peter: { name: "Peter", shortName: "Peter", color: "#f4bd50" },
   ryan: { name: "Ryan", shortName: "Ryan", color: "#6fb0ff" },
-  david: { name: "David", shortName: "David", color: "#e98765" },
+  david: {
+    name: "David",
+    shortName: "Dave",
+    color: "#e98765",
+    image: "/fantasy-football/dave-sacko.jpg",
+  },
   michael: { name: "Michael", shortName: "Michael", color: "#72c59c" },
   kevin: { name: "Kevin", shortName: "Kevin", color: "#cf8cff" },
   daniel: { name: "Daniel", shortName: "Daniel", color: "#ff7f9f" },
@@ -747,6 +752,9 @@ function buildDerivedData(seasons) {
   const currentChampion = currentSeason.teams.find(
     (team) => team.finalRank === 1,
   );
+  const currentSacko = currentSeason.teams.find(
+    (team) => team.finalRank === currentSeason.teamCount,
+  );
 
   const compactSeasons = seasons
     .map((season) => {
@@ -811,6 +819,9 @@ function buildDerivedData(seasons) {
       currentChampion: currentChampion.ownerId,
       currentChampionTeam: currentChampion.teamName,
       currentChampionYear: latestSeason,
+      currentSacko: currentSacko.ownerId,
+      currentSackoTeam: currentSacko.teamName,
+      currentSackoYear: latestSeason,
     },
     owners: ownerList,
     seasons: compactSeasons,
