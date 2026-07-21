@@ -21,6 +21,12 @@ function PreloadMobileProjectsBackground() {
 
 const projects = [
   {
+    icon: "🏈",
+    label: "fantasy-football",
+    description: "13 seasons of league history",
+    href: "/fantasy-football",
+  },
+  {
     icon: "🏆",
     label: "sacko-tracker",
     description: "Dave's 24 in 24 challenge",
