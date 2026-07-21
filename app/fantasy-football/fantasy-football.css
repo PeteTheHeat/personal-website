@@ -862,10 +862,53 @@
   text-transform: uppercase;
 }
 
+.ff-ranking-sort-button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.28rem;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
+  text-transform: inherit;
+}
+
+.ff-ranking-sort-button svg {
+  flex: 0 0 auto;
+  width: 0.68rem;
+  height: 0.68rem;
+  color: #62717a;
+  opacity: 0.72;
+  transition:
+    color 150ms ease,
+    opacity 150ms ease;
+}
+
+.ff-ranking-sort-button:hover,
+.ff-ranking-sort-button.is-active {
+  color: var(--ff-action);
+}
+
+.ff-ranking-sort-button:hover svg,
+.ff-ranking-sort-button.is-active svg {
+  color: var(--ff-action);
+  opacity: 1;
+}
+
 .ff-ranking-table th:nth-child(1),
 .ff-ranking-table th:nth-child(2),
 .ff-ranking-table td:nth-child(1) {
   text-align: left;
+}
+
+.ff-ranking-table th:nth-child(2) .ff-ranking-sort-button {
+  justify-content: flex-start;
 }
 
 .ff-ranking-table tbody tr:last-child th,

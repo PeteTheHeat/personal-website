@@ -3,6 +3,10 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 import { HALL_OF_LOSERS } from "../lib/fantasy-history/hall-of-losers.js";
 import {
+  getDefaultSortDirection,
+  sortOwners,
+} from "../lib/fantasy-history/sort-owners.js";
+import {
   assertUniqueSleeperOwners,
   resolveSleeperOwner,
   SLEEPER_USERS,
@@ -18,6 +22,48 @@ const ownerById = new Map(data.owners.map((owner) => [owner.id, owner]));
 const seasonByYear = new Map(
   data.seasons.map((season) => [season.year, season]),
 );
+
+test("sorts all-time standings by the selected column and direction", () => {
+  assert.equal(getDefaultSortDirection("titles"), "desc");
+  assert.equal(getDefaultSortDirection("manager"), "asc");
+
+  const byTitles = sortOwners(data.owners, "titles", "desc");
+  assert.equal(byTitles[0].championships, 2);
+  assert.equal(byTitles[1].championships, 2);
+  assert.ok(byTitles[0].wins >= byTitles[1].wins);
+
+  const byManager = sortOwners(data.owners, "manager", "asc");
+  assert.deepEqual(
+    byManager.slice(0, 3).map((owner) => owner.name),
+    ["Alessandro", "Alex", "Christian"],
+  );
+
+  const numericSorts = {
+    seasons: "seasons",
+    wins: "wins",
+    winPct: "winPct",
+    points: "pointsFor",
+    average: "averagePoints",
+    playoffs: "playoffs",
+    titles: "championships",
+    sackos: "sackos",
+  };
+
+  for (const [sortBy, field] of Object.entries(numericSorts)) {
+    for (const direction of ["asc", "desc"]) {
+      const sorted = sortOwners(data.owners, sortBy, direction);
+      const multiplier = direction === "asc" ? 1 : -1;
+      assert.ok(
+        sorted.every(
+          (owner, index) =>
+            index === 0 ||
+            (owner[field] - sorted[index - 1][field]) * multiplier >= 0,
+        ),
+        `${sortBy} ${direction}`,
+      );
+    }
+  }
+});
 
 test("combines all 13 league seasons", () => {
   assert.equal(data.league.name, "Couch Quarterbacks");

@@ -3,7 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
+  ArrowDown,
   ArrowRight,
+  ArrowUp,
+  ArrowUpDown,
   ChevronDown,
   Crown,
   Medal,
@@ -12,6 +15,10 @@ import {
 } from "lucide-react";
 import { useMemo, useState } from "react";
 import { HALL_OF_LOSERS } from "../../lib/fantasy-history/hall-of-losers";
+import {
+  getDefaultSortDirection,
+  sortOwners,
+} from "../../lib/fantasy-history/sort-owners";
 
 const NUMBER_FORMATTER = new Intl.NumberFormat("en-US", {
   maximumFractionDigits: 2,
@@ -112,7 +119,49 @@ function PodiumCard({ owner, position }) {
   );
 }
 
-function RankingTable({ owners }) {
+function SortableHeader({
+  children,
+  sortKey,
+  activeSort,
+  sortDirection,
+  onSort,
+}) {
+  const isActive = activeSort === sortKey;
+  const SortIcon = isActive
+    ? sortDirection === "asc"
+      ? ArrowUp
+      : ArrowDown
+    : ArrowUpDown;
+
+  return (
+    <th
+      scope="col"
+      aria-sort={
+        isActive
+          ? sortDirection === "asc"
+            ? "ascending"
+            : "descending"
+          : "none"
+      }
+    >
+      <button
+        type="button"
+        className={`ff-ranking-sort-button${isActive ? " is-active" : ""}`}
+        onClick={() => onSort(sortKey)}
+      >
+        <span>{children}</span>
+        <SortIcon aria-hidden="true" />
+      </button>
+    </th>
+  );
+}
+
+function RankingTable({
+  owners,
+  sortBy,
+  sortDirection,
+  onSort,
+}) {
   return (
     <>
       <div className="ff-ranking-table-wrap">
@@ -120,15 +169,78 @@ function RankingTable({ owners }) {
           <thead>
             <tr>
               <th scope="col">Rank</th>
-              <th scope="col">Manager</th>
-              <th scope="col">Seasons</th>
-              <th scope="col">Record</th>
-              <th scope="col">Win %</th>
-              <th scope="col">Points for</th>
-              <th scope="col">Avg.</th>
-              <th scope="col">Playoffs</th>
-              <th scope="col">Titles</th>
-              <th scope="col">Last</th>
+              <SortableHeader
+                sortKey="manager"
+                activeSort={sortBy}
+                sortDirection={sortDirection}
+                onSort={onSort}
+              >
+                Manager
+              </SortableHeader>
+              <SortableHeader
+                sortKey="seasons"
+                activeSort={sortBy}
+                sortDirection={sortDirection}
+                onSort={onSort}
+              >
+                Seasons
+              </SortableHeader>
+              <SortableHeader
+                sortKey="wins"
+                activeSort={sortBy}
+                sortDirection={sortDirection}
+                onSort={onSort}
+              >
+                Record
+              </SortableHeader>
+              <SortableHeader
+                sortKey="winPct"
+                activeSort={sortBy}
+                sortDirection={sortDirection}
+                onSort={onSort}
+              >
+                Win %
+              </SortableHeader>
+              <SortableHeader
+                sortKey="points"
+                activeSort={sortBy}
+                sortDirection={sortDirection}
+                onSort={onSort}
+              >
+                Points for
+              </SortableHeader>
+              <SortableHeader
+                sortKey="average"
+                activeSort={sortBy}
+                sortDirection={sortDirection}
+                onSort={onSort}
+              >
+                Avg.
+              </SortableHeader>
+              <SortableHeader
+                sortKey="playoffs"
+                activeSort={sortBy}
+                sortDirection={sortDirection}
+                onSort={onSort}
+              >
+                Playoffs
+              </SortableHeader>
+              <SortableHeader
+                sortKey="titles"
+                activeSort={sortBy}
+                sortDirection={sortDirection}
+                onSort={onSort}
+              >
+                Titles
+              </SortableHeader>
+              <SortableHeader
+                sortKey="sackos"
+                activeSort={sortBy}
+                sortDirection={sortDirection}
+                onSort={onSort}
+              >
+                Last
+              </SortableHeader>
             </tr>
           </thead>
           <tbody>
@@ -531,6 +643,7 @@ function HallOfLosers({ ownerById }) {
 export default function FantasyHistory({ data }) {
   const [scope, setScope] = useState("all");
   const [sortBy, setSortBy] = useState("titles");
+  const [sortDirection, setSortDirection] = useState("desc");
   const ownerById = useMemo(
     () => new Map(data.owners.map((owner) => [owner.id, owner])),
     [data.owners],
@@ -550,19 +663,22 @@ export default function FantasyHistory({ data }) {
     const filtered = data.owners.filter(
       (owner) => scope === "all" || owner.active,
     );
-    return [...filtered].sort((left, right) => {
-      if (sortBy === "winPct") {
-        return right.winPct - left.winPct || right.wins - left.wins;
-      }
-      if (sortBy === "titles") {
-        return right.championships - left.championships || right.wins - left.wins;
-      }
-      if (sortBy === "points") {
-        return right.pointsFor - left.pointsFor || right.wins - left.wins;
-      }
-      return right.wins - left.wins || right.winPct - left.winPct;
-    });
-  }, [data.owners, scope, sortBy]);
+    return sortOwners(filtered, sortBy, sortDirection);
+  }, [data.owners, scope, sortBy, sortDirection]);
+  const handleSort = (nextSortBy) => {
+    if (nextSortBy === sortBy) {
+      setSortDirection((current) => (current === "asc" ? "desc" : "asc"));
+      return;
+    }
+
+    setSortBy(nextSortBy);
+    setSortDirection(getDefaultSortDirection(nextSortBy));
+  };
+  const handleSortSelect = (event) => {
+    const nextSortBy = event.target.value;
+    setSortBy(nextSortBy);
+    setSortDirection(getDefaultSortDirection(nextSortBy));
+  };
   const records = data.records;
   const highScoreOwner = ownerById.get(records.highestScore.ownerId);
   const highScoreOpponent = ownerById.get(records.highestScore.opponentId);
@@ -757,11 +873,16 @@ export default function FantasyHistory({ data }) {
               </div>
               <label>
                 <span>Rank by</span>
-                <select value={sortBy} onChange={(event) => setSortBy(event.target.value)}>
+                <select value={sortBy} onChange={handleSortSelect}>
                   <option value="titles">Championships</option>
                   <option value="wins">Career wins</option>
                   <option value="winPct">Win percentage</option>
                   <option value="points">Points scored</option>
+                  <option value="average">Average points</option>
+                  <option value="seasons">Seasons played</option>
+                  <option value="playoffs">Playoff appearances</option>
+                  <option value="sackos">Last-place finishes</option>
+                  <option value="manager">Manager name</option>
                 </select>
                 <ChevronDown aria-hidden="true" />
               </label>
@@ -775,7 +896,12 @@ export default function FantasyHistory({ data }) {
           ))}
         </div>
 
-        <RankingTable owners={rankingOwners} />
+        <RankingTable
+          owners={rankingOwners}
+          sortBy={sortBy}
+          sortDirection={sortDirection}
+          onSort={handleSort}
+        />
       </section>
 
       <section className="ff-section ff-records" id="records">
