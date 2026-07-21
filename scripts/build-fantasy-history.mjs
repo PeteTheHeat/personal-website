@@ -1,6 +1,10 @@
 import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  assertUniqueSleeperOwners,
+  resolveSleeperOwner,
+} from "../lib/fantasy-history/sleeper-users.js";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUTPUT_FILE = path.join(
@@ -99,22 +103,6 @@ function nflTeamOwners(year) {
 
   return ids;
 }
-
-const SLEEPER_USER_MAP = {
-  "604165721953472512": "peter",
-  "76435275316084736": "ryan",
-  "1123778934836965376": "david",
-  "1123779230791340032": "michael",
-  "616545753615147008": "kevin",
-  "1123808195807461376": "mike-c",
-  "1124965013485232128": "peter-ho",
-  "1126910781263564800": "alex",
-  "1127280736630960128": "greg",
-  "604890311470153728": "alessandro",
-  "1132309588071776256": "neil",
-  "1133567014829707264": "daniel",
-  "869067929629687808": "marc",
-};
 
 function parseCsv(text) {
   const rows = [];
@@ -385,14 +373,16 @@ async function buildSleeperSeason({ year, leagueId }) {
   const rosterOwner = new Map();
 
   for (const roster of rosters) {
-    const ownerId = SLEEPER_USER_MAP[roster.owner_id];
-    if (!ownerId) {
-      throw new Error(
-        `Unknown Sleeper owner ${roster.owner_id} in ${year}`,
-      );
+    const user = usersById.get(roster.owner_id);
+    if (!user) {
+      throw new Error(`Missing Sleeper user ${roster.owner_id} in ${year}`);
     }
-    rosterOwner.set(roster.roster_id, ownerId);
+    rosterOwner.set(
+      roster.roster_id,
+      resolveSleeperOwner(roster.owner_id, user.display_name),
+    );
   }
+  assertUniqueSleeperOwners([...rosterOwner.values()], year);
 
   const teamCount = Number(league.settings.num_teams);
   const playoffPlaces = playoffPlacements(
@@ -423,6 +413,8 @@ async function buildSleeperSeason({ year, leagueId }) {
     return {
       ownerId: rosterOwner.get(roster.roster_id),
       rosterId: roster.roster_id,
+      sleeperUserId: roster.owner_id,
+      sleeperDisplayName: user?.display_name,
       teamName: user?.metadata?.team_name || user?.display_name || "Untitled team",
       regularSeasonRank: regularRanks.get(roster.roster_id),
       finalRank: finalPlaces.get(roster.roster_id),

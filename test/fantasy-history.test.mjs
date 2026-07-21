@@ -2,6 +2,11 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 import { HALL_OF_LOSERS } from "../lib/fantasy-history/hall-of-losers.js";
+import {
+  assertUniqueSleeperOwners,
+  resolveSleeperOwner,
+  SLEEPER_USERS,
+} from "../lib/fantasy-history/sleeper-users.js";
 
 const data = JSON.parse(
   await readFile(
@@ -84,20 +89,153 @@ test("includes Mike C in 2024 and Marc in 2025", () => {
   assert.equal(data.league.currentSackoTeam, "Drake It ’Til You Make It");
 });
 
-test("keeps Mike C and Daniel attached to the correct recent-season rosters", () => {
+test("maps every Sleeper account to its verified manager", () => {
+  assert.deepEqual(SLEEPER_USERS, {
+    "604165721953472512": { displayName: "petetheheat", ownerId: "peter" },
+    "76435275316084736": { displayName: "paddles4", ownerId: "ryan" },
+    "1123778934836965376": { displayName: "dcolavita", ownerId: "david" },
+    "1123779230791340032": { displayName: "maldini311", ownerId: "daniel" },
+    "616545753615147008": { displayName: "kjwong", ownerId: "kevin" },
+    "1123808195807461376": { displayName: "Colavita65", ownerId: "mike-c" },
+    "1124965013485232128": { displayName: "peterho", ownerId: "peter-ho" },
+    "1126910781263564800": { displayName: "acattarozzi", ownerId: "alex" },
+    "1127280736630960128": { displayName: "Greggie79", ownerId: "greg" },
+    "604890311470153728": {
+      displayName: "SandroFootball87",
+      ownerId: "alessandro",
+    },
+    "1132309588071776256": { displayName: "neilraina", ownerId: "neil" },
+    "1133567014829707264": { displayName: "bigolbutts", ownerId: "michael" },
+    "869067929629687808": {
+      displayName: "Marccappuccitti",
+      ownerId: "marc",
+    },
+  });
+
+  assert.equal(
+    resolveSleeperOwner("1123779230791340032", "maldini311"),
+    "daniel",
+  );
+  assert.throws(
+    () => resolveSleeperOwner("unknown", "unknown"),
+    /Unknown Sleeper user/,
+  );
+  assert.throws(
+    () => resolveSleeperOwner("1123779230791340032", "changed-name"),
+    /Sleeper display name changed/,
+  );
+  assert.doesNotThrow(() =>
+    assertUniqueSleeperOwners(["daniel", "michael", "mike-c"], 2025),
+  );
+  assert.throws(
+    () => assertUniqueSleeperOwners(["daniel", "michael", "daniel"], 2025),
+    /Duplicate canonical Sleeper owner in 2025: daniel/,
+  );
+});
+
+test("preserves every Sleeper roster's source identity", () => {
+  const expected = new Map([
+    [
+      2024,
+      [
+        [1, "604165721953472512", "petetheheat", "peter"],
+        [2, "76435275316084736", "paddles4", "ryan"],
+        [3, "1123778934836965376", "dcolavita", "david"],
+        [4, "1123779230791340032", "maldini311", "daniel"],
+        [5, "616545753615147008", "kjwong", "kevin"],
+        [6, "1123808195807461376", "Colavita65", "mike-c"],
+        [7, "1124965013485232128", "peterho", "peter-ho"],
+        [8, "1126910781263564800", "acattarozzi", "alex"],
+        [9, "1127280736630960128", "Greggie79", "greg"],
+        [10, "604890311470153728", "SandroFootball87", "alessandro"],
+        [11, "1132309588071776256", "neilraina", "neil"],
+        [12, "1133567014829707264", "bigolbutts", "michael"],
+      ],
+    ],
+    [
+      2025,
+      [
+        [1, "604165721953472512", "petetheheat", "peter"],
+        [2, "76435275316084736", "paddles4", "ryan"],
+        [3, "1123778934836965376", "dcolavita", "david"],
+        [4, "1123779230791340032", "maldini311", "daniel"],
+        [5, "616545753615147008", "kjwong", "kevin"],
+        [6, "1123808195807461376", "Colavita65", "mike-c"],
+        [7, "1124965013485232128", "peterho", "peter-ho"],
+        [8, "1126910781263564800", "acattarozzi", "alex"],
+        [9, "1127280736630960128", "Greggie79", "greg"],
+        [10, "869067929629687808", "Marccappuccitti", "marc"],
+        [11, "1132309588071776256", "neilraina", "neil"],
+        [12, "1133567014829707264", "bigolbutts", "michael"],
+      ],
+    ],
+  ]);
+
+  for (const [year, rosters] of expected) {
+    const actual = [...seasonByYear.get(year).teams]
+      .sort((left, right) => left.rosterId - right.rosterId)
+      .map((team) => [
+        team.rosterId,
+        team.sleeperUserId,
+        team.sleeperDisplayName,
+        team.ownerId,
+      ]);
+    assert.deepEqual(actual, rosters, `${year} Sleeper rosters`);
+  }
+});
+
+test("keeps Mike C, Daniel, and Michael on the correct Sleeper rosters", () => {
   const expected = new Map([
     [
       2024,
       {
-        "mike-c": { rosterId: 6, wins: 10, losses: 4, finalRank: 1 },
-        daniel: { rosterId: 12, wins: 2, losses: 12, finalRank: 7 },
+        "mike-c": {
+          rosterId: 6,
+          teamName: "Kyren On My Wayward Son",
+          wins: 10,
+          losses: 4,
+          finalRank: 1,
+        },
+        daniel: {
+          rosterId: 4,
+          teamName: "Christian NoCalfrey",
+          wins: 5,
+          losses: 9,
+          finalRank: 12,
+        },
+        michael: {
+          rosterId: 12,
+          teamName: "uOttawa Oily Orifices",
+          wins: 2,
+          losses: 12,
+          finalRank: 7,
+        },
       },
     ],
     [
       2025,
       {
-        "mike-c": { rosterId: 6, wins: 7, losses: 7, finalRank: 7 },
-        daniel: { rosterId: 12, wins: 5, losses: 9, finalRank: 10 },
+        "mike-c": {
+          rosterId: 6,
+          teamName: "Omarion’s Bucky Charms",
+          wins: 7,
+          losses: 7,
+          finalRank: 7,
+        },
+        daniel: {
+          rosterId: 4,
+          teamName: "Davante’s Inferno",
+          wins: 10,
+          losses: 4,
+          finalRank: 4,
+        },
+        michael: {
+          rosterId: 12,
+          teamName: "uOttawa Oily Orifices",
+          wins: 5,
+          losses: 9,
+          finalRank: 10,
+        },
       },
     ],
   ]);
@@ -109,6 +247,7 @@ test("keeps Mike C and Daniel attached to the correct recent-season rosters", ()
       assert.deepEqual(
         {
           rosterId: team.rosterId,
+          teamName: team.teamName,
           wins: team.wins,
           losses: team.losses,
           finalRank: team.finalRank,
@@ -118,6 +257,31 @@ test("keeps Mike C and Daniel attached to the correct recent-season rosters", ()
       );
     }
   }
+
+  assert.equal(seasonByYear.get(2024).sacko, "daniel");
+  assert.equal(seasonByYear.get(2025).pointsLeader, "daniel");
+  assert.equal(ownerById.get("daniel").currentTeamName, "Davante’s Inferno");
+  assert.equal(ownerById.get("michael").currentTeamName, "uOttawa Oily Orifices");
+  assert.deepEqual(
+    {
+      wins: ownerById.get("daniel").wins,
+      losses: ownerById.get("daniel").losses,
+      pointsFor: ownerById.get("daniel").pointsFor,
+      playoffs: ownerById.get("daniel").playoffs,
+      sackos: ownerById.get("daniel").sackos,
+    },
+    { wins: 68, losses: 94, pointsFor: 15150.07, playoffs: 4, sackos: 1 },
+  );
+  assert.deepEqual(
+    {
+      wins: ownerById.get("michael").wins,
+      losses: ownerById.get("michael").losses,
+      pointsFor: ownerById.get("michael").pointsFor,
+      playoffs: ownerById.get("michael").playoffs,
+      sackos: ownerById.get("michael").sackos,
+    },
+    { wins: 73, losses: 102, pointsFor: 16421.33, playoffs: 3, sackos: 2 },
+  );
 });
 
 test("every season has a complete final-order permutation", () => {
@@ -181,6 +345,19 @@ test("head-to-head series account for every official matchup", () => {
   for (const series of data.headToHead) {
     assert.equal(series.winsA + series.winsB + series.ties, series.games);
   }
+
+  const danielVsMichael = data.headToHead.find(
+    (series) => series.id === "daniel::michael",
+  );
+  assert.deepEqual(
+    {
+      ownerA: danielVsMichael.ownerA,
+      winsA: danielVsMichael.winsA,
+      ownerB: danielVsMichael.ownerB,
+      winsB: danielVsMichael.winsB,
+    },
+    { ownerA: "daniel", winsA: 12, ownerB: "michael", winsB: 7 },
+  );
 });
 
 test("records every season in the Hall of Losers", () => {
@@ -192,6 +369,11 @@ test("records every season in the Hall of Losers", () => {
   for (const entry of HALL_OF_LOSERS) {
     assert.ok(ownerById.has(entry.ownerId), `${entry.year} owner`);
     assert.ok(entry.punishment, `${entry.year} punishment`);
+    assert.equal(
+      seasonByYear.get(entry.year).sacko,
+      entry.ownerId,
+      `${entry.year} Sacko`,
+    );
   }
 });
 
