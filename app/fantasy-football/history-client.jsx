@@ -1,12 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
   ChevronDown,
   Crown,
-  Database,
-  ExternalLink,
   Medal,
   Swords,
   Trophy,
@@ -220,7 +219,6 @@ function ChampionshipCard({ season, ownerById }) {
     <article className="ff-champion-card">
       <header>
         <span>{season.year}</span>
-        <small>{season.source}</small>
       </header>
       <div className="ff-champion-trophy" aria-hidden="true">
         <Trophy />
@@ -297,7 +295,7 @@ function Rivalry({ data, ownerById }) {
           <h3>No meetings on the books</h3>
           <p>
             {first.name} and {second.name} never overlapped. Pick another manager
-            to find a rivalry with receipts.
+            to see another head-to-head history.
           </p>
         </div>
       </div>
@@ -423,7 +421,6 @@ function SeasonArchive({ seasons, ownerById }) {
                   <strong>{champion.name}</strong>
                 </span>
               </span>
-              <span className="ff-season-source">{season.source}</span>
               <ChevronDown className="ff-season-chevron" aria-hidden="true" />
             </summary>
             <div className="ff-season-detail">
@@ -478,10 +475,6 @@ function SeasonArchive({ seasons, ownerById }) {
                   );
                 })}
               </div>
-
-              <a href={season.sourceUrl} target="_blank" rel="noreferrer">
-                View {season.sourceLabel} <ExternalLink aria-hidden="true" />
-              </a>
             </div>
           </details>
         );
@@ -492,15 +485,12 @@ function SeasonArchive({ seasons, ownerById }) {
 
 export default function FantasyHistory({ data }) {
   const [scope, setScope] = useState("all");
-  const [sortBy, setSortBy] = useState("wins");
+  const [sortBy, setSortBy] = useState("titles");
   const ownerById = useMemo(
     () => new Map(data.owners.map((owner) => [owner.id, owner])),
     [data.owners],
   );
   const reigningChampion = ownerById.get(data.league.currentChampion);
-  const allTimeWinsLeader = [...data.owners].sort(
-    (left, right) => right.wins - left.wins,
-  )[0];
   const winRateLeader = [...data.owners]
     .filter((owner) => owner.seasons >= 5)
     .sort((left, right) => right.winPct - left.winPct)[0];
@@ -551,22 +541,14 @@ export default function FantasyHistory({ data }) {
           </Link>
           <a className="ff-brand" href="#top">
             <span>CQ</span>
-            <strong>Couch Quarterbacks</strong>
+            <strong>Couch QBs History Books</strong>
           </a>
-          <nav aria-label="League archive sections">
+          <nav aria-label="History book sections">
             <a href="#standings">Standings</a>
             <a href="#records">Records</a>
             <a href="#rivalries">Rivalries</a>
             <a href="#seasons">Seasons</a>
           </nav>
-          <a
-            className="ff-sleeper-link"
-            href="https://sleeper.com/leagues/1257419329926877184/league"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Sleeper <ExternalLink aria-hidden="true" />
-          </a>
         </div>
       </header>
 
@@ -574,35 +556,42 @@ export default function FantasyHistory({ data }) {
         <div className="ff-field-lines" aria-hidden="true" />
         <div className="ff-hero-inner">
           <div className="ff-hero-copy">
-            <p>League archive · {data.league.firstSeason}–{data.league.lastSeason}</p>
+            <p>Couch Quarterbacks</p>
             <h1 id="ff-hero-title">
-              <span>{data.league.seasonCount} seasons.</span>
-              Every score.
+              <span>Couch QBs</span>
+              History
               <br />
-              No excuses.
+              Books
             </h1>
             <p>
-              Eleven years on NFL.com and two on Sleeper, rebuilt into one
-              continuous history of wins, heartbreak, and highly defensible trash talk.
+              All-time standings, champions, weekly records, season finishes,
+              and head-to-head history.
             </p>
             <a href="#standings" className="ff-primary-link">
-              Enter the record book <ArrowRight aria-hidden="true" />
+              View all-time standings <ArrowRight aria-hidden="true" />
             </a>
           </div>
 
           <article className="ff-reigning-card">
-            <div className="ff-reigning-rays" aria-hidden="true" />
+            {reigningChampion.image && (
+              <Image
+                className="ff-reigning-photo"
+                src={reigningChampion.image}
+                alt={`${reigningChampion.name} holding the Couch QBs championship trophy`}
+                width={1122}
+                height={1402}
+                priority
+                sizes="(max-width: 820px) 100vw, 38vw"
+              />
+            )}
             <header>
               <span>Reigning champion</span>
               <strong>{data.league.currentChampionYear}</strong>
             </header>
-            <div className="ff-reigning-trophy" aria-hidden="true">
-              <Trophy />
+            <div className="ff-reigning-copy">
+              <h2>{reigningChampion.name}</h2>
+              <p>{data.league.currentChampionTeam}</p>
             </div>
-            <OwnerMark owner={reigningChampion} size="hero" />
-            <h2>{reigningChampion.name}</h2>
-            <p>{data.league.currentChampionTeam}</p>
-            <span className="ff-rookie-champ">Champion in season one</span>
           </article>
         </div>
 
@@ -610,7 +599,7 @@ export default function FantasyHistory({ data }) {
           <div>
             <dt>Seasons</dt>
             <dd>{data.league.seasonCount}</dd>
-            <span>{data.league.firstSeason}–{data.league.lastSeason}</span>
+            <span>complete history</span>
           </div>
           <div>
             <dt>Regular-season games</dt>
@@ -632,30 +621,25 @@ export default function FantasyHistory({ data }) {
 
       <section className="ff-story-strip" aria-label="League headline stories">
         <article>
-          <span>On the doorstep</span>
-          <strong>{allTimeWinsLeader.name} has {allTimeWinsLeader.wins} wins</strong>
-          <p>One more makes the league&rsquo;s first century.</p>
-        </article>
-        <article>
-          <span>Win-rate king</span>
+          <span>Highest career win rate</span>
           <strong>{winRateLeader.name} · {formatPercent(winRateLeader.winPct)}</strong>
-          <p>The best career rate among managers with five seasons.</p>
+          <p>Best among managers with at least five seasons.</p>
         </article>
         <article>
-          <span>The title logjam</span>
-          <strong>{titleLeaders.length} managers tied at {topTitleCount}</strong>
+          <span>Championship leaders</span>
+          <strong>{titleLeaders.length} managers with {topTitleCount}</strong>
           <p>{titleLeaders.map((owner) => owner.name).join(", ")}.</p>
         </article>
         <article>
-          <span>Instant legend</span>
-          <strong>Marc went 1-for-1</strong>
-          <p>Joined in 2025. Left with the trophy.</p>
+          <span>First-year champion</span>
+          <strong>Marc</strong>
+          <p>Won the championship in his first season.</p>
         </article>
       </section>
 
       <section className="ff-section ff-standings" id="standings">
         <SectionHeading
-          eyebrow="The long game"
+          eyebrow="Career records"
           title="All-time standings"
           copy="Career totals use regular-season results so every era compares cleanly."
           action={
@@ -679,9 +663,9 @@ export default function FantasyHistory({ data }) {
               <label>
                 <span>Rank by</span>
                 <select value={sortBy} onChange={(event) => setSortBy(event.target.value)}>
+                  <option value="titles">Championships</option>
                   <option value="wins">Career wins</option>
                   <option value="winPct">Win percentage</option>
-                  <option value="titles">Championships</option>
                   <option value="points">Points scored</option>
                 </select>
                 <ChevronDown aria-hidden="true" />
@@ -701,9 +685,9 @@ export default function FantasyHistory({ data }) {
 
       <section className="ff-section ff-records" id="records">
         <SectionHeading
-          eyebrow="Receipts, preserved"
-          title="The record book"
-          copy="Weekly records include playoffs. Yes, the ugly scores count too."
+          eyebrow="League records"
+          title="Record book"
+          copy="Weekly records include regular-season and playoff games."
         />
 
         <div className="ff-record-grid">
@@ -764,9 +748,9 @@ export default function FantasyHistory({ data }) {
           />
           <RecordCard
             label="Longest win streak"
-            value={`${records.longestWinStreak.count} straight`}
-            title={streakOwner.name}
-            detail={`Week ${records.longestWinStreak.start.week} through Week ${records.longestWinStreak.end.week}`}
+            value={String(records.longestWinStreak.count)}
+            title="Straight wins"
+            detail={`${streakOwner.name} · Week ${records.longestWinStreak.start.week} through Week ${records.longestWinStreak.end.week}`}
             meta={`${records.longestWinStreak.start.year} season`}
           />
           <RecordCard
@@ -792,7 +776,7 @@ export default function FantasyHistory({ data }) {
         <SectionHeading
           eyebrow="The hardware"
           title="Hall of champions"
-          copy="Every winner, from the NFL.com years through the move to Sleeper."
+          copy="Every league champion, season by season."
         />
         <div className="ff-champion-scroll" id="champions-title">
           {data.seasons.map((season) => (
@@ -803,7 +787,7 @@ export default function FantasyHistory({ data }) {
 
       <section className="ff-section ff-rivalries" id="rivalries">
         <SectionHeading
-          eyebrow="Settle it with data"
+          eyebrow="Matchup history"
           title="Head-to-head"
           copy="Pick any two managers. The series includes regular season and playoff meetings."
         />
@@ -819,46 +803,11 @@ export default function FantasyHistory({ data }) {
         <SeasonArchive seasons={data.seasons} ownerById={ownerById} />
       </section>
 
-      <section className="ff-data-note" aria-labelledby="data-note-title">
-        <Database aria-hidden="true" />
-        <div>
-          <p>How the archive works</p>
-          <h2 id="data-note-title">Two platforms. One continuous history.</h2>
-          <p>
-            NFL.com standings and all weekly matchups from 2013–2023 were rebuilt
-            from Peter&rsquo;s archived scrape. The 2024 and 2025 seasons come from
-            Sleeper&rsquo;s public API. Career standings use regular-season results;
-            weekly records and rivalries include postseason games.
-          </p>
-          <p>
-            Manager aliases were reconciled across platforms. Most importantly,
-            NFL.com&rsquo;s &ldquo;Peter2&rdquo; is Peter Ho, not Peter.
-          </p>
-          <div>
-            <a
-              href={data.methodology.nflSource}
-              target="_blank"
-              rel="noreferrer"
-            >
-              NFL.com source data <ExternalLink aria-hidden="true" />
-            </a>
-            <a
-              href={data.methodology.sleeperSource}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Sleeper API <ExternalLink aria-hidden="true" />
-            </a>
-          </div>
-        </div>
-      </section>
-
       <footer className="ff-footer">
         <span className="ff-brand ff-footer-brand">
           <span>CQ</span>
-          <strong>Couch Quarterbacks</strong>
+          <strong>Couch QBs History Books</strong>
         </span>
-        <p>Built for the only league arguments that matter: the ones with receipts.</p>
         <Link href="/">Back to peterargany.com</Link>
       </footer>
     </main>

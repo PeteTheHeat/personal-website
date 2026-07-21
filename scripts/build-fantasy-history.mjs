@@ -37,7 +37,12 @@ const OWNER_CATALOG = {
   },
   neil: { name: "Neil", shortName: "Neil", color: "#8f9dff" },
   "mike-c": { name: "Mike C", shortName: "Mike C", color: "#4fc6a4" },
-  marc: { name: "Marc", shortName: "Marc", color: "#ffc95e" },
+  marc: {
+    name: "Marc",
+    shortName: "Marc",
+    color: "#ffc95e",
+    image: "/fantasy-football/marc-champion.png",
+  },
   jeremy: { name: "Jeremy", shortName: "Jeremy", color: "#de9073" },
   raed: { name: "Raed", shortName: "Raed", color: "#8bb7e8" },
   christian: {
@@ -96,13 +101,13 @@ const SLEEPER_USER_MAP = {
   "1123778934836965376": "david",
   "1123779230791340032": "michael",
   "616545753615147008": "kevin",
-  "1123808195807461376": "daniel",
+  "1123808195807461376": "mike-c",
   "1124965013485232128": "peter-ho",
   "1126910781263564800": "alex",
   "1127280736630960128": "greg",
   "604890311470153728": "alessandro",
   "1132309588071776256": "neil",
-  "1133567014829707264": "mike-c",
+  "1133567014829707264": "daniel",
   "869067929629687808": "marc",
 };
 
@@ -616,7 +621,19 @@ function buildDerivedData(seasons) {
         ? matchup.ownerB
         : matchup.ownerA
       : null;
-    const recordGame = { ...matchup, margin, combined, winnerId, loserId };
+    const recordGame = {
+      year: matchup.year,
+      week: matchup.week,
+      phase: matchup.phase,
+      ownerA: matchup.ownerA,
+      ownerB: matchup.ownerB,
+      scoreA: matchup.scoreA,
+      scoreB: matchup.scoreB,
+      margin,
+      combined,
+      winnerId,
+      loserId,
+    };
     if (!biggestBlowout || margin > biggestBlowout.margin) {
       biggestBlowout = recordGame;
     }
@@ -744,10 +761,6 @@ function buildDerivedData(seasons) {
       )[0];
       return {
         year: season.year,
-        source: season.source,
-        sourceLabel: season.sourceLabel,
-        sourceUrl: season.sourceUrl,
-        leagueId: season.leagueId,
         teamCount: season.teamCount,
         regularWeeks: season.regularWeeks,
         playoffTeams: season.playoffTeams,
@@ -811,20 +824,6 @@ function buildDerivedData(seasons) {
       longestWinStreak,
       bestSeason: { ...bestSeason },
       mostSeasonPoints: { ...mostSeasonPoints },
-    },
-    methodology: {
-      generatedAt: new Date().toISOString(),
-      careerStats: "Regular season only",
-      weeklyRecords: "Regular season and playoffs",
-      rivalryStats: "Regular season and playoffs",
-      nflSource: `${NFL_REPO_URL}/tree/master/output`,
-      sleeperSource:
-        "https://api.sleeper.app/v1/league/1257419329926877184",
-      identityNotes: [
-        "NFL.com standings alias Peter2 is normalized to Peter Ho.",
-        "NFL.com weekly team IDs keep Peter and Peter Ho separate.",
-        "Mike C joined in 2024 and Marc joined in 2025.",
-      ],
     },
   };
 }

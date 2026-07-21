@@ -23,7 +23,7 @@ const projects = [
   {
     icon: "🏈",
     label: "fantasy-football",
-    description: "13 seasons of league history",
+    description: "Couch QBs history books",
     href: "/fantasy-football",
   },
   {

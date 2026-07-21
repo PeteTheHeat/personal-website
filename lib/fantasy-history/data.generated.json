@@ -379,46 +379,6 @@
       "allTimeRank": 9
     },
     {
-      "id": "daniel",
-      "name": "Daniel",
-      "shortName": "Daniel",
-      "color": "#ff7f9f",
-      "initials": "D",
-      "seasons": 12,
-      "wins": 70,
-      "losses": 92,
-      "ties": 0,
-      "pointsFor": 15026.46,
-      "pointsAgainst": 15732.71,
-      "championships": 2,
-      "runnerUps": 0,
-      "playoffs": 4,
-      "sackos": 0,
-      "firstSeason": 2013,
-      "lastSeason": 2025,
-      "bestFinish": 1,
-      "worstFinish": 11,
-      "championshipYears": [
-        2023,
-        2024
-      ],
-      "teamNames": [
-        "Tittsburgh Feelers",
-        "Valyrian Steel-ers",
-        "Shake-N-Bakers",
-        "You Done Messed Up A-Aron",
-        "McLaurin F1",
-        "My Butker Hurts",
-        "Kyren On My Wayward Son",
-        "Omarion’s Bucky Charms"
-      ],
-      "winPct": 0.4321,
-      "averagePoints": 92.76,
-      "active": true,
-      "currentTeamName": "Omarion’s Bucky Charms",
-      "allTimeRank": 10
-    },
-    {
       "id": "peter-ho",
       "name": "Peter Ho",
       "shortName": "Peter Ho",
@@ -457,6 +417,44 @@
       "averagePoints": 91.77,
       "active": true,
       "currentTeamName": "Jeanty in a Bottle",
+      "allTimeRank": 10
+    },
+    {
+      "id": "daniel",
+      "name": "Daniel",
+      "shortName": "Daniel",
+      "color": "#ff7f9f",
+      "initials": "D",
+      "seasons": 12,
+      "wins": 60,
+      "losses": 102,
+      "ties": 0,
+      "pointsFor": 14666.07,
+      "pointsAgainst": 15832.86,
+      "championships": 1,
+      "runnerUps": 0,
+      "playoffs": 3,
+      "sackos": 0,
+      "firstSeason": 2013,
+      "lastSeason": 2025,
+      "bestFinish": 1,
+      "worstFinish": 11,
+      "championshipYears": [
+        2023
+      ],
+      "teamNames": [
+        "Tittsburgh Feelers",
+        "Valyrian Steel-ers",
+        "Shake-N-Bakers",
+        "You Done Messed Up A-Aron",
+        "McLaurin F1",
+        "My Butker Hurts",
+        "uOttawa Oily Orifices"
+      ],
+      "winPct": 0.3704,
+      "averagePoints": 90.53,
+      "active": true,
+      "currentTeamName": "uOttawa Oily Orifices",
       "allTimeRank": 11
     },
     {
@@ -560,6 +558,39 @@
       "allTimeRank": 14
     },
     {
+      "id": "mike-c",
+      "name": "Mike C",
+      "shortName": "Mike C",
+      "color": "#4fc6a4",
+      "initials": "MC",
+      "seasons": 2,
+      "wins": 17,
+      "losses": 11,
+      "ties": 0,
+      "pointsFor": 3237.18,
+      "pointsAgainst": 3174.57,
+      "championships": 1,
+      "runnerUps": 0,
+      "playoffs": 1,
+      "sackos": 0,
+      "firstSeason": 2024,
+      "lastSeason": 2025,
+      "bestFinish": 1,
+      "worstFinish": 7,
+      "championshipYears": [
+        2024
+      ],
+      "teamNames": [
+        "Kyren On My Wayward Son",
+        "Omarion’s Bucky Charms"
+      ],
+      "winPct": 0.6071,
+      "averagePoints": 115.61,
+      "active": true,
+      "currentTeamName": "Omarion’s Bucky Charms",
+      "allTimeRank": 15
+    },
+    {
       "id": "christian",
       "name": "Christian",
       "shortName": "Christian",
@@ -587,13 +618,14 @@
       "averagePoints": 85.77,
       "active": false,
       "currentTeamName": "WhoDat Nation",
-      "allTimeRank": 15
+      "allTimeRank": 16
     },
     {
       "id": "marc",
       "name": "Marc",
       "shortName": "Marc",
       "color": "#ffc95e",
+      "image": "/fantasy-football/marc-champion.png",
       "initials": "M",
       "seasons": 1,
       "wins": 8,
@@ -619,46 +651,12 @@
       "averagePoints": 125.31,
       "active": true,
       "currentTeamName": "Olave Garden",
-      "allTimeRank": 16
-    },
-    {
-      "id": "mike-c",
-      "name": "Mike C",
-      "shortName": "Mike C",
-      "color": "#4fc6a4",
-      "initials": "MC",
-      "seasons": 2,
-      "wins": 7,
-      "losses": 21,
-      "ties": 0,
-      "pointsFor": 2876.79,
-      "pointsAgainst": 3274.72,
-      "championships": 0,
-      "runnerUps": 0,
-      "playoffs": 0,
-      "sackos": 0,
-      "firstSeason": 2024,
-      "lastSeason": 2025,
-      "bestFinish": 7,
-      "worstFinish": 10,
-      "championshipYears": [],
-      "teamNames": [
-        "uOttawa Oily Orifices"
-      ],
-      "winPct": 0.25,
-      "averagePoints": 102.74,
-      "active": true,
-      "currentTeamName": "uOttawa Oily Orifices",
       "allTimeRank": 17
     }
   ],
   "seasons": [
     {
       "year": 2025,
-      "source": "Sleeper",
-      "sourceLabel": "Sleeper API",
-      "sourceUrl": "https://sleeper.com/leagues/1257419329926877184/league",
-      "leagueId": "1257419329926877184",
       "teamCount": 12,
       "regularWeeks": 14,
       "playoffTeams": 6,
@@ -759,7 +757,7 @@
           "draftPosition": null
         },
         {
-          "ownerId": "daniel",
+          "ownerId": "mike-c",
           "rosterId": 6,
           "teamName": "Omarion’s Bucky Charms",
           "regularSeasonRank": 7,
@@ -804,7 +802,7 @@
           "draftPosition": null
         },
         {
-          "ownerId": "mike-c",
+          "ownerId": "daniel",
           "rosterId": 12,
           "teamName": "uOttawa Oily Orifices",
           "regularSeasonRank": 11,
@@ -852,21 +850,17 @@
     },
     {
       "year": 2024,
-      "source": "Sleeper",
-      "sourceLabel": "Sleeper API",
-      "sourceUrl": "https://sleeper.com/leagues/1123769832219975680/league",
-      "leagueId": "1123769832219975680",
       "teamCount": 12,
       "regularWeeks": 14,
       "playoffTeams": 6,
-      "champion": "daniel",
+      "champion": "mike-c",
       "runnerUp": "david",
       "sacko": "michael",
       "pointsLeader": "peter",
       "pointsLeaderTotal": 1922.8,
       "teams": [
         {
-          "ownerId": "daniel",
+          "ownerId": "mike-c",
           "rosterId": 6,
           "teamName": "Kyren On My Wayward Son",
           "regularSeasonRank": 2,
@@ -956,7 +950,7 @@
           "draftPosition": null
         },
         {
-          "ownerId": "mike-c",
+          "ownerId": "daniel",
           "rosterId": 12,
           "teamName": "uOttawa Oily Orifices",
           "regularSeasonRank": 12,
@@ -1049,10 +1043,6 @@
     },
     {
       "year": 2023,
-      "source": "NFL.com",
-      "sourceLabel": "NFL.com archive",
-      "sourceUrl": "https://github.com/PeteTheHeat/FF-Scraping/tree/master/output",
-      "leagueId": "1609009",
       "teamCount": 12,
       "regularWeeks": 14,
       "playoffTeams": 6,
@@ -1234,10 +1224,6 @@
     },
     {
       "year": 2022,
-      "source": "NFL.com",
-      "sourceLabel": "NFL.com archive",
-      "sourceUrl": "https://github.com/PeteTheHeat/FF-Scraping/tree/master/output",
-      "leagueId": "1609009",
       "teamCount": 12,
       "regularWeeks": 14,
       "playoffTeams": 6,
@@ -1419,10 +1405,6 @@
     },
     {
       "year": 2021,
-      "source": "NFL.com",
-      "sourceLabel": "NFL.com archive",
-      "sourceUrl": "https://github.com/PeteTheHeat/FF-Scraping/tree/master/output",
-      "leagueId": "1609009",
       "teamCount": 12,
       "regularWeeks": 14,
       "playoffTeams": 6,
@@ -1604,10 +1586,6 @@
     },
     {
       "year": 2020,
-      "source": "NFL.com",
-      "sourceLabel": "NFL.com archive",
-      "sourceUrl": "https://github.com/PeteTheHeat/FF-Scraping/tree/master/output",
-      "leagueId": "1609009",
       "teamCount": 12,
       "regularWeeks": 13,
       "playoffTeams": 6,
@@ -1789,10 +1767,6 @@
     },
     {
       "year": 2019,
-      "source": "NFL.com",
-      "sourceLabel": "NFL.com archive",
-      "sourceUrl": "https://github.com/PeteTheHeat/FF-Scraping/tree/master/output",
-      "leagueId": "1609009",
       "teamCount": 12,
       "regularWeeks": 13,
       "playoffTeams": 6,
@@ -1974,10 +1948,6 @@
     },
     {
       "year": 2018,
-      "source": "NFL.com",
-      "sourceLabel": "NFL.com archive",
-      "sourceUrl": "https://github.com/PeteTheHeat/FF-Scraping/tree/master/output",
-      "leagueId": "1609009",
       "teamCount": 12,
       "regularWeeks": 13,
       "playoffTeams": 6,
@@ -2159,10 +2129,6 @@
     },
     {
       "year": 2017,
-      "source": "NFL.com",
-      "sourceLabel": "NFL.com archive",
-      "sourceUrl": "https://github.com/PeteTheHeat/FF-Scraping/tree/master/output",
-      "leagueId": "1609009",
       "teamCount": 12,
       "regularWeeks": 13,
       "playoffTeams": 6,
@@ -2344,10 +2310,6 @@
     },
     {
       "year": 2016,
-      "source": "NFL.com",
-      "sourceLabel": "NFL.com archive",
-      "sourceUrl": "https://github.com/PeteTheHeat/FF-Scraping/tree/master/output",
-      "leagueId": "1609009",
       "teamCount": 12,
       "regularWeeks": 13,
       "playoffTeams": 6,
@@ -2529,10 +2491,6 @@
     },
     {
       "year": 2015,
-      "source": "NFL.com",
-      "sourceLabel": "NFL.com archive",
-      "sourceUrl": "https://github.com/PeteTheHeat/FF-Scraping/tree/master/output",
-      "leagueId": "1609009",
       "teamCount": 12,
       "regularWeeks": 13,
       "playoffTeams": 6,
@@ -2714,10 +2672,6 @@
     },
     {
       "year": 2014,
-      "source": "NFL.com",
-      "sourceLabel": "NFL.com archive",
-      "sourceUrl": "https://github.com/PeteTheHeat/FF-Scraping/tree/master/output",
-      "leagueId": "1609009",
       "teamCount": 12,
       "regularWeeks": 13,
       "playoffTeams": 6,
@@ -2899,10 +2853,6 @@
     },
     {
       "year": 2013,
-      "source": "NFL.com",
-      "sourceLabel": "NFL.com archive",
-      "sourceUrl": "https://github.com/PeteTheHeat/FF-Scraping/tree/master/output",
-      "leagueId": "1609009",
       "teamCount": 10,
       "regularWeeks": 14,
       "playoffTeams": 4,
@@ -3313,70 +3263,6 @@
       }
     },
     {
-      "id": "daniel::kevin",
-      "ownerA": "daniel",
-      "ownerB": "kevin",
-      "winsA": 5,
-      "winsB": 16,
-      "ties": 0,
-      "pointsA": 1855.45,
-      "pointsB": 2158.64,
-      "games": 21,
-      "meetings": [
-        {
-          "year": 2025,
-          "week": 12,
-          "phase": "regular",
-          "scoreA": 85.15,
-          "scoreB": 130.25
-        },
-        {
-          "year": 2025,
-          "week": 1,
-          "phase": "regular",
-          "scoreA": 91.9,
-          "scoreB": 101.75
-        },
-        {
-          "year": 2024,
-          "week": 9,
-          "phase": "regular",
-          "scoreA": 111.82,
-          "scoreB": 123.16
-        },
-        {
-          "year": 2023,
-          "week": 12,
-          "phase": "regular",
-          "scoreA": 112.2,
-          "scoreB": 97.78
-        },
-        {
-          "year": 2023,
-          "week": 4,
-          "phase": "regular",
-          "scoreA": 120.16,
-          "scoreB": 125.78
-        },
-        {
-          "year": 2022,
-          "week": 17,
-          "phase": "playoffs",
-          "scoreA": 122.18,
-          "scoreB": 69
-        }
-      ],
-      "biggestWin": {
-        "year": 2022,
-        "week": 17,
-        "phase": "playoffs",
-        "margin": 53.18,
-        "winnerId": "daniel",
-        "scoreA": 122.18,
-        "scoreB": 69
-      }
-    },
-    {
       "id": "alex::peter-ho",
       "ownerA": "alex",
       "ownerB": "peter-ho",
@@ -3505,70 +3391,6 @@
       }
     },
     {
-      "id": "daniel::peter-ho",
-      "ownerA": "daniel",
-      "ownerB": "peter-ho",
-      "winsA": 9,
-      "winsB": 11,
-      "ties": 0,
-      "pointsA": 1812.83,
-      "pointsB": 1835.5,
-      "games": 20,
-      "meetings": [
-        {
-          "year": 2025,
-          "week": 14,
-          "phase": "regular",
-          "scoreA": 132.5,
-          "scoreB": 99.2
-        },
-        {
-          "year": 2025,
-          "week": 3,
-          "phase": "regular",
-          "scoreA": 79.65,
-          "scoreB": 101.3
-        },
-        {
-          "year": 2024,
-          "week": 16,
-          "phase": "playoffs",
-          "scoreA": 111.98,
-          "scoreB": 107.86
-        },
-        {
-          "year": 2024,
-          "week": 4,
-          "phase": "regular",
-          "scoreA": 115.06,
-          "scoreB": 112.6
-        },
-        {
-          "year": 2023,
-          "week": 14,
-          "phase": "regular",
-          "scoreA": 80.28,
-          "scoreB": 103.34
-        },
-        {
-          "year": 2023,
-          "week": 6,
-          "phase": "regular",
-          "scoreA": 123.1,
-          "scoreB": 97.74
-        }
-      ],
-      "biggestWin": {
-        "year": 2022,
-        "week": 1,
-        "phase": "regular",
-        "margin": 69.42,
-        "winnerId": "daniel",
-        "scoreA": 119.68,
-        "scoreB": 50.26
-      }
-    },
-    {
       "id": "peter::ryan",
       "ownerA": "peter",
       "ownerB": "ryan",
@@ -3630,6 +3452,70 @@
         "winnerId": "ryan",
         "scoreA": 88.48,
         "scoreB": 164.8
+      }
+    },
+    {
+      "id": "daniel::kevin",
+      "ownerA": "daniel",
+      "ownerB": "kevin",
+      "winsA": 6,
+      "winsB": 14,
+      "ties": 0,
+      "pointsA": 1813.85,
+      "pointsB": 2015.29,
+      "games": 20,
+      "meetings": [
+        {
+          "year": 2025,
+          "week": 6,
+          "phase": "regular",
+          "scoreA": 137.95,
+          "scoreB": 97.85
+        },
+        {
+          "year": 2024,
+          "week": 6,
+          "phase": "regular",
+          "scoreA": 109.32,
+          "scoreB": 113.96
+        },
+        {
+          "year": 2023,
+          "week": 12,
+          "phase": "regular",
+          "scoreA": 112.2,
+          "scoreB": 97.78
+        },
+        {
+          "year": 2023,
+          "week": 4,
+          "phase": "regular",
+          "scoreA": 120.16,
+          "scoreB": 125.78
+        },
+        {
+          "year": 2022,
+          "week": 17,
+          "phase": "playoffs",
+          "scoreA": 122.18,
+          "scoreB": 69
+        },
+        {
+          "year": 2022,
+          "week": 2,
+          "phase": "regular",
+          "scoreA": 73.3,
+          "scoreB": 90.68
+        }
+      ],
+      "biggestWin": {
+        "year": 2022,
+        "week": 17,
+        "phase": "playoffs",
+        "margin": 53.18,
+        "winnerId": "daniel",
+        "scoreA": 122.18,
+        "scoreB": 69
       }
     },
     {
@@ -3825,107 +3711,107 @@
       }
     },
     {
-      "id": "daniel::david",
+      "id": "daniel::michael",
       "ownerA": "daniel",
-      "ownerB": "david",
-      "winsA": 13,
-      "winsB": 6,
+      "ownerB": "michael",
+      "winsA": 10,
+      "winsB": 9,
       "ties": 0,
-      "pointsA": 1946.81,
-      "pointsB": 1798.89,
+      "pointsA": 1752.88,
+      "pointsB": 1657.33,
       "games": 19,
       "meetings": [
         {
           "year": 2025,
-          "week": 15,
-          "phase": "playoffs",
-          "scoreA": 154.75,
-          "scoreB": 97.05
+          "week": 14,
+          "phase": "regular",
+          "scoreA": 95.6,
+          "scoreB": 109.3
         },
         {
           "year": 2025,
-          "week": 10,
+          "week": 3,
           "phase": "regular",
-          "scoreA": 113.1,
-          "scoreB": 112.7
+          "scoreA": 112.7,
+          "scoreB": 140.15
         },
         {
           "year": 2024,
-          "week": 17,
-          "phase": "playoffs",
-          "scoreA": 145,
-          "scoreB": 121.48
-        },
-        {
-          "year": 2024,
-          "week": 6,
-          "phase": "regular",
-          "scoreA": 115.72,
-          "scoreB": 129.56
-        },
-        {
-          "year": 2023,
           "week": 15,
           "phase": "playoffs",
-          "scoreA": 125.12,
-          "scoreB": 106.64
+          "scoreA": 114.84,
+          "scoreB": 70.84
+        },
+        {
+          "year": 2024,
+          "week": 8,
+          "phase": "regular",
+          "scoreA": 91.76,
+          "scoreB": 100.62
         },
         {
           "year": 2023,
-          "week": 13,
+          "week": 1,
           "phase": "regular",
-          "scoreA": 116.22,
-          "scoreB": 75.18
+          "scoreA": 92.8,
+          "scoreB": 78.94
+        },
+        {
+          "year": 2022,
+          "week": 9,
+          "phase": "regular",
+          "scoreA": 70.8,
+          "scoreB": 69.9
         }
       ],
       "biggestWin": {
-        "year": 2025,
-        "week": 15,
-        "phase": "playoffs",
-        "margin": 57.7,
+        "year": 2020,
+        "week": 6,
+        "phase": "regular",
+        "margin": 71.96,
         "winnerId": "daniel",
-        "scoreA": 154.75,
-        "scoreB": 97.05
+        "scoreA": 120.7,
+        "scoreB": 48.74
       }
     },
     {
       "id": "daniel::greg",
       "ownerA": "daniel",
       "ownerB": "greg",
-      "winsA": 14,
-      "winsB": 5,
+      "winsA": 12,
+      "winsB": 7,
       "ties": 0,
-      "pointsA": 1894.94,
-      "pointsB": 1742.81,
+      "pointsA": 1889.03,
+      "pointsB": 1753.09,
       "games": 19,
       "meetings": [
         {
           "year": 2025,
+          "week": 11,
+          "phase": "regular",
+          "scoreA": 85.75,
+          "scoreB": 114.15
+        },
+        {
+          "year": 2024,
+          "week": 16,
+          "phase": "playoffs",
+          "scoreA": 162.18,
+          "scoreB": 109
+        },
+        {
+          "year": 2024,
           "week": 13,
           "phase": "regular",
-          "scoreA": 114.05,
-          "scoreB": 85.5
+          "scoreA": 118.66,
+          "scoreB": 124.54
         },
         {
-          "year": 2025,
+          "year": 2024,
           "week": 2,
           "phase": "regular",
-          "scoreA": 89.35,
-          "scoreB": 81.75
-        },
-        {
-          "year": 2024,
-          "week": 12,
-          "phase": "regular",
-          "scoreA": 134.62,
-          "scoreB": 157.46
-        },
-        {
-          "year": 2024,
-          "week": 1,
-          "phase": "regular",
-          "scoreA": 122,
-          "scoreB": 118.64
+          "scoreA": 87.52,
+          "scoreB": 105.94
         },
         {
           "year": 2023,
@@ -3943,13 +3829,13 @@
         }
       ],
       "biggestWin": {
-        "year": 2022,
-        "week": 14,
-        "phase": "regular",
-        "margin": 49.24,
+        "year": 2024,
+        "week": 16,
+        "phase": "playoffs",
+        "margin": 53.18,
         "winnerId": "daniel",
-        "scoreA": 120.42,
-        "scoreB": 71.18
+        "scoreA": 162.18,
+        "scoreB": 109
       }
     },
     {
@@ -4206,6 +4092,198 @@
         "winnerId": "peter",
         "scoreA": 153.5,
         "scoreB": 87.7
+      }
+    },
+    {
+      "id": "daniel::peter",
+      "ownerA": "daniel",
+      "ownerB": "peter",
+      "winsA": 6,
+      "winsB": 12,
+      "ties": 0,
+      "pointsA": 1606.44,
+      "pointsB": 1726.47,
+      "games": 18,
+      "meetings": [
+        {
+          "year": 2025,
+          "week": 13,
+          "phase": "regular",
+          "scoreA": 124.05,
+          "scoreB": 115.55
+        },
+        {
+          "year": 2025,
+          "week": 2,
+          "phase": "regular",
+          "scoreA": 147.75,
+          "scoreB": 123.5
+        },
+        {
+          "year": 2024,
+          "week": 7,
+          "phase": "regular",
+          "scoreA": 81.74,
+          "scoreB": 147.34
+        },
+        {
+          "year": 2023,
+          "week": 5,
+          "phase": "regular",
+          "scoreA": 112.12,
+          "scoreB": 62.46
+        },
+        {
+          "year": 2022,
+          "week": 16,
+          "phase": "playoffs",
+          "scoreA": 97.84,
+          "scoreB": 64.72
+        },
+        {
+          "year": 2022,
+          "week": 5,
+          "phase": "regular",
+          "scoreA": 101.96,
+          "scoreB": 84.56
+        }
+      ],
+      "biggestWin": {
+        "year": 2024,
+        "week": 7,
+        "phase": "regular",
+        "margin": 65.6,
+        "winnerId": "peter",
+        "scoreA": 81.74,
+        "scoreB": 147.34
+      }
+    },
+    {
+      "id": "daniel::david",
+      "ownerA": "daniel",
+      "ownerB": "david",
+      "winsA": 12,
+      "winsB": 6,
+      "ties": 0,
+      "pointsA": 1718.98,
+      "pointsB": 1608.54,
+      "games": 18,
+      "meetings": [
+        {
+          "year": 2025,
+          "week": 16,
+          "phase": "playoffs",
+          "scoreA": 98,
+          "scoreB": 66.95
+        },
+        {
+          "year": 2025,
+          "week": 9,
+          "phase": "regular",
+          "scoreA": 103.8,
+          "scoreB": 108.75
+        },
+        {
+          "year": 2024,
+          "week": 11,
+          "phase": "regular",
+          "scoreA": 98.94,
+          "scoreB": 94.74
+        },
+        {
+          "year": 2023,
+          "week": 15,
+          "phase": "playoffs",
+          "scoreA": 125.12,
+          "scoreB": 106.64
+        },
+        {
+          "year": 2023,
+          "week": 13,
+          "phase": "regular",
+          "scoreA": 116.22,
+          "scoreB": 75.18
+        },
+        {
+          "year": 2023,
+          "week": 8,
+          "phase": "regular",
+          "scoreA": 110.46,
+          "scoreB": 80.38
+        }
+      ],
+      "biggestWin": {
+        "year": 2022,
+        "week": 4,
+        "phase": "regular",
+        "margin": 47.02,
+        "winnerId": "daniel",
+        "scoreA": 114.4,
+        "scoreB": 67.38
+      }
+    },
+    {
+      "id": "daniel::peter-ho",
+      "ownerA": "daniel",
+      "ownerB": "peter-ho",
+      "winsA": 6,
+      "winsB": 12,
+      "ties": 0,
+      "pointsA": 1616.78,
+      "pointsB": 1678.94,
+      "games": 18,
+      "meetings": [
+        {
+          "year": 2025,
+          "week": 10,
+          "phase": "regular",
+          "scoreA": 134.5,
+          "scoreB": 135.1
+        },
+        {
+          "year": 2024,
+          "week": 9,
+          "phase": "regular",
+          "scoreA": 108.64,
+          "scoreB": 129.3
+        },
+        {
+          "year": 2023,
+          "week": 14,
+          "phase": "regular",
+          "scoreA": 80.28,
+          "scoreB": 103.34
+        },
+        {
+          "year": 2023,
+          "week": 6,
+          "phase": "regular",
+          "scoreA": 123.1,
+          "scoreB": 97.74
+        },
+        {
+          "year": 2022,
+          "week": 1,
+          "phase": "regular",
+          "scoreA": 119.68,
+          "scoreB": 50.26
+        },
+        {
+          "year": 2021,
+          "week": 13,
+          "phase": "regular",
+          "scoreA": 85.5,
+          "scoreB": 92.72
+        }
+      ],
+      "biggestWin": {
+        "year": 2022,
+        "week": 1,
+        "phase": "regular",
+        "margin": 69.42,
+        "winnerId": "daniel",
+        "scoreA": 119.68,
+        "scoreB": 50.26
       }
     },
     {
@@ -4529,70 +4607,6 @@
       }
     },
     {
-      "id": "daniel::michael",
-      "ownerA": "daniel",
-      "ownerB": "michael",
-      "winsA": 11,
-      "winsB": 6,
-      "ties": 0,
-      "pointsA": 1642.69,
-      "pointsB": 1470.91,
-      "games": 17,
-      "meetings": [
-        {
-          "year": 2025,
-          "week": 4,
-          "phase": "regular",
-          "scoreA": 141.35,
-          "scoreB": 118.35
-        },
-        {
-          "year": 2024,
-          "week": 5,
-          "phase": "regular",
-          "scoreA": 163.36,
-          "scoreB": 116.14
-        },
-        {
-          "year": 2023,
-          "week": 1,
-          "phase": "regular",
-          "scoreA": 92.8,
-          "scoreB": 78.94
-        },
-        {
-          "year": 2022,
-          "week": 9,
-          "phase": "regular",
-          "scoreA": 70.8,
-          "scoreB": 69.9
-        },
-        {
-          "year": 2021,
-          "week": 17,
-          "phase": "playoffs",
-          "scoreA": 84.82,
-          "scoreB": 91.6
-        },
-        {
-          "year": 2021,
-          "week": 6,
-          "phase": "regular",
-          "scoreA": 68.4,
-          "scoreB": 137.38
-        }
-      ],
-      "biggestWin": {
-        "year": 2020,
-        "week": 6,
-        "phase": "regular",
-        "margin": 71.96,
-        "winnerId": "daniel",
-        "scoreA": 120.7,
-        "scoreB": 48.74
-      }
-    },
-    {
       "id": "greg::peter-ho",
       "ownerA": "greg",
       "ownerB": "peter-ho",
@@ -4782,70 +4796,6 @@
         "winnerId": "michael",
         "scoreA": 36.76,
         "scoreB": 116.12
-      }
-    },
-    {
-      "id": "daniel::peter",
-      "ownerA": "daniel",
-      "ownerB": "peter",
-      "winsA": 4,
-      "winsB": 13,
-      "ties": 0,
-      "pointsA": 1468.19,
-      "pointsB": 1611.99,
-      "games": 17,
-      "meetings": [
-        {
-          "year": 2025,
-          "week": 5,
-          "phase": "regular",
-          "scoreA": 96.85,
-          "scoreB": 142.55
-        },
-        {
-          "year": 2024,
-          "week": 8,
-          "phase": "regular",
-          "scoreA": 118.44,
-          "scoreB": 129.36
-        },
-        {
-          "year": 2023,
-          "week": 5,
-          "phase": "regular",
-          "scoreA": 112.12,
-          "scoreB": 62.46
-        },
-        {
-          "year": 2022,
-          "week": 16,
-          "phase": "playoffs",
-          "scoreA": 97.84,
-          "scoreB": 64.72
-        },
-        {
-          "year": 2022,
-          "week": 5,
-          "phase": "regular",
-          "scoreA": 101.96,
-          "scoreB": 84.56
-        },
-        {
-          "year": 2021,
-          "week": 5,
-          "phase": "regular",
-          "scoreA": 126.16,
-          "scoreB": 74.32
-        }
-      ],
-      "biggestWin": {
-        "year": 2021,
-        "week": 5,
-        "phase": "regular",
-        "margin": 51.84,
-        "winnerId": "daniel",
-        "scoreA": 126.16,
-        "scoreB": 74.32
       }
     },
     {
@@ -5169,70 +5119,6 @@
       }
     },
     {
-      "id": "alessandro::daniel",
-      "ownerA": "alessandro",
-      "ownerB": "daniel",
-      "winsA": 11,
-      "winsB": 5,
-      "ties": 0,
-      "pointsA": 1589.38,
-      "pointsB": 1358.94,
-      "games": 16,
-      "meetings": [
-        {
-          "year": 2024,
-          "week": 11,
-          "phase": "regular",
-          "scoreA": 107.78,
-          "scoreB": 121.54
-        },
-        {
-          "year": 2023,
-          "week": 7,
-          "phase": "regular",
-          "scoreA": 121.3,
-          "scoreB": 108.06
-        },
-        {
-          "year": 2022,
-          "week": 11,
-          "phase": "regular",
-          "scoreA": 108.34,
-          "scoreB": 79.58
-        },
-        {
-          "year": 2021,
-          "week": 16,
-          "phase": "playoffs",
-          "scoreA": 108.96,
-          "scoreB": 88.68
-        },
-        {
-          "year": 2021,
-          "week": 10,
-          "phase": "regular",
-          "scoreA": 87.04,
-          "scoreB": 59.36
-        },
-        {
-          "year": 2020,
-          "week": 10,
-          "phase": "regular",
-          "scoreA": 61.92,
-          "scoreB": 69.08
-        }
-      ],
-      "biggestWin": {
-        "year": 2013,
-        "week": 15,
-        "phase": "playoffs",
-        "margin": 97.28,
-        "winnerId": "alessandro",
-        "scoreA": 161.54,
-        "scoreB": 64.26
-      }
-    },
-    {
       "id": "alessandro::peter-ho",
       "ownerA": "alessandro",
       "ownerB": "peter-ho",
@@ -5294,6 +5180,70 @@
         "winnerId": "peter-ho",
         "scoreA": 52.86,
         "scoreB": 146.66
+      }
+    },
+    {
+      "id": "alessandro::daniel",
+      "ownerA": "alessandro",
+      "ownerB": "daniel",
+      "winsA": 12,
+      "winsB": 4,
+      "ties": 0,
+      "pointsA": 1591.74,
+      "pointsB": 1332.48,
+      "games": 16,
+      "meetings": [
+        {
+          "year": 2024,
+          "week": 4,
+          "phase": "regular",
+          "scoreA": 110.14,
+          "scoreB": 95.08
+        },
+        {
+          "year": 2023,
+          "week": 7,
+          "phase": "regular",
+          "scoreA": 121.3,
+          "scoreB": 108.06
+        },
+        {
+          "year": 2022,
+          "week": 11,
+          "phase": "regular",
+          "scoreA": 108.34,
+          "scoreB": 79.58
+        },
+        {
+          "year": 2021,
+          "week": 16,
+          "phase": "playoffs",
+          "scoreA": 108.96,
+          "scoreB": 88.68
+        },
+        {
+          "year": 2021,
+          "week": 10,
+          "phase": "regular",
+          "scoreA": 87.04,
+          "scoreB": 59.36
+        },
+        {
+          "year": 2020,
+          "week": 10,
+          "phase": "regular",
+          "scoreA": 61.92,
+          "scoreB": 69.08
+        }
+      ],
+      "biggestWin": {
+        "year": 2013,
+        "week": 15,
+        "phase": "playoffs",
+        "margin": 97.28,
+        "winnerId": "alessandro",
+        "scoreA": 161.54,
+        "scoreB": 64.26
       }
     },
     {
@@ -5681,6 +5631,70 @@
       }
     },
     {
+      "id": "daniel::neil",
+      "ownerA": "daniel",
+      "ownerB": "neil",
+      "winsA": 6,
+      "winsB": 9,
+      "ties": 0,
+      "pointsA": 1426.22,
+      "pointsB": 1486.58,
+      "games": 15,
+      "meetings": [
+        {
+          "year": 2025,
+          "week": 12,
+          "phase": "regular",
+          "scoreA": 81.7,
+          "scoreB": 126.8
+        },
+        {
+          "year": 2025,
+          "week": 1,
+          "phase": "regular",
+          "scoreA": 100,
+          "scoreB": 77.5
+        },
+        {
+          "year": 2024,
+          "week": 17,
+          "phase": "playoffs",
+          "scoreA": 115.28,
+          "scoreB": 112.96
+        },
+        {
+          "year": 2024,
+          "week": 10,
+          "phase": "regular",
+          "scoreA": 78.62,
+          "scoreB": 97.84
+        },
+        {
+          "year": 2023,
+          "week": 16,
+          "phase": "playoffs",
+          "scoreA": 126.04,
+          "scoreB": 68.02
+        },
+        {
+          "year": 2023,
+          "week": 2,
+          "phase": "regular",
+          "scoreA": 93.38,
+          "scoreB": 130.16
+        }
+      ],
+      "biggestWin": {
+        "year": 2023,
+        "week": 16,
+        "phase": "playoffs",
+        "margin": 58.02,
+        "winnerId": "daniel",
+        "scoreA": 126.04,
+        "scoreB": 68.02
+      }
+    },
+    {
       "id": "neil::peter-ho",
       "ownerA": "neil",
       "ownerB": "peter-ho",
@@ -5873,70 +5887,6 @@
       }
     },
     {
-      "id": "daniel::neil",
-      "ownerA": "daniel",
-      "ownerB": "neil",
-      "winsA": 6,
-      "winsB": 8,
-      "ties": 0,
-      "pointsA": 1381.92,
-      "pointsB": 1403.29,
-      "games": 14,
-      "meetings": [
-        {
-          "year": 2025,
-          "week": 16,
-          "phase": "playoffs",
-          "scoreA": 130.55,
-          "scoreB": 120.6
-        },
-        {
-          "year": 2025,
-          "week": 6,
-          "phase": "regular",
-          "scoreA": 85.65,
-          "scoreB": 116.35
-        },
-        {
-          "year": 2024,
-          "week": 7,
-          "phase": "regular",
-          "scoreA": 115.1,
-          "scoreB": 94.86
-        },
-        {
-          "year": 2023,
-          "week": 16,
-          "phase": "playoffs",
-          "scoreA": 126.04,
-          "scoreB": 68.02
-        },
-        {
-          "year": 2023,
-          "week": 2,
-          "phase": "regular",
-          "scoreA": 93.38,
-          "scoreB": 130.16
-        },
-        {
-          "year": 2022,
-          "week": 10,
-          "phase": "regular",
-          "scoreA": 88.72,
-          "scoreB": 68.5
-        }
-      ],
-      "biggestWin": {
-        "year": 2023,
-        "week": 16,
-        "phase": "playoffs",
-        "margin": 58.02,
-        "winnerId": "daniel",
-        "scoreA": 126.04,
-        "scoreB": 68.02
-      }
-    },
-    {
       "id": "michael::ryan",
       "ownerA": "michael",
       "ownerB": "ryan",
@@ -6001,67 +5951,67 @@
       }
     },
     {
-      "id": "alex::daniel",
-      "ownerA": "alex",
-      "ownerB": "daniel",
-      "winsA": 7,
-      "winsB": 6,
+      "id": "daniel::ryan",
+      "ownerA": "daniel",
+      "ownerB": "ryan",
+      "winsA": 3,
+      "winsB": 11,
       "ties": 0,
-      "pointsA": 1386.14,
-      "pointsB": 1292.77,
-      "games": 13,
+      "pointsA": 1244.99,
+      "pointsB": 1420.79,
+      "games": 14,
       "meetings": [
         {
           "year": 2025,
-          "week": 9,
+          "week": 17,
+          "phase": "playoffs",
+          "scoreA": 77.6,
+          "scoreB": 98.1
+        },
+        {
+          "year": 2025,
+          "week": 5,
           "phase": "regular",
-          "scoreA": 162.4,
-          "scoreB": 109.25
+          "scoreA": 141.65,
+          "scoreB": 87.55
         },
         {
           "year": 2024,
-          "week": 13,
+          "week": 5,
           "phase": "regular",
-          "scoreA": 118.6,
-          "scoreB": 135.06
-        },
-        {
-          "year": 2024,
-          "week": 2,
-          "phase": "regular",
-          "scoreA": 98.96,
-          "scoreB": 117.14
+          "scoreA": 133.38,
+          "scoreB": 125.76
         },
         {
           "year": 2023,
-          "week": 9,
+          "week": 11,
           "phase": "regular",
-          "scoreA": 109.88,
-          "scoreB": 85.98
+          "scoreA": 55,
+          "scoreB": 65.04
         },
         {
           "year": 2022,
-          "week": 7,
+          "week": 12,
           "phase": "regular",
-          "scoreA": 121.82,
-          "scoreB": 111.9
+          "scoreA": 99.18,
+          "scoreB": 126.62
         },
         {
-          "year": 2021,
-          "week": 4,
+          "year": 2022,
+          "week": 3,
           "phase": "regular",
-          "scoreA": 95.92,
-          "scoreB": 101.32
+          "scoreA": 65.44,
+          "scoreB": 81.8
         }
       ],
       "biggestWin": {
-        "year": 2018,
-        "week": 4,
+        "year": 2025,
+        "week": 5,
         "phase": "regular",
-        "margin": 59.44,
-        "winnerId": "alex",
-        "scoreA": 132.8,
-        "scoreB": 73.36
+        "margin": 54.1,
+        "winnerId": "daniel",
+        "scoreA": 141.65,
+        "scoreB": 87.55
       }
     },
     {
@@ -6193,6 +6143,70 @@
       }
     },
     {
+      "id": "alex::daniel",
+      "ownerA": "alex",
+      "ownerB": "daniel",
+      "winsA": 9,
+      "winsB": 4,
+      "ties": 0,
+      "pointsA": 1356.4,
+      "pointsB": 1169.73,
+      "games": 13,
+      "meetings": [
+        {
+          "year": 2025,
+          "week": 4,
+          "phase": "regular",
+          "scoreA": 122.6,
+          "scoreB": 100.75
+        },
+        {
+          "year": 2024,
+          "week": 12,
+          "phase": "regular",
+          "scoreA": 117.58,
+          "scoreB": 46.4
+        },
+        {
+          "year": 2024,
+          "week": 1,
+          "phase": "regular",
+          "scoreA": 110.04,
+          "scoreB": 91.26
+        },
+        {
+          "year": 2023,
+          "week": 9,
+          "phase": "regular",
+          "scoreA": 109.88,
+          "scoreB": 85.98
+        },
+        {
+          "year": 2022,
+          "week": 7,
+          "phase": "regular",
+          "scoreA": 121.82,
+          "scoreB": 111.9
+        },
+        {
+          "year": 2021,
+          "week": 4,
+          "phase": "regular",
+          "scoreA": 95.92,
+          "scoreB": 101.32
+        }
+      ],
+      "biggestWin": {
+        "year": 2024,
+        "week": 12,
+        "phase": "regular",
+        "margin": 71.18,
+        "winnerId": "alex",
+        "scoreA": 117.58,
+        "scoreB": 46.4
+      }
+    },
+    {
       "id": "david::greg",
       "ownerA": "david",
       "ownerB": "greg",
@@ -6318,70 +6332,6 @@
         "winnerId": "ryan",
         "scoreA": 62.7,
         "scoreB": 113.3
-      }
-    },
-    {
-      "id": "daniel::ryan",
-      "ownerA": "daniel",
-      "ownerB": "ryan",
-      "winsA": 3,
-      "winsB": 10,
-      "ties": 0,
-      "pointsA": 1155.06,
-      "pointsB": 1353.01,
-      "games": 13,
-      "meetings": [
-        {
-          "year": 2025,
-          "week": 8,
-          "phase": "regular",
-          "scoreA": 130.7,
-          "scoreB": 116.95
-        },
-        {
-          "year": 2024,
-          "week": 10,
-          "phase": "regular",
-          "scoreA": 132,
-          "scoreB": 126.68
-        },
-        {
-          "year": 2023,
-          "week": 11,
-          "phase": "regular",
-          "scoreA": 55,
-          "scoreB": 65.04
-        },
-        {
-          "year": 2022,
-          "week": 12,
-          "phase": "regular",
-          "scoreA": 99.18,
-          "scoreB": 126.62
-        },
-        {
-          "year": 2022,
-          "week": 3,
-          "phase": "regular",
-          "scoreA": 65.44,
-          "scoreB": 81.8
-        },
-        {
-          "year": 2021,
-          "week": 9,
-          "phase": "regular",
-          "scoreA": 74.8,
-          "scoreB": 84.56
-        }
-      ],
-      "biggestWin": {
-        "year": 2016,
-        "week": 9,
-        "phase": "regular",
-        "margin": 49.76,
-        "winnerId": "ryan",
-        "scoreA": 70.38,
-        "scoreB": 120.14
       }
     },
     {
@@ -7950,56 +7900,6 @@
       }
     },
     {
-      "id": "mike-c::neil",
-      "ownerA": "mike-c",
-      "ownerB": "neil",
-      "winsA": 2,
-      "winsB": 2,
-      "ties": 0,
-      "pointsA": 375.6,
-      "pointsB": 415.1,
-      "games": 4,
-      "meetings": [
-        {
-          "year": 2025,
-          "week": 12,
-          "phase": "regular",
-          "scoreA": 81.7,
-          "scoreB": 126.8
-        },
-        {
-          "year": 2025,
-          "week": 1,
-          "phase": "regular",
-          "scoreA": 100,
-          "scoreB": 77.5
-        },
-        {
-          "year": 2024,
-          "week": 17,
-          "phase": "playoffs",
-          "scoreA": 115.28,
-          "scoreB": 112.96
-        },
-        {
-          "year": 2024,
-          "week": 10,
-          "phase": "regular",
-          "scoreA": 78.62,
-          "scoreB": 97.84
-        }
-      ],
-      "biggestWin": {
-        "year": 2025,
-        "week": 12,
-        "phase": "regular",
-        "margin": 45.1,
-        "winnerId": "neil",
-        "scoreA": 81.7,
-        "scoreB": 126.8
-      }
-    },
-    {
       "id": "daniel::raed",
       "ownerA": "daniel",
       "ownerB": "raed",
@@ -8303,100 +8203,150 @@
       "id": "greg::mike-c",
       "ownerA": "greg",
       "ownerB": "mike-c",
-      "winsA": 3,
-      "winsB": 1,
+      "winsA": 1,
+      "winsB": 3,
       "ties": 0,
-      "pointsA": 453.63,
-      "pointsB": 454.11,
+      "pointsA": 443.35,
+      "pointsB": 460.02,
       "games": 4,
       "meetings": [
         {
           "year": 2025,
-          "week": 11,
-          "phase": "regular",
-          "scoreA": 114.15,
-          "scoreB": 85.75
-        },
-        {
-          "year": 2024,
-          "week": 16,
-          "phase": "playoffs",
-          "scoreA": 109,
-          "scoreB": 162.18
-        },
-        {
-          "year": 2024,
           "week": 13,
           "phase": "regular",
-          "scoreA": 124.54,
-          "scoreB": 118.66
+          "scoreA": 85.5,
+          "scoreB": 114.05
+        },
+        {
+          "year": 2025,
+          "week": 2,
+          "phase": "regular",
+          "scoreA": 81.75,
+          "scoreB": 89.35
         },
         {
           "year": 2024,
-          "week": 2,
+          "week": 12,
           "phase": "regular",
-          "scoreA": 105.94,
-          "scoreB": 87.52
+          "scoreA": 157.46,
+          "scoreB": 134.62
+        },
+        {
+          "year": 2024,
+          "week": 1,
+          "phase": "regular",
+          "scoreA": 118.64,
+          "scoreB": 122
         }
       ],
       "biggestWin": {
-        "year": 2024,
-        "week": 16,
-        "phase": "playoffs",
-        "margin": 53.18,
+        "year": 2025,
+        "week": 13,
+        "phase": "regular",
+        "margin": 28.55,
         "winnerId": "mike-c",
-        "scoreA": 109,
-        "scoreB": 162.18
+        "scoreA": 85.5,
+        "scoreB": 114.05
       }
     },
     {
-      "id": "michael::mike-c",
-      "ownerA": "michael",
-      "ownerB": "mike-c",
+      "id": "mike-c::peter-ho",
+      "ownerA": "mike-c",
+      "ownerB": "peter-ho",
       "winsA": 3,
       "winsB": 1,
       "ties": 0,
-      "pointsA": 420.91,
-      "pointsB": 414.9,
+      "pointsA": 439.19,
+      "pointsB": 420.96,
       "games": 4,
       "meetings": [
         {
           "year": 2025,
           "week": 14,
           "phase": "regular",
-          "scoreA": 109.3,
-          "scoreB": 95.6
+          "scoreA": 132.5,
+          "scoreB": 99.2
         },
         {
           "year": 2025,
           "week": 3,
           "phase": "regular",
-          "scoreA": 140.15,
-          "scoreB": 112.7
+          "scoreA": 79.65,
+          "scoreB": 101.3
         },
         {
           "year": 2024,
-          "week": 15,
+          "week": 16,
           "phase": "playoffs",
-          "scoreA": 70.84,
-          "scoreB": 114.84
+          "scoreA": 111.98,
+          "scoreB": 107.86
         },
         {
           "year": 2024,
-          "week": 8,
+          "week": 4,
           "phase": "regular",
-          "scoreA": 100.62,
-          "scoreB": 91.76
+          "scoreA": 115.06,
+          "scoreB": 112.6
         }
       ],
       "biggestWin": {
-        "year": 2024,
+        "year": 2025,
+        "week": 14,
+        "phase": "regular",
+        "margin": 33.3,
+        "winnerId": "mike-c",
+        "scoreA": 132.5,
+        "scoreB": 99.2
+      }
+    },
+    {
+      "id": "david::mike-c",
+      "ownerA": "david",
+      "ownerB": "mike-c",
+      "winsA": 1,
+      "winsB": 3,
+      "ties": 0,
+      "pointsA": 460.79,
+      "pointsB": 528.57,
+      "games": 4,
+      "meetings": [
+        {
+          "year": 2025,
+          "week": 15,
+          "phase": "playoffs",
+          "scoreA": 97.05,
+          "scoreB": 154.75
+        },
+        {
+          "year": 2025,
+          "week": 10,
+          "phase": "regular",
+          "scoreA": 112.7,
+          "scoreB": 113.1
+        },
+        {
+          "year": 2024,
+          "week": 17,
+          "phase": "playoffs",
+          "scoreA": 121.48,
+          "scoreB": 145
+        },
+        {
+          "year": 2024,
+          "week": 6,
+          "phase": "regular",
+          "scoreA": 129.56,
+          "scoreB": 115.72
+        }
+      ],
+      "biggestWin": {
+        "year": 2025,
         "week": 15,
         "phase": "playoffs",
-        "margin": 44,
+        "margin": 57.7,
         "winnerId": "mike-c",
-        "scoreA": 70.84,
-        "scoreB": 114.84
+        "scoreA": 97.05,
+        "scoreB": 154.75
       }
     },
     {
@@ -8665,132 +8615,89 @@
       }
     },
     {
-      "id": "mike-c::ryan",
-      "ownerA": "mike-c",
-      "ownerB": "ryan",
-      "winsA": 2,
-      "winsB": 1,
-      "ties": 0,
-      "pointsA": 352.63,
-      "pointsB": 311.41,
-      "games": 3,
-      "meetings": [
-        {
-          "year": 2025,
-          "week": 17,
-          "phase": "playoffs",
-          "scoreA": 77.6,
-          "scoreB": 98.1
-        },
-        {
-          "year": 2025,
-          "week": 5,
-          "phase": "regular",
-          "scoreA": 141.65,
-          "scoreB": 87.55
-        },
-        {
-          "year": 2024,
-          "week": 5,
-          "phase": "regular",
-          "scoreA": 133.38,
-          "scoreB": 125.76
-        }
-      ],
-      "biggestWin": {
-        "year": 2025,
-        "week": 5,
-        "phase": "regular",
-        "margin": 54.1,
-        "winnerId": "mike-c",
-        "scoreA": 141.65,
-        "scoreB": 87.55
-      }
-    },
-    {
-      "id": "mike-c::peter",
-      "ownerA": "mike-c",
-      "ownerB": "peter",
-      "winsA": 2,
-      "winsB": 1,
-      "ties": 0,
-      "pointsA": 353.54,
-      "pointsB": 386.39,
-      "games": 3,
-      "meetings": [
-        {
-          "year": 2025,
-          "week": 13,
-          "phase": "regular",
-          "scoreA": 124.05,
-          "scoreB": 115.55
-        },
-        {
-          "year": 2025,
-          "week": 2,
-          "phase": "regular",
-          "scoreA": 147.75,
-          "scoreB": 123.5
-        },
-        {
-          "year": 2024,
-          "week": 7,
-          "phase": "regular",
-          "scoreA": 81.74,
-          "scoreB": 147.34
-        }
-      ],
-      "biggestWin": {
-        "year": 2024,
-        "week": 7,
-        "phase": "regular",
-        "margin": 65.6,
-        "winnerId": "peter",
-        "scoreA": 81.74,
-        "scoreB": 147.34
-      }
-    },
-    {
-      "id": "david::mike-c",
-      "ownerA": "david",
+      "id": "alex::mike-c",
+      "ownerA": "alex",
       "ownerB": "mike-c",
       "winsA": 1,
       "winsB": 2,
       "ties": 0,
-      "pointsA": 270.44,
-      "pointsB": 300.74,
+      "pointsA": 379.96,
+      "pointsB": 361.45,
+      "games": 3,
+      "meetings": [
+        {
+          "year": 2025,
+          "week": 9,
+          "phase": "regular",
+          "scoreA": 162.4,
+          "scoreB": 109.25
+        },
+        {
+          "year": 2024,
+          "week": 13,
+          "phase": "regular",
+          "scoreA": 118.6,
+          "scoreB": 135.06
+        },
+        {
+          "year": 2024,
+          "week": 2,
+          "phase": "regular",
+          "scoreA": 98.96,
+          "scoreB": 117.14
+        }
+      ],
+      "biggestWin": {
+        "year": 2025,
+        "week": 9,
+        "phase": "regular",
+        "margin": 53.15,
+        "winnerId": "alex",
+        "scoreA": 162.4,
+        "scoreB": 109.25
+      }
+    },
+    {
+      "id": "mike-c::neil",
+      "ownerA": "mike-c",
+      "ownerB": "neil",
+      "winsA": 2,
+      "winsB": 1,
+      "ties": 0,
+      "pointsA": 331.3,
+      "pointsB": 331.81,
       "games": 3,
       "meetings": [
         {
           "year": 2025,
           "week": 16,
           "phase": "playoffs",
-          "scoreA": 66.95,
-          "scoreB": 98
+          "scoreA": 130.55,
+          "scoreB": 120.6
         },
         {
           "year": 2025,
-          "week": 9,
+          "week": 6,
           "phase": "regular",
-          "scoreA": 108.75,
-          "scoreB": 103.8
+          "scoreA": 85.65,
+          "scoreB": 116.35
         },
         {
           "year": 2024,
-          "week": 11,
+          "week": 7,
           "phase": "regular",
-          "scoreA": 94.74,
-          "scoreB": 98.94
+          "scoreA": 115.1,
+          "scoreB": 94.86
         }
       ],
       "biggestWin": {
         "year": 2025,
-        "week": 16,
-        "phase": "playoffs",
-        "margin": 31.05,
-        "winnerId": "mike-c",
-        "scoreA": 66.95,
-        "scoreB": 98
+        "week": 6,
+        "phase": "regular",
+        "margin": 30.7,
+        "winnerId": "neil",
+        "scoreA": 85.65,
+        "scoreB": 116.35
       }
     },
     {
@@ -9052,79 +8959,36 @@
       }
     },
     {
-      "id": "alex::mike-c",
-      "ownerA": "alex",
-      "ownerB": "mike-c",
-      "winsA": 3,
-      "winsB": 0,
-      "ties": 0,
-      "pointsA": 350.22,
-      "pointsB": 238.41,
-      "games": 3,
-      "meetings": [
-        {
-          "year": 2025,
-          "week": 4,
-          "phase": "regular",
-          "scoreA": 122.6,
-          "scoreB": 100.75
-        },
-        {
-          "year": 2024,
-          "week": 12,
-          "phase": "regular",
-          "scoreA": 117.58,
-          "scoreB": 46.4
-        },
-        {
-          "year": 2024,
-          "week": 1,
-          "phase": "regular",
-          "scoreA": 110.04,
-          "scoreB": 91.26
-        }
-      ],
-      "biggestWin": {
-        "year": 2024,
-        "week": 12,
-        "phase": "regular",
-        "margin": 71.18,
-        "winnerId": "alex",
-        "scoreA": 117.58,
-        "scoreB": 46.4
-      }
-    },
-    {
       "id": "daniel::mike-c",
       "ownerA": "daniel",
       "ownerB": "mike-c",
-      "winsA": 3,
-      "winsB": 0,
+      "winsA": 0,
+      "winsB": 3,
       "ties": 0,
-      "pointsA": 374.87,
-      "pointsB": 278.82,
+      "pointsA": 278.82,
+      "pointsB": 374.87,
       "games": 3,
       "meetings": [
         {
           "year": 2025,
           "week": 7,
           "phase": "regular",
-          "scoreA": 108.45,
-          "scoreB": 85.6
+          "scoreA": 85.6,
+          "scoreB": 108.45
         },
         {
           "year": 2024,
           "week": 14,
           "phase": "regular",
-          "scoreA": 124.84,
-          "scoreB": 70.36
+          "scoreA": 70.36,
+          "scoreB": 124.84
         },
         {
           "year": 2024,
           "week": 3,
           "phase": "regular",
-          "scoreA": 141.58,
-          "scoreB": 122.86
+          "scoreA": 122.86,
+          "scoreB": 141.58
         }
       ],
       "biggestWin": {
@@ -9132,9 +8996,52 @@
         "week": 14,
         "phase": "regular",
         "margin": 54.48,
-        "winnerId": "daniel",
-        "scoreA": 124.84,
-        "scoreB": 70.36
+        "winnerId": "mike-c",
+        "scoreA": 70.36,
+        "scoreB": 124.84
+      }
+    },
+    {
+      "id": "kevin::mike-c",
+      "ownerA": "kevin",
+      "ownerB": "mike-c",
+      "winsA": 3,
+      "winsB": 0,
+      "ties": 0,
+      "pointsA": 355.16,
+      "pointsB": 288.87,
+      "games": 3,
+      "meetings": [
+        {
+          "year": 2025,
+          "week": 12,
+          "phase": "regular",
+          "scoreA": 130.25,
+          "scoreB": 85.15
+        },
+        {
+          "year": 2025,
+          "week": 1,
+          "phase": "regular",
+          "scoreA": 101.75,
+          "scoreB": 91.9
+        },
+        {
+          "year": 2024,
+          "week": 9,
+          "phase": "regular",
+          "scoreA": 123.16,
+          "scoreB": 111.82
+        }
+      ],
+      "biggestWin": {
+        "year": 2025,
+        "week": 12,
+        "phase": "regular",
+        "margin": 45.1,
+        "winnerId": "kevin",
+        "scoreA": 130.25,
+        "scoreB": 85.15
       }
     },
     {
@@ -9282,42 +9189,6 @@
       }
     },
     {
-      "id": "kevin::mike-c",
-      "ownerA": "kevin",
-      "ownerB": "mike-c",
-      "winsA": 1,
-      "winsB": 1,
-      "ties": 0,
-      "pointsA": 211.81,
-      "pointsB": 247.27,
-      "games": 2,
-      "meetings": [
-        {
-          "year": 2025,
-          "week": 6,
-          "phase": "regular",
-          "scoreA": 97.85,
-          "scoreB": 137.95
-        },
-        {
-          "year": 2024,
-          "week": 6,
-          "phase": "regular",
-          "scoreA": 113.96,
-          "scoreB": 109.32
-        }
-      ],
-      "biggestWin": {
-        "year": 2025,
-        "week": 6,
-        "phase": "regular",
-        "margin": 40.1,
-        "winnerId": "mike-c",
-        "scoreA": 97.85,
-        "scoreB": 137.95
-      }
-    },
-    {
       "id": "david::marc",
       "ownerA": "david",
       "ownerB": "marc",
@@ -9462,39 +9333,111 @@
       }
     },
     {
-      "id": "mike-c::peter-ho",
-      "ownerA": "mike-c",
-      "ownerB": "peter-ho",
+      "id": "michael::mike-c",
+      "ownerA": "michael",
+      "ownerB": "mike-c",
       "winsA": 0,
       "winsB": 2,
       "ties": 0,
-      "pointsA": 243.14,
-      "pointsB": 264.4,
+      "pointsA": 234.49,
+      "pointsB": 304.71,
       "games": 2,
       "meetings": [
         {
           "year": 2025,
-          "week": 10,
+          "week": 4,
           "phase": "regular",
-          "scoreA": 134.5,
-          "scoreB": 135.1
+          "scoreA": 118.35,
+          "scoreB": 141.35
         },
         {
           "year": 2024,
-          "week": 9,
+          "week": 5,
           "phase": "regular",
-          "scoreA": 108.64,
-          "scoreB": 129.3
+          "scoreA": 116.14,
+          "scoreB": 163.36
         }
       ],
       "biggestWin": {
         "year": 2024,
-        "week": 9,
+        "week": 5,
         "phase": "regular",
-        "margin": 20.66,
-        "winnerId": "peter-ho",
-        "scoreA": 108.64,
-        "scoreB": 129.3
+        "margin": 47.22,
+        "winnerId": "mike-c",
+        "scoreA": 116.14,
+        "scoreB": 163.36
+      }
+    },
+    {
+      "id": "mike-c::peter",
+      "ownerA": "mike-c",
+      "ownerB": "peter",
+      "winsA": 0,
+      "winsB": 2,
+      "ties": 0,
+      "pointsA": 215.29,
+      "pointsB": 271.91,
+      "games": 2,
+      "meetings": [
+        {
+          "year": 2025,
+          "week": 5,
+          "phase": "regular",
+          "scoreA": 96.85,
+          "scoreB": 142.55
+        },
+        {
+          "year": 2024,
+          "week": 8,
+          "phase": "regular",
+          "scoreA": 118.44,
+          "scoreB": 129.36
+        }
+      ],
+      "biggestWin": {
+        "year": 2025,
+        "week": 5,
+        "phase": "regular",
+        "margin": 45.7,
+        "winnerId": "peter",
+        "scoreA": 96.85,
+        "scoreB": 142.55
+      }
+    },
+    {
+      "id": "mike-c::ryan",
+      "ownerA": "mike-c",
+      "ownerB": "ryan",
+      "winsA": 2,
+      "winsB": 0,
+      "ties": 0,
+      "pointsA": 262.7,
+      "pointsB": 243.63,
+      "games": 2,
+      "meetings": [
+        {
+          "year": 2025,
+          "week": 8,
+          "phase": "regular",
+          "scoreA": 130.7,
+          "scoreB": 116.95
+        },
+        {
+          "year": 2024,
+          "week": 10,
+          "phase": "regular",
+          "scoreA": 132,
+          "scoreB": 126.68
+        }
+      ],
+      "biggestWin": {
+        "year": 2025,
+        "week": 8,
+        "phase": "regular",
+        "margin": 13.75,
+        "winnerId": "mike-c",
+        "scoreA": 130.7,
+        "scoreB": 116.95
       }
     },
     {
@@ -9566,29 +9509,29 @@
       "id": "alessandro::mike-c",
       "ownerA": "alessandro",
       "ownerB": "mike-c",
-      "winsA": 1,
-      "winsB": 0,
+      "winsA": 0,
+      "winsB": 1,
       "ties": 0,
-      "pointsA": 110.14,
-      "pointsB": 95.08,
+      "pointsA": 107.78,
+      "pointsB": 121.54,
       "games": 1,
       "meetings": [
         {
           "year": 2024,
-          "week": 4,
+          "week": 11,
           "phase": "regular",
-          "scoreA": 110.14,
-          "scoreB": 95.08
+          "scoreA": 107.78,
+          "scoreB": 121.54
         }
       ],
       "biggestWin": {
         "year": 2024,
-        "week": 4,
+        "week": 11,
         "phase": "regular",
-        "margin": 15.06,
-        "winnerId": "alessandro",
-        "scoreA": 110.14,
-        "scoreB": 95.08
+        "margin": 13.76,
+        "winnerId": "mike-c",
+        "scoreA": 107.78,
+        "scoreB": 121.54
       }
     },
     {
@@ -9679,22 +9622,22 @@
       }
     },
     {
-      "id": "marc::mike-c",
-      "ownerA": "marc",
-      "ownerB": "mike-c",
-      "winsA": 1,
-      "winsB": 0,
+      "id": "daniel::marc",
+      "ownerA": "daniel",
+      "ownerB": "marc",
+      "winsA": 0,
+      "winsB": 1,
       "ties": 0,
-      "pointsA": 163.25,
-      "pointsB": 90.45,
+      "pointsA": 90.45,
+      "pointsB": 163.25,
       "games": 1,
       "meetings": [
         {
           "year": 2025,
           "week": 8,
           "phase": "regular",
-          "scoreA": 163.25,
-          "scoreB": 90.45
+          "scoreA": 90.45,
+          "scoreB": 163.25
         }
       ],
       "biggestWin": {
@@ -9703,8 +9646,8 @@
         "phase": "regular",
         "margin": 72.8,
         "winnerId": "marc",
-        "scoreA": 163.25,
-        "scoreB": 90.45
+        "scoreA": 90.45,
+        "scoreB": 163.25
       }
     },
     {
@@ -9737,22 +9680,22 @@
       }
     },
     {
-      "id": "daniel::marc",
-      "ownerA": "daniel",
-      "ownerB": "marc",
-      "winsA": 0,
-      "winsB": 1,
+      "id": "marc::mike-c",
+      "ownerA": "marc",
+      "ownerB": "mike-c",
+      "winsA": 1,
+      "winsB": 0,
       "ties": 0,
-      "pointsA": 90.95,
-      "pointsB": 92.9,
+      "pointsA": 92.9,
+      "pointsB": 90.95,
       "games": 1,
       "meetings": [
         {
           "year": 2025,
           "week": 11,
           "phase": "regular",
-          "scoreA": 90.95,
-          "scoreB": 92.9
+          "scoreA": 92.9,
+          "scoreB": 90.95
         }
       ],
       "biggestWin": {
@@ -9761,8 +9704,8 @@
         "phase": "regular",
         "margin": 1.95,
         "winnerId": "marc",
-        "scoreA": 90.95,
-        "scoreB": 92.9
+        "scoreA": 92.9,
+        "scoreB": 90.95
       }
     }
   ],
@@ -9795,7 +9738,6 @@
       "ownerB": "alessandro",
       "scoreA": 64.26,
       "scoreB": 161.54,
-      "source": "NFL.com",
       "margin": 97.28,
       "combined": 225.8,
       "winnerId": "alessandro",
@@ -9809,7 +9751,6 @@
       "ownerB": "greg",
       "scoreA": 94.56,
       "scoreB": 94.54,
-      "source": "NFL.com",
       "margin": 0.02,
       "combined": 189.1,
       "winnerId": "peter",
@@ -9823,7 +9764,6 @@
       "ownerB": "neil",
       "scoreA": 196.58,
       "scoreB": 160.98,
-      "source": "Sleeper",
       "margin": 35.6,
       "combined": 357.56,
       "winnerId": "peter-ho",
@@ -9872,18 +9812,5 @@
       "draftPosition": null,
       "year": 2024
     }
-  },
-  "methodology": {
-    "generatedAt": "2026-07-21T01:56:33.161Z",
-    "careerStats": "Regular season only",
-    "weeklyRecords": "Regular season and playoffs",
-    "rivalryStats": "Regular season and playoffs",
-    "nflSource": "https://github.com/PeteTheHeat/FF-Scraping/tree/master/output",
-    "sleeperSource": "https://api.sleeper.app/v1/league/1257419329926877184",
-    "identityNotes": [
-      "NFL.com standings alias Peter2 is normalized to Peter Ho.",
-      "NFL.com weekly team IDs keep Peter and Peter Ho separate.",
-      "Mike C joined in 2024 and Marc joined in 2025."
-    ]
   }
 }

@@ -13,7 +13,7 @@ const seasonByYear = new Map(
   data.seasons.map((season) => [season.year, season]),
 );
 
-test("combines all 13 seasons across NFL.com and Sleeper", () => {
+test("combines all 13 league seasons", () => {
   assert.equal(data.league.name, "Couch Quarterbacks");
   assert.equal(data.league.firstSeason, 2013);
   assert.equal(data.league.lastSeason, 2025);
@@ -37,7 +37,7 @@ test("preserves the verified championship timeline", () => {
     [2021, "ryan"],
     [2022, "alex"],
     [2023, "daniel"],
-    [2024, "daniel"],
+    [2024, "mike-c"],
     [2025, "marc"],
   ]);
 
@@ -64,15 +64,56 @@ test("keeps Peter and Peter Ho as separate franchises", () => {
 
 test("includes Mike C in 2024 and Marc in 2025", () => {
   const mike = ownerById.get("mike-c");
+  const daniel = ownerById.get("daniel");
   const marc = ownerById.get("marc");
 
   assert.equal(mike.firstSeason, 2024);
   assert.equal(mike.seasons, 2);
   assert.equal(mike.active, true);
+  assert.equal(mike.championships, 1);
+  assert.deepEqual(mike.championshipYears, [2024]);
+  assert.equal(daniel.championships, 1);
+  assert.deepEqual(daniel.championshipYears, [2023]);
   assert.equal(marc.firstSeason, 2025);
   assert.equal(marc.seasons, 1);
   assert.equal(marc.championships, 1);
   assert.equal(data.league.currentChampion, "marc");
+});
+
+test("keeps Mike C and Daniel attached to the correct recent-season rosters", () => {
+  const expected = new Map([
+    [
+      2024,
+      {
+        "mike-c": { rosterId: 6, wins: 10, losses: 4, finalRank: 1 },
+        daniel: { rosterId: 12, wins: 2, losses: 12, finalRank: 7 },
+      },
+    ],
+    [
+      2025,
+      {
+        "mike-c": { rosterId: 6, wins: 7, losses: 7, finalRank: 7 },
+        daniel: { rosterId: 12, wins: 5, losses: 9, finalRank: 10 },
+      },
+    ],
+  ]);
+
+  for (const [year, owners] of expected) {
+    const season = seasonByYear.get(year);
+    for (const [ownerId, record] of Object.entries(owners)) {
+      const team = season.teams.find((candidate) => candidate.ownerId === ownerId);
+      assert.deepEqual(
+        {
+          rosterId: team.rosterId,
+          wins: team.wins,
+          losses: team.losses,
+          finalRank: team.finalRank,
+        },
+        record,
+        `${year} ${ownerId}`,
+      );
+    }
+  }
 });
 
 test("every season has a complete final-order permutation", () => {
