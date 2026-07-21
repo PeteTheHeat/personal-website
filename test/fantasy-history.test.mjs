@@ -391,6 +391,10 @@ test("uses punishment photos only for the supplied seasons", () => {
     "daniel",
   );
   assert.equal(
+    HALL_OF_LOSERS.find((entry) => entry.year === 2024).image,
+    "/fantasy-football/hall-of-losers/2024-beer-mile-v2.jpg",
+  );
+  assert.equal(
     HALL_OF_LOSERS.find((entry) => entry.year === 2016).punishment,
     "Team name and photo set by the winner, Al",
   );
