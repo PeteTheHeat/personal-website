@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import { HALL_OF_LOSERS } from "../lib/fantasy-history/hall-of-losers.js";
 
 const data = JSON.parse(
   await readFile(
@@ -180,4 +181,35 @@ test("head-to-head series account for every official matchup", () => {
   for (const series of data.headToHead) {
     assert.equal(series.winsA + series.winsB + series.ties, series.games);
   }
+});
+
+test("records every season in the Hall of Losers", () => {
+  assert.deepEqual(
+    HALL_OF_LOSERS.map((entry) => entry.year),
+    Array.from({ length: 13 }, (_, index) => 2025 - index),
+  );
+
+  for (const entry of HALL_OF_LOSERS) {
+    assert.ok(ownerById.has(entry.ownerId), `${entry.year} owner`);
+    assert.ok(entry.punishment, `${entry.year} punishment`);
+  }
+});
+
+test("uses punishment photos only for the supplied seasons", () => {
+  const photoYears = HALL_OF_LOSERS.filter((entry) => entry.image).map(
+    (entry) => entry.year,
+  );
+  assert.deepEqual(
+    photoYears,
+    [2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018, 2015],
+  );
+
+  assert.equal(
+    HALL_OF_LOSERS.find((entry) => entry.year === 2024).ownerId,
+    "daniel",
+  );
+  assert.equal(
+    HALL_OF_LOSERS.find((entry) => entry.year === 2016).punishment,
+    "Team name and photo set by the winner, Al",
+  );
 });

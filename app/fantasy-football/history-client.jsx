@@ -11,6 +11,7 @@ import {
   Trophy,
 } from "lucide-react";
 import { useMemo, useState } from "react";
+import { HALL_OF_LOSERS } from "../../lib/fantasy-history/hall-of-losers";
 
 const NUMBER_FORMATTER = new Intl.NumberFormat("en-US", {
   maximumFractionDigits: 2,
@@ -483,6 +484,50 @@ function SeasonArchive({ seasons, ownerById }) {
   );
 }
 
+function HallOfLosers({ ownerById }) {
+  return (
+    <div className="ff-loser-grid">
+      {HALL_OF_LOSERS.map((entry) => {
+        const owner = ownerById.get(entry.ownerId);
+        const hasNoPunishment = entry.punishment === "No punishment";
+
+        return (
+          <article className="ff-loser-card" key={entry.year}>
+            <div className="ff-loser-media">
+              {entry.image ? (
+                <Image
+                  className={entry.imageFit === "contain" ? "is-contain" : ""}
+                  src={entry.image}
+                  alt={entry.imageAlt}
+                  fill
+                  sizes="(max-width: 560px) 100vw, (max-width: 820px) 50vw, (max-width: 1080px) 33vw, 25vw"
+                />
+              ) : (
+                <div className="ff-loser-placeholder">
+                  <span aria-hidden="true">{hasNoPunishment ? "—" : "💩"}</span>
+                  <strong>{hasNoPunishment ? "No punishment" : "No photo"}</strong>
+                </div>
+              )}
+              <span className="ff-loser-year">{entry.year}</span>
+            </div>
+
+            <div className="ff-loser-copy">
+              <div className="ff-loser-manager">
+                <OwnerMark owner={owner} size="small" />
+                <div>
+                  <span>Sacko</span>
+                  <h3>{entry.displayName}</h3>
+                </div>
+              </div>
+              <p>{entry.punishment}</p>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  );
+}
+
 export default function FantasyHistory({ data }) {
   const [scope, setScope] = useState("all");
   const [sortBy, setSortBy] = useState("titles");
@@ -549,6 +594,7 @@ export default function FantasyHistory({ data }) {
             <a href="#records">Records</a>
             <a href="#rivalries">Rivalries</a>
             <a href="#seasons">Seasons</a>
+            <a href="#losers">Losers</a>
           </nav>
         </div>
       </header>
@@ -850,6 +896,15 @@ export default function FantasyHistory({ data }) {
           copy="Final finishes, regular-season records, scoring leaders, and last place."
         />
         <SeasonArchive seasons={data.seasons} ownerById={ownerById} />
+      </section>
+
+      <section className="ff-section ff-losers" id="losers">
+        <SectionHeading
+          eyebrow="The Sacko archive"
+          title="Hall of Losers"
+          copy="Every Sacko punishment, year by year."
+        />
+        <HallOfLosers ownerById={ownerById} />
       </section>
 
       <footer className="ff-footer">

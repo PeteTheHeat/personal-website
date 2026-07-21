@@ -1635,6 +1635,161 @@
   font-size: 0.54rem;
 }
 
+.ff-losers {
+  width: 100%;
+  max-width: none;
+  padding-right: max(1rem, calc((100vw - 78rem) / 2));
+  padding-left: max(1rem, calc((100vw - 78rem) / 2));
+  background:
+    radial-gradient(circle at 85% 8%, rgba(105, 190, 40, 0.09), transparent 28rem),
+    linear-gradient(145deg, #00111f 0%, #001b30 58%, #00111f 100%);
+}
+
+.ff-loser-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.ff-loser-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(165, 172, 175, 0.24);
+  border-radius: 0.6rem;
+  background: #001c31;
+  box-shadow: 0 1.2rem 2.8rem rgba(0, 0, 0, 0.16);
+}
+
+.ff-loser-media {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-bottom: 1px solid var(--ff-border);
+  background: #00243f;
+}
+
+.ff-loser-media::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 17, 31, 0.04) 52%, rgba(0, 17, 31, 0.72));
+  content: "";
+  pointer-events: none;
+}
+
+.ff-loser-media > img {
+  object-fit: cover;
+}
+
+.ff-loser-media > img.is-contain {
+  padding: 1.25rem;
+  background: #e8ecee;
+  object-fit: contain;
+}
+
+.ff-loser-year {
+  position: absolute;
+  z-index: 2;
+  top: 0.75rem;
+  left: 0.75rem;
+  display: grid;
+  place-items: center;
+  min-width: 3.45rem;
+  min-height: 2rem;
+  padding: 0.25rem 0.55rem;
+  border: 1px solid rgba(134, 214, 59, 0.66);
+  border-radius: 999px;
+  background: rgba(105, 190, 40, 0.94);
+  color: #002244;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  box-shadow: 0 0.5rem 1.2rem rgba(0, 17, 31, 0.3);
+}
+
+.ff-loser-placeholder {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 0.7rem;
+  padding: 2rem;
+  background:
+    radial-gradient(circle, rgba(105, 190, 40, 0.1), transparent 45%),
+    repeating-linear-gradient(
+      135deg,
+      rgba(165, 172, 175, 0.035) 0,
+      rgba(165, 172, 175, 0.035) 1px,
+      transparent 1px,
+      transparent 16px
+    ),
+    #00192c;
+  color: var(--ff-wolf);
+  text-align: center;
+}
+
+.ff-loser-placeholder > span {
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+  font-size: 2.8rem;
+  line-height: 1;
+}
+
+.ff-loser-placeholder > strong {
+  color: #aeb7bc;
+  font-size: 0.63rem;
+  font-weight: 850;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.ff-loser-copy {
+  display: flex;
+  flex-direction: column;
+  min-height: 9.2rem;
+  padding: 1rem;
+}
+
+.ff-loser-manager {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.ff-loser-manager > div {
+  min-width: 0;
+}
+
+.ff-loser-manager span {
+  display: block;
+  color: var(--ff-action);
+  font-size: 0.53rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.ff-loser-manager h3 {
+  overflow: hidden;
+  margin: 0.2rem 0 0;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 1.55rem;
+  font-weight: 400;
+  letter-spacing: 0.035em;
+  line-height: 1;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.ff-loser-copy > p {
+  margin: auto 0 0;
+  padding-top: 1rem;
+  color: #c4cbcf;
+  font-size: 0.76rem;
+  line-height: 1.5;
+}
+
 .ff-footer {
   display: grid;
   grid-template-columns: auto auto;
@@ -1686,6 +1841,10 @@
 
   .ff-record-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ff-loser-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .ff-ranking-table th,
@@ -1789,6 +1948,10 @@
 
   .ff-podium {
     grid-template-columns: 1fr;
+  }
+
+  .ff-loser-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .ff-podium-card {
@@ -2049,7 +2212,8 @@
   }
 
   .ff-records,
-  .ff-rivalries {
+  .ff-rivalries,
+  .ff-losers {
     width: 100%;
     padding-right: 0.7rem;
     padding-left: 0.7rem;
@@ -2078,6 +2242,14 @@
 
   .ff-record-grid {
     grid-template-columns: 1fr;
+  }
+
+  .ff-loser-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ff-loser-copy {
+    min-height: 8.5rem;
   }
 
   .ff-record-card {
