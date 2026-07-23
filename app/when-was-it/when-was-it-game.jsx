@@ -73,7 +73,12 @@ function Leaderboard({ entries, loading, unavailable, compact = false }) {
       aria-labelledby="wwi-leaderboard-title"
     >
       <p className="wwi-kicker">All-time leaderboard</p>
-      <h2 id="wwi-leaderboard-title">Lowest on record</h2>
+      <div className="wwi-board-heading">
+        <h2 id="wwi-leaderboard-title">Lowest on record</h2>
+        <span className="wwi-board-trophy" aria-hidden="true">
+          🏆
+        </span>
+      </div>
 
       {loading ? (
         <div className="wwi-board-loading" role="status">
@@ -459,17 +464,13 @@ export function WhenWasItGame() {
         {screen === "intro" && (
           <div className="wwi-intro">
             <section className="wwi-hero" aria-labelledby="wwi-hero-title">
-              <div className="wwi-exhibition-label" aria-hidden="true">
-                <span>Special exhibition</span>
-                <strong>Dates withheld</strong>
-              </div>
               <div className="wwi-hero-copy">
                 <p className="wwi-kicker">Place history in time</p>
                 <h1 id="wwi-hero-title">When was it?</h1>
                 <p className="wwi-hero-lede">
-                  History feels obvious until someone asks for the year. You
-                  get five moments from a collection of 50. Every year you miss
-                  adds one point. Lowest score wins.
+                  History feels obvious until someone asks for the year. Date
+                  five moments from the past. Every year you miss adds one
+                  point. Lowest score wins.
                 </p>
                 <div className="wwi-hero-actions">
                   <button
@@ -484,8 +485,8 @@ export function WhenWasItGame() {
               </div>
               <dl className="wwi-facts" aria-label="Game facts">
                 <div>
-                  <dt>50</dt>
-                  <dd>moments in the collection</dd>
+                  <dt>1 point</dt>
+                  <dd>for every year missed</dd>
                 </div>
                 <div>
                   <dt>5</dt>
@@ -566,7 +567,6 @@ export function WhenWasItGame() {
               </div>
 
               <figure className="wwi-object">
-                <div className="wwi-date-label">Date withheld</div>
                 <div className="wwi-frame">
                   <div className="wwi-mat">
                     {failedImages.has(currentEvent.id) ? (
@@ -582,6 +582,7 @@ export function WhenWasItGame() {
                       // Wikimedia hosts several formats, so a plain img is intentional.
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
+                        className="wwi-object-image"
                         src={currentEvent.imageUrl}
                         alt={`${currentEvent.title}. ${currentEvent.clue}`}
                         loading="eager"
@@ -867,7 +868,7 @@ export function WhenWasItGame() {
         )}
 
         <footer className="wwi-footer">
-          <p>50 moments spanning 79 to 2020 CE.</p>
+          <p>Dates in play range from 79 to 2020 CE.</p>
           <p>
             Images from Wikimedia Commons. Full credit appears after each
             reveal.

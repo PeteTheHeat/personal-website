@@ -120,9 +120,13 @@ test("builds a compact score challenge without revealing answers", () => {
 });
 
 test("uses route-specific museum copy and metadata without old archive filler", async () => {
-  const [component, page, homepage, store, route] = await Promise.all([
+  const [component, styles, page, homepage, store, route] = await Promise.all([
     readFile(
       new URL("../app/when-was-it/when-was-it-game.jsx", import.meta.url),
+      "utf8",
+    ),
+    readFile(
+      new URL("../app/when-was-it/when-was-it.css", import.meta.url),
       "utf8",
     ),
     readFile(
@@ -152,9 +156,15 @@ test("uses route-specific museum copy and metadata without old archive filler", 
   );
   assert.match(component, /Enter the gallery/);
   assert.match(component, /Share my score/);
-  assert.match(component, /Date withheld/);
-  assert.doesNotMatch(component, /Date unknown|Filed and finished|Filed for posterity/);
+  assert.match(component, /wwi-board-trophy/);
+  assert.doesNotMatch(
+    component,
+    /Date unknown|Date withheld|Dates withheld|Special exhibition|Filed and finished|Filed for posterity|collection of 50|moments in the collection|50 moments spanning/,
+  );
   assert.doesNotMatch(component, /—/);
+  assert.match(styles, /grid-template-rows: minmax\(0, 1fr\)/);
+  assert.match(styles, /\.wwi-object-image \{[\s\S]*min-height: 0/);
+  assert.match(styles, /\.wwi-mat \{[\s\S]*overflow: hidden/);
   assert.match(page, /https:\/\/peterargany\.com\/when-was-it/);
   assert.match(page, /\/when-was-it\/og\.png/);
   assert.match(homepage, /href: "\/when-was-it"/);
