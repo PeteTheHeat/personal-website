@@ -1,0 +1,1487 @@
+.wwi-page {
+  --wwi-wall: #111310;
+  --wwi-wall-raised: #191b17;
+  --wwi-ivory: #f3eee3;
+  --wwi-paper: #fbf8f0;
+  --wwi-ink: #171815;
+  --wwi-muted: #aaa69c;
+  --wwi-muted-dark: #69665e;
+  --wwi-brass: #b89a5b;
+  --wwi-oxblood: #8f3045;
+  --wwi-rose: #d47d90;
+  --wwi-focus: #e1b85f;
+  --wwi-rule: rgba(243, 238, 227, 0.18);
+  --wwi-paper-rule: rgba(23, 24, 21, 0.22);
+  --wwi-display: "Iowan Old Style", Baskerville, Georgia, serif;
+  --wwi-body: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --wwi-label: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  width: 100%;
+  height: 100svh;
+  min-width: 320px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  color: var(--wwi-ivory);
+  background:
+    radial-gradient(
+      ellipse 50% 28% at 38% 3%,
+      rgba(243, 238, 227, 0.09),
+      transparent 72%
+    ),
+    linear-gradient(
+      90deg,
+      transparent 0 49.93%,
+      rgba(255, 255, 255, 0.025) 50%,
+      transparent 50.07%
+    ),
+    var(--wwi-wall);
+  font-family: var(--wwi-body);
+  -webkit-font-smoothing: antialiased;
+  scrollbar-color: var(--wwi-brass) var(--wwi-wall);
+}
+
+.wwi-page,
+.wwi-page * {
+  box-sizing: border-box;
+}
+
+.wwi-page button,
+.wwi-page input {
+  font: inherit;
+}
+
+.wwi-page button,
+.wwi-page a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.wwi-page button {
+  color: inherit;
+}
+
+.wwi-page a {
+  color: inherit;
+}
+
+.wwi-page ::selection {
+  color: var(--wwi-wall);
+  background: var(--wwi-brass);
+}
+
+.wwi-sr-only {
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.wwi-shell {
+  width: min(100%, 1480px);
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 0 clamp(18px, 4vw, 64px) max(24px, env(safe-area-inset-bottom));
+  position: relative;
+}
+
+.wwi-shell::before,
+.wwi-shell::after {
+  content: "";
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  pointer-events: none;
+  background: rgba(243, 238, 227, 0.055);
+}
+
+.wwi-shell::before {
+  left: clamp(8px, 2vw, 32px);
+}
+
+.wwi-shell::after {
+  right: clamp(8px, 2vw, 32px);
+}
+
+.wwi-header {
+  min-height: 90px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+  border-bottom: 1px solid var(--wwi-rule);
+  position: relative;
+  z-index: 10;
+}
+
+.wwi-wordmark {
+  width: fit-content;
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  border: 0;
+  padding: 4px 0;
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--wwi-display);
+  font-size: 1.02rem;
+  font-weight: 700;
+}
+
+.wwi-wordmark > span:first-child {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--wwi-brass);
+  color: var(--wwi-brass);
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.wwi-wordmark:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+.wwi-header > p {
+  margin: 0;
+  color: var(--wwi-muted);
+  font: 700 0.64rem/1.3 var(--wwi-label);
+  letter-spacing: 0.14em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.wwi-header > a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-self: end;
+  color: var(--wwi-muted);
+  font-size: 0.74rem;
+  text-underline-offset: 4px;
+}
+
+.wwi-kicker,
+.wwi-accession,
+.wwi-date-label,
+.wwi-round-meta {
+  font: 750 0.65rem/1.3 var(--wwi-label);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.wwi-kicker {
+  margin: 0;
+  color: var(--wwi-brass);
+}
+
+.wwi-intro {
+  min-height: calc(100svh - 162px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.72fr) minmax(290px, 0.62fr);
+  align-items: center;
+  gap: clamp(42px, 6vw, 96px);
+  padding: clamp(48px, 7.5vw, 116px) 0;
+}
+
+.wwi-hero {
+  min-height: 650px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: clamp(28px, 5vw, 76px);
+  position: relative;
+  border: 1px solid rgba(243, 238, 227, 0.3);
+  background:
+    radial-gradient(
+      circle at 32% 40%,
+      rgba(243, 238, 227, 0.11),
+      transparent 36%
+    ),
+    var(--wwi-wall-raised);
+  box-shadow:
+    0 38px 100px rgba(0, 0, 0, 0.46),
+    inset 0 0 0 9px rgba(0, 0, 0, 0.17);
+}
+
+.wwi-hero::before {
+  content: "";
+  width: 42%;
+  height: 1px;
+  position: absolute;
+  top: clamp(48px, 7vw, 96px);
+  left: 0;
+  background: linear-gradient(90deg, var(--wwi-brass), transparent);
+}
+
+.wwi-exhibition-label {
+  width: fit-content;
+  max-width: 210px;
+  margin-left: auto;
+  display: grid;
+  gap: 5px;
+  border-left: 3px solid var(--wwi-oxblood);
+  padding: 11px 14px;
+  background: var(--wwi-paper);
+  color: var(--wwi-ink);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.28);
+}
+
+.wwi-exhibition-label span,
+.wwi-exhibition-label strong {
+  font: 800 0.58rem/1.35 var(--wwi-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.wwi-exhibition-label strong {
+  color: var(--wwi-oxblood);
+}
+
+.wwi-hero-copy {
+  align-self: center;
+  padding: clamp(42px, 7vw, 90px) 0 36px;
+}
+
+.wwi-hero-copy h1 {
+  max-width: 980px;
+  margin: 12px 0 0;
+  font-family: var(--wwi-display);
+  font-size: clamp(4.9rem, 10.4vw, 10rem);
+  font-weight: 400;
+  letter-spacing: -0.075em;
+  line-height: 0.78;
+}
+
+.wwi-hero-lede {
+  max-width: 660px;
+  margin: clamp(34px, 4vw, 54px) 0 0;
+  color: #d6d1c7;
+  font-family: var(--wwi-display);
+  font-size: clamp(1.16rem, 1.9vw, 1.55rem);
+  line-height: 1.48;
+}
+
+.wwi-hero-actions {
+  margin-top: 34px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.wwi-hero-actions > span {
+  color: var(--wwi-muted);
+  font-size: 0.76rem;
+  font-weight: 600;
+}
+
+.wwi-primary-button,
+.wwi-secondary-button {
+  min-height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  border: 1px solid transparent;
+  border-radius: 1px;
+  padding: 13px 19px;
+  cursor: pointer;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition:
+    background 160ms ease,
+    color 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+
+.wwi-primary-button {
+  border-color: var(--wwi-oxblood);
+  background: var(--wwi-oxblood);
+  color: #fff9ed;
+}
+
+.wwi-primary-button:hover {
+  border-color: #a84056;
+  background: #a84056;
+  transform: translateY(-2px);
+}
+
+.wwi-primary-button:active {
+  transform: translateY(1px);
+}
+
+.wwi-primary-button:disabled,
+.wwi-secondary-button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+  transform: none;
+}
+
+.wwi-primary-button--wide {
+  width: 100%;
+}
+
+.wwi-secondary-button {
+  border-color: currentColor;
+  background: transparent;
+  color: var(--wwi-ink);
+}
+
+.wwi-secondary-button:hover {
+  background: rgba(23, 24, 21, 0.07);
+}
+
+.wwi-facts {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--wwi-rule);
+}
+
+.wwi-facts > div {
+  min-width: 0;
+  padding: 18px 16px 0 0;
+}
+
+.wwi-facts > div + div {
+  border-left: 1px solid var(--wwi-rule);
+  padding-left: 18px;
+}
+
+.wwi-facts dt {
+  margin: 0;
+  color: var(--wwi-brass);
+  font-family: var(--wwi-display);
+  font-size: clamp(1.35rem, 2.2vw, 2rem);
+  font-variant-numeric: tabular-nums;
+}
+
+.wwi-facts dd {
+  margin: 5px 0 0;
+  color: var(--wwi-muted);
+  font-size: 0.7rem;
+  line-height: 1.35;
+}
+
+.wwi-intro-rail {
+  display: grid;
+  gap: 46px;
+}
+
+.wwi-leaderboard,
+.wwi-rules {
+  border-top: 1px solid var(--wwi-brass);
+  padding-top: 21px;
+}
+
+.wwi-leaderboard h2,
+.wwi-rules h2,
+.wwi-replay h2,
+.wwi-share-panel h2 {
+  margin: 7px 0 20px;
+  font-family: var(--wwi-display);
+  font-size: 1.65rem;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
+
+.wwi-board-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--wwi-rule);
+}
+
+.wwi-board-list li {
+  min-height: 58px;
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  border-top: 1px solid var(--wwi-rule);
+}
+
+.wwi-board-rank {
+  color: var(--wwi-brass);
+  font: 800 0.68rem/1 var(--wwi-label);
+}
+
+.wwi-board-name {
+  overflow: hidden;
+  font-family: var(--wwi-display);
+  font-size: 1rem;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.wwi-board-score {
+  color: var(--wwi-ivory);
+  font: 800 0.68rem/1 var(--wwi-label);
+  white-space: nowrap;
+}
+
+.wwi-board-note,
+.wwi-board-empty {
+  margin: 14px 0 0;
+  color: var(--wwi-muted);
+  font-size: 0.7rem;
+  line-height: 1.5;
+}
+
+.wwi-board-empty {
+  border: 1px solid var(--wwi-rule);
+  padding: 16px;
+}
+
+.wwi-board-empty--error {
+  border-color: rgba(212, 125, 144, 0.45);
+  color: #d8a3ae;
+}
+
+.wwi-board-loading {
+  display: grid;
+  gap: 8px;
+}
+
+.wwi-board-loading > span:not(.wwi-sr-only) {
+  height: 49px;
+  background: linear-gradient(
+    90deg,
+    rgba(243, 238, 227, 0.03),
+    rgba(243, 238, 227, 0.12),
+    rgba(243, 238, 227, 0.03)
+  );
+  background-size: 200% 100%;
+  animation: wwi-loading 1.5s linear infinite;
+}
+
+.wwi-rules ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.wwi-rules li {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  align-items: baseline;
+  border-top: 1px solid var(--wwi-rule);
+  padding: 14px 0;
+}
+
+.wwi-rules li span {
+  color: var(--wwi-brass);
+  font: 800 0.66rem/1 var(--wwi-label);
+}
+
+.wwi-rules li p {
+  margin: 0;
+  color: #d8d3ca;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.wwi-game-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 900px) minmax(230px, 300px);
+  justify-content: center;
+  align-items: start;
+  gap: clamp(34px, 5vw, 76px);
+  padding: clamp(28px, 4vw, 62px) 0;
+}
+
+.wwi-game-card {
+  scroll-margin-top: 18px;
+  border: 1px solid var(--wwi-rule);
+  background: var(--wwi-wall-raised);
+  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.42);
+}
+
+.wwi-round-meta {
+  min-height: 56px;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid var(--wwi-rule);
+  color: var(--wwi-muted);
+}
+
+.wwi-round-count {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  text-align: right;
+}
+
+.wwi-round-count strong {
+  display: none;
+  color: var(--wwi-brass);
+  letter-spacing: 0;
+}
+
+.wwi-progress {
+  display: flex;
+  gap: 8px;
+}
+
+.wwi-progress span {
+  width: 24px;
+  height: 3px;
+  background: rgba(243, 238, 227, 0.18);
+  transition: background 160ms ease;
+}
+
+.wwi-progress span.is-active {
+  background: var(--wwi-brass);
+}
+
+.wwi-object {
+  margin: 0;
+  padding: clamp(18px, 3vw, 34px);
+}
+
+.wwi-date-label {
+  width: fit-content;
+  margin: 0 0 12px auto;
+  color: var(--wwi-brass);
+}
+
+.wwi-frame {
+  padding: clamp(9px, 1.2vw, 14px);
+  border: 9px solid #060706;
+  background: #221b15;
+  box-shadow:
+    0 30px 75px rgba(0, 0, 0, 0.56),
+    0 4px 10px rgba(0, 0, 0, 0.44),
+    inset 0 0 0 1px rgba(184, 154, 91, 0.28);
+}
+
+.wwi-mat {
+  height: min(52svh, 520px);
+  min-height: 310px;
+  padding: clamp(11px, 1.5vw, 18px);
+  display: grid;
+  place-items: center;
+  background: var(--wwi-ivory);
+  box-shadow: inset 0 0 16px rgba(0, 0, 0, 0.16);
+}
+
+.wwi-mat img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  background: #22231f;
+  animation: wwi-image-in 320ms ease-out both;
+}
+
+.wwi-image-fallback {
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 14px;
+  border: 1px solid rgba(243, 238, 227, 0.25);
+  padding: 30px;
+  background: #22231f;
+  color: var(--wwi-ivory);
+  text-align: center;
+}
+
+.wwi-image-fallback span {
+  color: var(--wwi-brass);
+  font: 800 0.62rem/1 var(--wwi-label);
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.wwi-image-fallback strong {
+  font: 500 clamp(1.7rem, 4vw, 3rem)/1.05 var(--wwi-display);
+}
+
+.wwi-object figcaption {
+  width: min(100%, 720px);
+  margin-top: 25px;
+  border-left: 3px solid var(--wwi-brass);
+  padding: 3px 0 3px 18px;
+}
+
+.wwi-accession {
+  margin: 0 0 7px;
+  color: var(--wwi-brass);
+}
+
+.wwi-object h1 {
+  margin: 0;
+  font-family: var(--wwi-display);
+  font-size: clamp(2rem, 4.2vw, 3.25rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.wwi-object h1:focus-visible {
+  outline: 2px solid var(--wwi-focus);
+  outline-offset: 5px;
+}
+
+.wwi-object figcaption > p:last-child {
+  max-width: 650px;
+  margin: 10px 0 0;
+  color: #c5c0b7;
+  font-family: var(--wwi-display);
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  line-height: 1.52;
+}
+
+.wwi-guess-form,
+.wwi-reveal {
+  border-top: 1px solid var(--wwi-rule);
+  padding: clamp(24px, 4vw, 40px);
+  background: var(--wwi-paper);
+  color: var(--wwi-ink);
+}
+
+.wwi-guess-form > label {
+  display: block;
+  margin-bottom: 15px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.wwi-year-entry {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  border-bottom: 2px solid var(--wwi-ink);
+  transition: border-color 160ms ease;
+}
+
+.wwi-year-entry:focus-within {
+  border-color: var(--wwi-oxblood);
+}
+
+.wwi-year-entry.has-error {
+  border-color: var(--wwi-oxblood);
+}
+
+.wwi-year-entry input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  padding: 0 0 5px;
+  background: transparent;
+  color: var(--wwi-ink);
+  font-family: var(--wwi-display);
+  font-size: clamp(3.8rem, 10vw, 7rem);
+  font-variant-numeric: lining-nums tabular-nums;
+  font-weight: 400;
+  letter-spacing: -0.07em;
+  line-height: 0.9;
+}
+
+.wwi-year-entry input::placeholder {
+  color: rgba(105, 102, 94, 0.25);
+}
+
+.wwi-year-entry > span {
+  padding: 0 0 12px 13px;
+  color: var(--wwi-muted-dark);
+  font: 800 0.72rem/1 var(--wwi-label);
+}
+
+.wwi-form-foot {
+  min-height: 47px;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 9px 0;
+}
+
+.wwi-form-foot p,
+.wwi-form-error {
+  margin: 0;
+  color: var(--wwi-muted-dark);
+  font-size: 0.7rem;
+  line-height: 1.35;
+}
+
+.wwi-form-error {
+  color: var(--wwi-oxblood);
+  font-weight: 700;
+}
+
+.wwi-answer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.35fr;
+  gap: 12px;
+}
+
+.wwi-answer-grid > div {
+  min-height: 122px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--wwi-paper-rule);
+  padding: 16px;
+}
+
+.wwi-answer-grid span {
+  color: var(--wwi-muted-dark);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.wwi-answer-grid strong {
+  font: 500 clamp(2rem, 5vw, 3.7rem)/0.9 var(--wwi-display);
+  font-variant-numeric: tabular-nums;
+}
+
+.wwi-answer-grid .wwi-answer-error {
+  border: 2px solid var(--wwi-oxblood);
+  color: var(--wwi-oxblood);
+}
+
+.wwi-answer-error strong {
+  font-size: clamp(1.65rem, 3.5vw, 2.8rem);
+}
+
+.wwi-reveal-footer {
+  margin-top: 21px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.wwi-reveal-footer a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  max-width: 58%;
+  color: var(--wwi-muted-dark);
+  font-size: 0.7rem;
+  line-height: 1.45;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.wwi-score-rail {
+  display: grid;
+  gap: 42px;
+  position: sticky;
+  top: 28px;
+}
+
+.wwi-score-card,
+.wwi-score-rail .wwi-leaderboard {
+  border-top: 1px solid var(--wwi-brass);
+  padding-top: 20px;
+}
+
+.wwi-score-card > strong {
+  display: block;
+  margin-top: 18px;
+  color: var(--wwi-ivory);
+  font: 400 clamp(4rem, 8vw, 6.6rem)/0.8 var(--wwi-display);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.07em;
+}
+
+.wwi-score-card > span {
+  display: block;
+  margin-top: 12px;
+  color: var(--wwi-brass);
+  font: 800 0.65rem/1 var(--wwi-label);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.wwi-score-card > p:last-child,
+.wwi-replay > p:not(.wwi-kicker),
+.wwi-share-panel p:not(.wwi-kicker) {
+  margin: 22px 0 0;
+  border-top: 1px solid var(--wwi-rule);
+  padding-top: 14px;
+  color: var(--wwi-muted);
+  font-size: 0.75rem;
+  line-height: 1.55;
+}
+
+.wwi-leaderboard--compact h2 {
+  font-size: 1.38rem;
+}
+
+.wwi-finish {
+  min-height: calc(100svh - 190px);
+  margin: clamp(28px, 5vw, 74px) auto;
+  border: 1px solid rgba(243, 238, 227, 0.3);
+  padding: clamp(30px, 5vw, 72px);
+  background: var(--wwi-paper);
+  color: var(--wwi-ink);
+  box-shadow: 0 38px 100px rgba(0, 0, 0, 0.48);
+}
+
+.wwi-finish .wwi-kicker {
+  color: var(--wwi-oxblood);
+}
+
+.wwi-name-card {
+  max-width: 920px;
+  min-height: 650px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.wwi-name-card h1,
+.wwi-summary-heading h1 {
+  margin: 10px 0 0;
+  font-family: var(--wwi-display);
+  font-size: clamp(3.8rem, 8vw, 7.5rem);
+  font-weight: 400;
+  letter-spacing: -0.065em;
+  line-height: 0.84;
+}
+
+.wwi-final-score {
+  width: fit-content;
+  margin: 38px auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wwi-final-score strong {
+  color: var(--wwi-oxblood);
+  font: 400 clamp(4.8rem, 10vw, 7.2rem)/0.78 var(--wwi-display);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.07em;
+}
+
+.wwi-final-score span {
+  margin-top: 14px;
+  color: var(--wwi-muted-dark);
+  font: 800 0.64rem/1 var(--wwi-label);
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.wwi-finish-lede {
+  margin: 30px auto 0;
+  color: var(--wwi-muted-dark);
+  font-family: var(--wwi-display);
+  font-size: 1.18rem;
+}
+
+.wwi-name-form {
+  width: min(100%, 620px);
+  margin: 30px auto 0;
+  text-align: left;
+}
+
+.wwi-name-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.wwi-name-form > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+}
+
+.wwi-name-form input {
+  width: 100%;
+  min-height: 54px;
+  border: 1px solid var(--wwi-ink);
+  border-radius: 0;
+  outline: 0;
+  padding: 0 15px;
+  background: #fffdf8;
+  color: var(--wwi-ink);
+  font-family: var(--wwi-display);
+  font-size: 1.15rem;
+}
+
+.wwi-name-form input:focus {
+  box-shadow: inset 0 0 0 2px var(--wwi-oxblood);
+}
+
+.wwi-name-form .wwi-form-error {
+  min-height: 30px;
+  padding-top: 8px;
+}
+
+.wwi-text-button {
+  min-height: 44px;
+  margin: 8px auto 0;
+  border: 0;
+  padding: 9px 4px;
+  background: transparent;
+  color: var(--wwi-muted-dark);
+  cursor: pointer;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.wwi-text-button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+.wwi-summary-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 42px;
+}
+
+.wwi-summary-heading > div:first-child {
+  max-width: 830px;
+}
+
+.wwi-finish-message {
+  max-width: 650px;
+  margin: 25px 0 0;
+  color: var(--wwi-muted-dark);
+  font-family: var(--wwi-display);
+  font-size: 1.13rem;
+  line-height: 1.45;
+}
+
+.wwi-final-score--small {
+  flex-shrink: 0;
+  margin: 0;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.wwi-final-score--small strong {
+  font-size: clamp(4rem, 7vw, 6.4rem);
+}
+
+.wwi-result-gallery {
+  margin-top: clamp(46px, 6vw, 78px);
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.wwi-result-object {
+  min-width: 0;
+  border: 1px solid var(--wwi-paper-rule);
+  padding: 10px;
+  background: #f4efe5;
+}
+
+.wwi-result-frame {
+  height: 128px;
+  position: relative;
+  overflow: hidden;
+  border: 5px solid var(--wwi-ink);
+  padding: 4px;
+  background: var(--wwi-paper);
+}
+
+.wwi-result-frame img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  background: #24251f;
+}
+
+.wwi-result-frame span {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  padding: 4px 5px;
+  background: var(--wwi-paper);
+  color: var(--wwi-ink);
+  font: 800 0.55rem/1 var(--wwi-label);
+}
+
+.wwi-result-object h3 {
+  min-height: 2.7em;
+  margin: 11px 0 13px;
+  font: 600 0.9rem/1.3 var(--wwi-display);
+}
+
+.wwi-result-object dl {
+  margin: 0;
+  border-top: 1px solid var(--wwi-paper-rule);
+}
+
+.wwi-result-object dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  border-bottom: 1px solid var(--wwi-paper-rule);
+  padding: 5px 0;
+  font-size: 0.7rem;
+}
+
+.wwi-result-object dt {
+  color: var(--wwi-muted-dark);
+  text-transform: uppercase;
+}
+
+.wwi-result-object dd {
+  margin: 0;
+  font-family: var(--wwi-label);
+  font-weight: 800;
+}
+
+.wwi-share-panel {
+  margin-top: clamp(40px, 5vw, 64px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 32px;
+  border-top: 1px solid var(--wwi-ink);
+  border-bottom: 1px solid var(--wwi-paper-rule);
+  padding: 28px 0;
+}
+
+.wwi-share-panel h2 {
+  margin-bottom: 0;
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+}
+
+.wwi-share-panel p:not(.wwi-kicker) {
+  margin-top: 8px;
+  border: 0;
+  padding: 0;
+}
+
+.wwi-share-panel > div:last-child {
+  min-width: 220px;
+  text-align: right;
+}
+
+.wwi-share-status {
+  min-height: 2.7em;
+  max-width: 320px;
+  margin-left: auto !important;
+  color: var(--wwi-oxblood) !important;
+  font-weight: 700;
+}
+
+.wwi-summary-footer {
+  margin-top: clamp(42px, 5vw, 68px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(38px, 7vw, 100px);
+}
+
+.wwi-finish .wwi-leaderboard,
+.wwi-replay {
+  border-top: 1px solid var(--wwi-ink);
+  padding-top: 21px;
+}
+
+.wwi-finish .wwi-board-list {
+  border-color: var(--wwi-paper-rule);
+}
+
+.wwi-finish .wwi-board-list li {
+  border-color: var(--wwi-paper-rule);
+}
+
+.wwi-finish .wwi-board-rank,
+.wwi-finish .wwi-kicker {
+  color: var(--wwi-oxblood);
+}
+
+.wwi-finish .wwi-board-score {
+  color: var(--wwi-ink);
+}
+
+.wwi-finish .wwi-board-note,
+.wwi-finish .wwi-board-empty {
+  color: var(--wwi-muted-dark);
+}
+
+.wwi-replay .wwi-primary-button,
+.wwi-replay .wwi-secondary-button {
+  margin: 20px 10px 0 0;
+}
+
+.wwi-footer {
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-top: 1px solid var(--wwi-rule);
+  color: var(--wwi-muted);
+  font-size: 0.65rem;
+}
+
+.wwi-footer p {
+  margin: 0;
+}
+
+.wwi-page button:focus-visible,
+.wwi-page a:focus-visible,
+.wwi-page input:focus-visible {
+  outline: 3px solid var(--wwi-focus);
+  outline-offset: 4px;
+}
+
+@keyframes wwi-image-in {
+  from {
+    opacity: 0;
+    filter: blur(5px);
+    transform: scale(1.012);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+}
+
+@keyframes wwi-loading {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@media (max-width: 1020px) {
+  .wwi-intro {
+    grid-template-columns: 1fr;
+  }
+
+  .wwi-intro-rail {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .wwi-game-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .wwi-score-rail {
+    grid-template-columns: 1fr 1fr;
+    position: static;
+  }
+
+  .wwi-round-count strong {
+    display: inline;
+  }
+
+  .wwi-result-gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .wwi-shell {
+    padding-inline: 16px;
+  }
+
+  .wwi-shell::before,
+  .wwi-shell::after {
+    display: none;
+  }
+
+  .wwi-header {
+    min-height: 70px;
+    grid-template-columns: 1fr auto;
+  }
+
+  .wwi-header > p {
+    display: none;
+  }
+
+  .wwi-header > a {
+    font-size: 0.68rem;
+  }
+
+  .wwi-wordmark {
+    gap: 9px;
+    font-size: 0.92rem;
+  }
+
+  .wwi-wordmark > span:first-child {
+    width: 32px;
+    height: 32px;
+  }
+
+  .wwi-intro {
+    min-height: auto;
+    gap: 46px;
+    padding: 24px 0 44px;
+  }
+
+  .wwi-hero {
+    min-height: 0;
+    padding: 26px 22px 30px;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.42);
+  }
+
+  .wwi-hero::before {
+    top: 50px;
+  }
+
+  .wwi-exhibition-label {
+    max-width: 170px;
+    padding: 9px 11px;
+  }
+
+  .wwi-hero-copy {
+    padding: 54px 0 34px;
+  }
+
+  .wwi-hero-copy h1 {
+    font-size: clamp(4.1rem, 21vw, 6.7rem);
+  }
+
+  .wwi-hero-lede {
+    margin-top: 26px;
+    font-size: 1.08rem;
+  }
+
+  .wwi-hero-actions {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .wwi-hero-actions .wwi-primary-button {
+    width: 100%;
+  }
+
+  .wwi-facts > div {
+    padding-right: 7px;
+  }
+
+  .wwi-facts > div + div {
+    padding-left: 8px;
+  }
+
+  .wwi-facts dt {
+    font-size: 1.18rem;
+  }
+
+  .wwi-facts dd {
+    font-size: 0.61rem;
+  }
+
+  .wwi-intro-rail,
+  .wwi-score-rail,
+  .wwi-summary-footer {
+    grid-template-columns: 1fr;
+  }
+
+  .wwi-game-layout {
+    padding: 18px 0 34px;
+  }
+
+  .wwi-round-meta {
+    min-height: 50px;
+    padding: 0 12px;
+    grid-template-columns: auto 1fr auto;
+    gap: 10px;
+    font-size: 0.56rem;
+    letter-spacing: 0.08em;
+  }
+
+  .wwi-progress {
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .wwi-progress span {
+    width: 14px;
+  }
+
+  .wwi-round-count {
+    gap: 7px;
+  }
+
+  .wwi-round-count strong {
+    font-size: 0.54rem;
+  }
+
+  .wwi-object {
+    padding: 14px;
+  }
+
+  .wwi-frame {
+    border-width: 6px;
+    padding: 7px;
+  }
+
+  .wwi-mat {
+    height: min(48svh, 430px);
+    min-height: 250px;
+    padding: 8px;
+  }
+
+  .wwi-object figcaption {
+    margin-top: 20px;
+    padding-left: 14px;
+  }
+
+  .wwi-guess-form,
+  .wwi-reveal {
+    padding: 22px 18px;
+  }
+
+  .wwi-year-entry input {
+    font-size: clamp(3.7rem, 20vw, 5.6rem);
+  }
+
+  .wwi-form-foot {
+    min-height: 61px;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .wwi-answer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .wwi-answer-grid > div {
+    min-height: 105px;
+  }
+
+  .wwi-answer-grid .wwi-answer-error {
+    grid-column: 1 / -1;
+  }
+
+  .wwi-reveal-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .wwi-reveal-footer a {
+    max-width: none;
+  }
+
+  .wwi-reveal-footer .wwi-primary-button {
+    width: 100%;
+  }
+
+  .wwi-finish {
+    min-height: calc(100svh - 132px);
+    margin: 18px auto 34px;
+    padding: 28px 20px;
+  }
+
+  .wwi-name-card h1,
+  .wwi-summary-heading h1 {
+    font-size: clamp(3.3rem, 17vw, 5.2rem);
+  }
+
+  .wwi-name-form > div {
+    grid-template-columns: 1fr;
+  }
+
+  .wwi-summary-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .wwi-final-score--small {
+    margin-top: 0;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .wwi-result-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .wwi-share-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .wwi-share-panel > div:last-child {
+    min-width: 0;
+    text-align: left;
+  }
+
+  .wwi-share-panel .wwi-primary-button {
+    width: 100%;
+  }
+
+  .wwi-share-status {
+    margin-left: 0 !important;
+  }
+
+  .wwi-footer {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    padding: 18px 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .wwi-result-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .wwi-result-frame {
+    height: 170px;
+  }
+}
+
+@media (max-height: 720px) and (min-width: 701px) {
+  .wwi-intro {
+    padding-block: 38px;
+  }
+
+  .wwi-hero {
+    min-height: 560px;
+  }
+
+  .wwi-mat {
+    height: min(44svh, 430px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wwi-page {
+    scroll-behavior: auto;
+  }
+
+  .wwi-page *,
+  .wwi-page *::before,
+  .wwi-page *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

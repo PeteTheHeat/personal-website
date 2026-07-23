@@ -21,6 +21,12 @@ function PreloadMobileProjectsBackground() {
 
 const projects = [
   {
+    icon: "🏛️",
+    label: "when-was-it",
+    description: "A five-round history game",
+    href: "/when-was-it",
+  },
+  {
     icon: "🏈",
     label: "fantasy-football",
     description: "Couch QBs history books",

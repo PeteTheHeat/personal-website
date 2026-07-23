@@ -40,6 +40,7 @@ static build snapshots through this repo.
 
 Current project routes:
 
+- `/when-was-it`
 - `/gender-reveal`
 - `/character-select`
 
@@ -67,6 +68,17 @@ To add another project:
 2. Add its local source path to `scripts/sync-projects.mjs`.
 3. Add a route page under `app/<slug>/page.jsx` using `ProjectFrame`.
 4. Run `npm run sync:projects` and `npm run build`.
+
+## When Was It?
+
+The historical date game lives at `/when-was-it`. It draws five moments from a
+50-event collection and keeps the three lowest total errors on a shared
+leaderboard.
+
+Production uses the same Upstash Redis REST connection as Sacko Tracker, with a
+separate environment-scoped key. `WHEN_WAS_IT_REDIS_KEY` can override that key
+when needed. Local development falls back to
+`.data/when-was-it-leaderboard.json`.
 
 ## Sacko Tracker
 
