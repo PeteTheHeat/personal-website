@@ -1,4 +1,3 @@
-import { headers } from "next/headers";
 import {
   calculateVerifiedScore,
   normalizePlayerName,
@@ -7,7 +6,6 @@ import {
 import {
   getWhenWasItLeaderboard,
   submitWhenWasItScore,
-  WhenWasItRateLimitError,
 } from "../../../../lib/when-was-it/leaderboard-store.js";
 
 function json(data, init) {
@@ -68,18 +66,10 @@ export async function POST(request) {
   }
 
   try {
-    const requestHeaders = await headers();
-    const forwardedFor = requestHeaders
-      .get("x-forwarded-for")
-      ?.split(",")[0]
-      ?.trim();
-    const rateLimitIdentity =
-      forwardedFor || requestHeaders.get("x-real-ip") || "unknown";
     const result = await submitWhenWasItScore({
       submissionId,
       name,
       score,
-      rateLimitIdentity,
     });
 
     return json(
@@ -92,16 +82,6 @@ export async function POST(request) {
       { status: result.qualified ? 201 : 200 },
     );
   } catch (error) {
-    if (error instanceof WhenWasItRateLimitError) {
-      return json(
-        {
-          error:
-            "This connection has already added a leaderboard score today.",
-        },
-        { status: 429 },
-      );
-    }
-
     console.error("Unable to submit a When Was It score.", error);
     return json(
       { error: "Unable to submit the leaderboard entry." },

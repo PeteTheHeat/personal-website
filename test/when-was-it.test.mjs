@@ -172,6 +172,11 @@ test("uses route-specific museum copy and metadata without old archive filler", 
   assert.match(component, /Enter the gallery/);
   assert.match(component, /Share my score/);
   assert.match(component, /wwi-board-trophy/);
+  assert.doesNotMatch(component, /Peter Argany|next\/link|<Link/);
+  assert.doesNotMatch(
+    component,
+    /already added a leaderboard score today/,
+  );
   assert.doesNotMatch(
     component,
     /Date unknown|Date withheld|Dates withheld|Special exhibition|Filed and finished|Filed for posterity|collection of 50|moments in the collection|50 moments spanning/,
@@ -180,12 +185,18 @@ test("uses route-specific museum copy and metadata without old archive filler", 
   assert.match(styles, /grid-template-rows: minmax\(0, 1fr\)/);
   assert.match(styles, /\.wwi-object-image \{[\s\S]*min-height: 0/);
   assert.match(styles, /\.wwi-mat \{[\s\S]*overflow: hidden/);
+  assert.doesNotMatch(styles, /\.wwi-header > a/);
   assert.match(page, /https:\/\/peterargany\.com\/when-was-it/);
   assert.match(page, /\/when-was-it\/og\.png/);
   assert.match(homepage, /href: "\/when-was-it"/);
   assert.match(store, /upstash-sync-token/);
-  assert.match(store, /WhenWasItRateLimitError/);
   assert.match(store, /HKEYS/);
-  assert.match(route, /x-forwarded-for/);
-  assert.match(route, /status: 429/);
+  assert.doesNotMatch(
+    store,
+    /WhenWasItRateLimitError|rateLimitIdentity|rate-limit|SUBMISSION_RATE_LIMIT_SECONDS|KEYS\[5\]/,
+  );
+  assert.doesNotMatch(
+    route,
+    /WhenWasItRateLimitError|x-forwarded-for|x-real-ip|status: 429/,
+  );
 });

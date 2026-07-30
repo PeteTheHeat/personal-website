@@ -156,16 +156,6 @@
   text-transform: uppercase;
 }
 
-.wwi-header > a {
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
-  justify-self: end;
-  color: var(--wwi-muted);
-  font-size: 0.74rem;
-  text-underline-offset: 4px;
-}
-
 .wwi-kicker,
 .wwi-accession,
 .wwi-round-meta {
@@ -1231,15 +1221,11 @@
 
   .wwi-header {
     min-height: 70px;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr;
   }
 
   .wwi-header > p {
     display: none;
-  }
-
-  .wwi-header > a {
-    font-size: 0.68rem;
   }
 
   .wwi-wordmark {

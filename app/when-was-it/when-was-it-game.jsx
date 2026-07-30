@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import {
   useCallback,
   useEffect,
@@ -392,15 +391,9 @@ export function WhenWasItGame() {
           : "The leaderboard changed before your score was saved, and this one missed the top three.",
       );
       setScreen("summary");
-    } catch (error) {
-      const isRateLimited =
-        error instanceof Error &&
-        error.message.includes("already added a leaderboard score today");
-
+    } catch {
       setNameError(
-        isRateLimited
-          ? "This connection has already added a leaderboard score today. Your game is still complete."
-          : "The leaderboard did not respond. Try adding your name again.",
+        "The leaderboard did not respond. Try adding your name again.",
       );
       setLeaderboardUnavailable(true);
     } finally {
@@ -458,7 +451,6 @@ export function WhenWasItGame() {
             <span>When Was It?</span>
           </button>
           <p>A history game in five exhibits</p>
-          <Link href="/">Peter Argany</Link>
         </header>
 
         {screen === "intro" && (
