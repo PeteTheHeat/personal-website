@@ -124,7 +124,7 @@ function ResultGallery({ results }) {
       {results.map((result, index) => (
         <article className="wwi-result-object" key={result.event.id}>
           <div className="wwi-result-frame">
-            {/* Wikimedia hosts several formats, so a plain img is intentional. */}
+            {/* Exhibit images are pre-sized local WebP files. */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={result.event.imageUrl}
@@ -579,7 +579,7 @@ export function WhenWasItGame() {
                         <strong>{currentEvent.title}</strong>
                       </div>
                     ) : (
-                      // Wikimedia hosts several formats, so a plain img is intentional.
+                      // Exhibit images are pre-sized local WebP files.
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
                         className="wwi-object-image"

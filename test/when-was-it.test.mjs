@@ -11,7 +11,7 @@ import {
   selectRandomEvents,
 } from "../lib/when-was-it/game.js";
 
-test("ships 50 stable, sourced historical events", () => {
+test("ships 50 stable historical events with local, sourced images", async () => {
   const ids = HISTORICAL_EVENTS.map((historicalEvent) => historicalEvent.id);
   const years = HISTORICAL_EVENTS.map((historicalEvent) => historicalEvent.year);
 
@@ -21,12 +21,27 @@ test("ships 50 stable, sourced historical events", () => {
   assert.equal(Math.max(...years), 2020);
 
   for (const historicalEvent of HISTORICAL_EVENTS) {
-    assert.match(historicalEvent.imageUrl, /^https:\/\/upload\.wikimedia\.org\//);
+    assert.match(
+      historicalEvent.imageUrl,
+      /^\/when-was-it\/events\/\d{3}\.webp$/,
+    );
+    assert.match(
+      historicalEvent.sourceImageUrl,
+      /^https:\/\/upload\.wikimedia\.org\//,
+    );
     assert.match(
       historicalEvent.sourcePage,
       /^https:\/\/commons\.wikimedia\.org\//,
     );
     assert.ok(historicalEvent.attribution.length > 0);
+
+    const image = await readFile(
+      new URL(`../public${historicalEvent.imageUrl}`, import.meta.url),
+    );
+
+    assert.ok(image.byteLength > 5_000);
+    assert.equal(image.subarray(0, 4).toString("ascii"), "RIFF");
+    assert.equal(image.subarray(8, 12).toString("ascii"), "WEBP");
   }
 });
 
