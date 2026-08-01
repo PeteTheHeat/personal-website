@@ -431,6 +431,23 @@
   filter: drop-shadow(0 0.12rem 0.2rem rgba(0, 0, 0, 0.75));
 }
 
+.ff-sacko-tracker-link {
+  color: inherit;
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.12em;
+}
+
+.ff-sacko-tracker-link:hover {
+  text-decoration-style: double;
+}
+
+.ff-sacko-tracker-link:focus-visible {
+  border-radius: 0.08em;
+  outline: 0.12em solid var(--ff-action);
+  outline-offset: 0.1em;
+}
+
 .ff-reigning-copy p {
   margin: 0.7rem 0 0;
   color: #eef1f3;

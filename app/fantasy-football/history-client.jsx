@@ -77,6 +77,22 @@ function OwnerName({ owner, showStatus = false }) {
   );
 }
 
+function SackoName({ owner, children }) {
+  if (owner.id !== "david") {
+    return children;
+  }
+
+  return (
+    <Link
+      className="ff-sacko-tracker-link"
+      href="/sacko-tracker"
+      aria-label={`${children}, view the Sacko Tracker`}
+    >
+      {children}
+    </Link>
+  );
+}
+
 function SectionHeading({ eyebrow, title, copy, action }) {
   return (
     <header className="ff-section-heading">
@@ -557,7 +573,9 @@ function SeasonArchive({ seasons, ownerById }) {
                 <article className="ff-season-last-place">
                   <span aria-hidden="true">💩</span>
                   <span>Last place</span>
-                  <strong>{sacko.name}</strong>
+                  <strong>
+                    <SackoName owner={sacko}>{sacko.name}</SackoName>
+                  </strong>
                 </article>
               </div>
 
@@ -628,7 +646,9 @@ function HallOfLosers({ ownerById }) {
                 <OwnerMark owner={owner} size="small" />
                 <div>
                   <span>Sacko</span>
-                  <h3>{entry.displayName}</h3>
+                  <h3>
+                    <SackoName owner={owner}>{entry.displayName}</SackoName>
+                  </h3>
                 </div>
               </div>
               <p>{entry.punishment}</p>
@@ -795,7 +815,9 @@ export default function FantasyHistory({ data }) {
               </header>
               <div className="ff-reigning-copy">
                 <h2 id="ff-reigning-sacko-name">
-                  <span>{reigningSacko.shortName}</span>
+                  <SackoName owner={reigningSacko}>
+                    {reigningSacko.shortName}
+                  </SackoName>
                   <span className="ff-name-award" aria-hidden="true">
                     💩
                   </span>
