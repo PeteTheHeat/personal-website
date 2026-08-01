@@ -33,12 +33,6 @@ const projects = [
     href: "/fantasy-football",
   },
   {
-    icon: "🏆",
-    label: "sacko-tracker",
-    description: "Dave's 24 in 24 challenge",
-    href: "/sacko-tracker",
-  },
-  {
     icon: "🐣",
     label: "gender-reveal",
     description: "Find out our baby's gender!",

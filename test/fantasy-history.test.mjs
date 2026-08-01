@@ -65,6 +65,21 @@ test("sorts all-time standings by the selected column and direction", () => {
   }
 });
 
+test("keeps the Sacko Tracker off the homepage and links Dave's Sacko references", async () => {
+  const [homepage, history] = await Promise.all([
+    readFile(new URL("../app/page.jsx", import.meta.url), "utf8"),
+    readFile(
+      new URL("../app/fantasy-football/history-client.jsx", import.meta.url),
+      "utf8",
+    ),
+  ]);
+
+  assert.doesNotMatch(homepage, /label: "sacko-tracker"/);
+  assert.doesNotMatch(homepage, /href: "\/sacko-tracker"/);
+  assert.match(history, /href="\/sacko-tracker"/);
+  assert.match(history, /owner\.id !== "david"/);
+});
+
 test("combines all 13 league seasons", () => {
   assert.equal(data.league.name, "Couch Quarterbacks");
   assert.equal(data.league.firstSeason, 2013);
