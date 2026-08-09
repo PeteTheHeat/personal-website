@@ -16,7 +16,7 @@
     "dev": "next dev",
     "build": "next build",
     "test": "node --test",
-    "sync:fantasy": "node scripts/build-fantasy-history.mjs",
+    "sync:fantasy": "node projects/fantasy-football/build-history.mjs",
     "sync:projects": "node scripts/sync-projects.mjs",
     "start": "next start"
   }

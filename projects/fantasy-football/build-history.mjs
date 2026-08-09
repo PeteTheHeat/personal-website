@@ -4,12 +4,12 @@ import { fileURLToPath } from "node:url";
 import {
   assertUniqueSleeperOwners,
   resolveSleeperOwner,
-} from "../lib/fantasy-history/sleeper-users.js";
+} from "./sleeper-users.js";
 
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const OUTPUT_FILE = path.join(
   ROOT,
-  "lib/fantasy-history/data.generated.json",
+  "projects/fantasy-football/data.generated.json",
 );
 const NFL_REPO_URL = "https://github.com/PeteTheHeat/FF-Scraping";
 const NFL_RAW_BASE =

@@ -7,14 +7,14 @@ import {
   useRef,
   useState,
 } from "react";
-import { HISTORICAL_EVENTS } from "../../lib/when-was-it/events.js";
+import { HISTORICAL_EVENTS } from "./events.js";
 import {
   GAME_LENGTH,
   buildShareText,
   qualifiesForTopThree,
   scoreGuess,
   selectRandomEvents,
-} from "../../lib/when-was-it/game.js";
+} from "./game.js";
 
 const LEADERBOARD_URL = "/api/when-was-it/leaderboard";
 const CURRENT_YEAR = new Date().getUTCFullYear();

@@ -14,11 +14,11 @@ import {
   Trophy,
 } from "lucide-react";
 import { useMemo, useState } from "react";
-import { HALL_OF_LOSERS } from "../../lib/fantasy-history/hall-of-losers";
+import { HALL_OF_LOSERS } from "./hall-of-losers";
 import {
   getDefaultSortDirection,
   sortOwners,
-} from "../../lib/fantasy-history/sort-owners";
+} from "./sort-owners";
 
 const NUMBER_FORMATTER = new Intl.NumberFormat("en-US", {
   maximumFractionDigits: 2,

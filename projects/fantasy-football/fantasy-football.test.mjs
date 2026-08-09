@@ -1,20 +1,20 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
-import { HALL_OF_LOSERS } from "../lib/fantasy-history/hall-of-losers.js";
+import { HALL_OF_LOSERS } from "./hall-of-losers.js";
 import {
   getDefaultSortDirection,
   sortOwners,
-} from "../lib/fantasy-history/sort-owners.js";
+} from "./sort-owners.js";
 import {
   assertUniqueSleeperOwners,
   resolveSleeperOwner,
   SLEEPER_USERS,
-} from "../lib/fantasy-history/sleeper-users.js";
+} from "./sleeper-users.js";
 
 const data = JSON.parse(
   await readFile(
-    new URL("../lib/fantasy-history/data.generated.json", import.meta.url),
+    new URL("./data.generated.json", import.meta.url),
     "utf8",
   ),
 );
@@ -67,11 +67,8 @@ test("sorts all-time standings by the selected column and direction", () => {
 
 test("keeps the Sacko Tracker off the homepage and links Dave's Sacko references", async () => {
   const [homepage, history] = await Promise.all([
-    readFile(new URL("../app/page.jsx", import.meta.url), "utf8"),
-    readFile(
-      new URL("../app/fantasy-football/history-client.jsx", import.meta.url),
-      "utf8",
-    ),
+    readFile(new URL("../../app/home-client.jsx", import.meta.url), "utf8"),
+    readFile(new URL("./history-client.jsx", import.meta.url), "utf8"),
   ]);
 
   assert.doesNotMatch(homepage, /label: "sacko-tracker"/);

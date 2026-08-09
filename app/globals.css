@@ -1,3 +1,19 @@
+@font-face {
+  font-family: "Pixeloid Sans";
+  src: url("/fonts/PixeloidSans.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pixeloid Sans";
+  src: url("/fonts/PixeloidSans-Bold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
 :root {
   --ink: #e9dfca;
   --muted: #bcae95;
@@ -33,6 +49,8 @@ a {
 
 .studio-shell {
   display: grid;
+  position: relative;
+  width: 100%;
   min-height: 100svh;
   place-items: center;
   overflow: hidden;
@@ -91,6 +109,98 @@ a {
   pointer-events: auto;
   transform: translate(var(--stage-x), var(--stage-y)) scale(var(--stage-scale));
   transform-origin: left top;
+}
+
+.site-bio-layer {
+  position: absolute;
+  inset: 0 auto auto 0;
+  z-index: 4;
+  width: 1536px;
+  height: 1024px;
+  container-type: size;
+  color: #d8cfb8;
+  font-family: "Pixeloid Sans", "Courier New", ui-monospace, monospace;
+  font-synthesis: none;
+  pointer-events: none;
+  text-shadow:
+    0 2px 0 rgba(0, 0, 0, 0.68),
+    0 0 8px rgba(233, 223, 202, 0.06);
+  transform: translate(var(--stage-x), var(--stage-y)) scale(var(--stage-scale));
+  transform-origin: left top;
+}
+
+.site-bio-heading {
+  position: absolute;
+  top: 104px;
+  left: 28px;
+  width: 250px;
+}
+
+.site-bio-heading h1,
+.site-bio-tagline,
+.site-bio-fact {
+  margin: 0;
+}
+
+.site-bio-heading h1 {
+  font-weight: 600;
+  line-height: 0.82;
+  letter-spacing: -1px;
+}
+
+.site-bio-greeting,
+.site-bio-name {
+  display: block;
+  white-space: nowrap;
+}
+
+.site-bio-greeting {
+  font-size: 54px;
+}
+
+.site-bio-name {
+  margin-top: 22px;
+  color: #6da542;
+  font-size: 80px;
+  font-weight: 700;
+  transform: scale(0.65, 0.75);
+  transform-origin: left top;
+}
+
+.site-bio-tagline {
+  margin-top: 17px;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.site-bio-facts {
+  position: absolute;
+  inset: 0;
+}
+
+.site-bio-fact {
+  display: grid;
+  position: absolute;
+  left: 84px;
+  width: 300px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.16;
+  letter-spacing: 0;
+}
+
+.site-bio-fact span {
+  white-space: nowrap;
+}
+
+.site-bio-location {
+  top: 335px;
+}
+
+.site-bio-role {
+  top: 428px;
 }
 
 .desktop-terminal {
@@ -915,14 +1025,14 @@ a {
   background: #bb432f;
 }
 
-@media (min-width: 761px) {
+@media (min-width: 901px) and (min-height: 640px) {
   .scene-backdrop,
   .scene-image {
-    background-image: url("/pixel-studio-v3.webp");
+    background-image: url("/pixel-studio-v4-clean.webp");
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 900px), (max-height: 639px) {
   body {
     overflow: hidden;
   }
@@ -943,6 +1053,8 @@ a {
 
   .mobile-stage {
     display: grid;
+    position: relative;
+    z-index: 1;
     width: 100%;
     min-height: 100svh;
     place-items: center;
@@ -950,7 +1062,7 @@ a {
   }
 
   .mobile-scene-home .mobile-scene-image {
-    background-image: url("/mobile-home-bg.webp");
+    background-image: url("/mobile-home-bg-v2-clean.webp");
   }
 
   .mobile-scene-projects .mobile-scene-image {
@@ -959,6 +1071,60 @@ a {
 
   .app-placeholder section {
     width: min(100%, 24rem);
+  }
+
+  .site-bio-layer {
+    top: 50%;
+    left: 50%;
+    width: min(100vw, calc(100svh * 0.613366646));
+    height: auto;
+    aspect-ratio: 0.613366646;
+    transform: translate(-50%, -50%);
+  }
+
+  .site-bio-layer-hidden {
+    visibility: hidden;
+  }
+
+  .site-bio-heading {
+    top: 16.35%;
+    left: 16.15%;
+    width: 38%;
+  }
+
+  .site-bio-heading h1 {
+    line-height: 0.82;
+    letter-spacing: 0;
+  }
+
+  .site-bio-greeting {
+    font-size: min(5cqh, 4rem);
+  }
+
+  .site-bio-name {
+    margin-top: min(2cqh, 1rem);
+    font-size: min(5.2cqh, 4.25rem);
+    transform: scale(0.97, 1.15);
+  }
+
+  .site-bio-tagline {
+    margin-top: min(3.7cqh, 1.5rem);
+    font-size: min(2.55cqh, 1.85rem);
+  }
+
+  .site-bio-fact {
+    left: 25.8%;
+    width: 54%;
+    font-size: min(2.35cqh, 2rem);
+    line-height: 1.12;
+  }
+
+  .site-bio-location {
+    top: 36.7%;
+  }
+
+  .site-bio-role {
+    top: 45.7%;
   }
 }
 

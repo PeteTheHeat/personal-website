@@ -2,11 +2,11 @@ import {
   calculateVerifiedScore,
   normalizePlayerName,
   normalizeSubmissionId,
-} from "../../../../lib/when-was-it/game.js";
+} from "../../../../projects/when-was-it/game.js";
 import {
   getWhenWasItLeaderboard,
   submitWhenWasItScore,
-} from "../../../../lib/when-was-it/leaderboard-store.js";
+} from "../../../../projects/when-was-it/leaderboard-store.js";
 
 function json(data, init) {
   const headers = new Headers(init?.headers);

@@ -1,6 +1,6 @@
-import historyData from "../../lib/fantasy-history/data.generated.json";
-import FantasyHistory from "./history-client";
-import "./fantasy-football.css";
+import historyData from "../../projects/fantasy-football/data.generated.json";
+import FantasyHistory from "../../projects/fantasy-football/history-client";
+import "../../projects/fantasy-football/fantasy-football.css";
 
 export const metadata = {
   title: "Couch QBs History Books | All-Time Fantasy Football Records",

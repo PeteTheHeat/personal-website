@@ -10,13 +10,13 @@ import {
   isSackoAdminAuthenticated,
   isSackoAuthConfigured,
   verifySackoAdminPassword,
-} from "../../lib/sacko/auth";
+} from "./auth";
 import {
   clearSackoLoginAttempts,
   consumeSackoLoginAttempt,
   updateChallengeProgress,
-} from "../../lib/sacko/store";
-import { SACKO_STATE_CACHE_TAG } from "../../lib/sacko/cached-state";
+} from "./store";
+import { SACKO_STATE_CACHE_TAG } from "./cached-state";
 
 const ADMIN_PATH = "/sacko-tracker-admin";
 const PUBLIC_PATH = "/sacko-tracker";

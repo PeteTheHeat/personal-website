@@ -9,7 +9,7 @@ import {
   normalizeChallengeState,
   transitionChallengeState,
   validateProgress,
-} from "../lib/sacko/domain.js";
+} from "./domain.js";
 
 function state(overrides = {}) {
   return {

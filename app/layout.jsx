@@ -4,8 +4,11 @@ import "./globals.css";
 
 export const metadata = {
   title: "Peter Argany",
-  description: "Personal site and small software experiments by Peter Argany.",
+  description:
+    "Software engineer at OpenAI building playful software, personal tools, and small experiments.",
   metadataBase: new URL("https://peterargany.com"),
+  authors: [{ name: "Peter Argany", url: "https://peterargany.com" }],
+  creator: "Peter Argany",
   icons: {
     icon: [
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
@@ -15,9 +18,12 @@ export const metadata = {
   },
   openGraph: {
     title: "Peter Argany",
-    description: "I build software.",
+    description:
+      "Software engineer at OpenAI building playful software, personal tools, and small experiments.",
     url: "https://peterargany.com",
     siteName: "Peter Argany",
+    type: "website",
+    locale: "en_US",
     images: [
       {
         url: "/og-image.jpg",
@@ -26,6 +32,17 @@ export const metadata = {
         alt: "Pixel art software studio",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Peter Argany",
+    description:
+      "Software engineer at OpenAI building playful software, personal tools, and small experiments.",
+    images: ["/og-image.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

@@ -3,13 +3,21 @@
 This is the source for my personal website.
 
 The site is a Next.js app intended to deploy on Vercel. The homepage lives at
-`app/page.jsx`, and future small apps can be added as normal route folders under
-`app/`.
+`app/page.jsx`.
 
-Examples:
+## Repository layout
 
-- `app/world-cup-bracket/page.jsx` serves `/world-cup-bracket`
-- `app/baby-name-picker/page.jsx` would serve `/baby-name-picker`
+- `app/`: thin Next.js route entrypoints and shared site shell
+- `projects/fantasy-football/`: fantasy archive UI, data, sync script, and tests
+- `projects/sacko-tracker/`: public tracker, admin UI, persistence, and tests
+- `projects/when-was-it/`: game UI, data, leaderboard store, and tests
+- `public/<project>/`: route-specific images and other static assets
+- `public/projects/<project>/`: built snapshots of projects whose source lives
+  in a separate repository
+
+Keep project-specific UI, styles, domain logic, generated data, scripts, and
+tests together under `projects/<slug>`. Files under `app/<slug>` should only
+connect that project to a URL or a framework-only API route.
 
 ## Local development
 
@@ -33,14 +41,13 @@ Vercel should use the default Next.js settings:
 - Install command: `npm install`
 - Output directory: handled by Vercel
 
-## Project apps
+## External project snapshots
 
-Standalone project apps live in their own source folders and are published as
-static build snapshots through this repo.
+Some standalone project apps live in their own source repositories and are
+published as static build snapshots through this repo.
 
-Current project routes:
+Current snapshot routes:
 
-- `/when-was-it`
 - `/gender-reveal`
 - `/character-select`
 
@@ -55,25 +62,32 @@ git push origin main
 npx --yes vercel deploy --prod --yes
 ```
 
-`npm run sync:projects` builds each app with `--base=/projects/<slug>/` and
-copies its `dist` folder into `public/projects/<slug>`. Source project paths are
-configured in `scripts/sync-projects.mjs`. The route pages in
-`app/<slug>/page.jsx` load those builds with `app/project-frame.jsx`. The shared
-frame is intentionally chrome-free; do not add a floating Home button on top of
-embedded project apps.
+`npm run sync:projects` builds each external app with
+`--base=/projects/<slug>/` and copies its `dist` folder into
+`public/projects/<slug>`. Source project paths are configured in
+`scripts/sync-projects.mjs`. The route pages in `app/<slug>/page.jsx` load those
+builds with `app/project-frame.jsx`. The shared frame is intentionally
+chrome-free; do not add a floating Home button on top of embedded project apps.
 
 To add another project:
 
-1. Add it to the homepage `projects` array in `app/page.jsx`.
-2. Add its local source path to `scripts/sync-projects.mjs`.
-3. Add a route page under `app/<slug>/page.jsx` using `ProjectFrame`.
-4. Run `npm run sync:projects` and `npm run build`.
+1. Add its local source path to `scripts/sync-projects.mjs`.
+2. Add a route page under `app/<slug>/page.jsx` using `ProjectFrame`.
+3. Give every new public page well-formed, route-specific SEO metadata: a
+   unique title and description, canonical URL, Open Graph fields, and Twitter
+   card fields. Add indexable pages to `app/sitemap.js`; mark admin, internal,
+   or placeholder pages `noindex`.
+4. Add it to the homepage `projects` array in `app/home-client.jsx` if it belongs
+   there.
+5. Run `npm run sync:projects` and `npm run build`.
 
 ## When Was It?
 
 The historical date game lives at `/when-was-it`. It draws five moments from a
 50-event collection and keeps the three lowest total errors on a shared
 leaderboard.
+
+Its source, including tests, lives in `projects/when-was-it`.
 
 Production uses the same Upstash Redis REST connection as Sacko Tracker, with a
 separate environment-scoped key. `WHEN_WAS_IT_REDIS_KEY` can override that key
@@ -87,6 +101,9 @@ The public tracker is available at `/sacko-tracker`. Score changes are made at
 navigation and marked `noindex`. The admin form can also store a verified
 before- or after-deadline result when the exact completion timestamp was not
 captured.
+
+Its source, including the public and admin interfaces, lives in
+`projects/sacko-tracker`.
 
 For local development, tracker state is persisted in the ignored `.data/`
 directory. Production uses an Upstash Redis REST database so data survives

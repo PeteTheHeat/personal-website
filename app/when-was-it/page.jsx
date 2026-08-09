@@ -1,5 +1,5 @@
-import { WhenWasItGame } from "./when-was-it-game";
-import "./when-was-it.css";
+import { WhenWasItGame } from "../../projects/when-was-it/when-was-it-game";
+import "../../projects/when-was-it/when-was-it.css";
 
 const title = "When Was It? | Place five moments in history";
 const description =

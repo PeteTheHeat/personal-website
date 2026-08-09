@@ -1,0 +1,396 @@
+"use client";
+
+import Link from "next/link";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { preload } from "react-dom";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
+import { SiX } from "react-icons/si";
+
+const STAGE_WIDTH = 1536;
+const STAGE_HEIGHT = 1024;
+const MOBILE_MEDIA_QUERY = "(max-width: 900px), (max-height: 639px)";
+
+function PreloadMobileProjectsBackground() {
+  preload("/mobile-projects-bg-2.webp", {
+    as: "image",
+    type: "image/webp",
+    media: MOBILE_MEDIA_QUERY,
+  });
+
+  return null;
+}
+
+const projects = [
+  {
+    icon: "🏛️",
+    label: "when-was-it",
+    description: "A five-round history game",
+    href: "/when-was-it",
+  },
+  {
+    icon: "🏈",
+    label: "fantasy-football",
+    description: "Couch QBs history books",
+    href: "/fantasy-football",
+  },
+  {
+    icon: "🐣",
+    label: "gender-reveal",
+    description: "Find out our baby's gender!",
+    href: "/gender-reveal",
+  },
+  {
+    icon: "📋",
+    label: "character-select",
+    description: "A baby name chooser app",
+    href: "/character-select",
+  },
+];
+
+const socialLinks = [
+  {
+    href: "https://github.com/PeteTheHeat",
+    label: "GitHub",
+    Icon: FaGithub,
+    className: "github-hotspot",
+  },
+  {
+    href: "https://www.linkedin.com/in/peterargany/",
+    label: "LinkedIn",
+    Icon: FaLinkedinIn,
+    className: "linkedin-hotspot",
+  },
+  {
+    href: "https://twitter.com/peterargany",
+    label: "X",
+    Icon: SiX,
+    className: "x-hotspot",
+  },
+];
+
+function pad(value) {
+  return String(value).padStart(2, "0");
+}
+
+function formatTerminalTime(date) {
+  return [
+    date.getFullYear(),
+    "-",
+    pad(date.getMonth() + 1),
+    "-",
+    pad(date.getDate()),
+    " ",
+    pad(date.getHours()),
+    ":",
+    pad(date.getMinutes()),
+    ":",
+    pad(date.getSeconds()),
+  ].join("");
+}
+
+function formatPhoneTime(date) {
+  return `${pad(date.getHours())}:${pad(date.getMinutes())}`;
+}
+
+function useClock() {
+  const [now, setNow] = useState(null);
+  const [loadedAt, setLoadedAt] = useState(null);
+
+  useEffect(() => {
+    const tick = () => {
+      const nextNow = new Date();
+      setNow(nextNow);
+      setLoadedAt((currentLoadedAt) => currentLoadedAt ?? nextNow);
+    };
+    tick();
+    const interval = window.setInterval(tick, 1000);
+    return () => window.clearInterval(interval);
+  }, []);
+
+  return useMemo(
+    () => ({
+      terminal: now ? formatTerminalTime(now) : "---- -- -- --:--:--",
+      loadedTerminal: loadedAt ? formatTerminalTime(loadedAt) : "---- -- -- --:--:--",
+      phone: now ? formatPhoneTime(now) : "--:--",
+      loadedPhone: loadedAt ? formatPhoneTime(loadedAt) : "--:--",
+    }),
+    [loadedAt, now],
+  );
+}
+
+function useStageGeometry(stageRef) {
+  const [geometry, setGeometry] = useState({ scale: 0, x: 0, y: 0 });
+
+  useEffect(() => {
+    const stage = stageRef.current;
+    if (!stage) {
+      return undefined;
+    }
+
+    const updateGeometry = () => {
+      const scale = Math.min(
+        stage.clientWidth / STAGE_WIDTH,
+        stage.clientHeight / STAGE_HEIGHT,
+      );
+      const width = STAGE_WIDTH * scale;
+      const height = STAGE_HEIGHT * scale;
+
+      setGeometry({
+        scale,
+        x: (stage.clientWidth - width) / 2,
+        y: (stage.clientHeight - height) / 2,
+      });
+    };
+
+    updateGeometry();
+    const observer = new ResizeObserver(updateGeometry);
+    observer.observe(stage);
+    window.addEventListener("resize", updateGeometry);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", updateGeometry);
+    };
+  }, [stageRef]);
+
+  return geometry;
+}
+
+function SocialLink({ href, label, Icon, className = "" }) {
+  return (
+    <a className={`logo-hotspot ${className}`} href={href} aria-label={label}>
+      <Icon aria-hidden="true" />
+      <span className="sr-only">{label}</span>
+    </a>
+  );
+}
+
+function SiteBio({ mobileProjectsOpen, style }) {
+  return (
+    <header
+      className={`site-bio-layer${mobileProjectsOpen ? " site-bio-layer-hidden" : ""}`}
+      style={style}
+      aria-hidden={mobileProjectsOpen ? "true" : undefined}
+    >
+      <div className="site-bio-heading">
+        <h1>
+          <span className="site-bio-greeting">Hi! I&apos;m</span>{" "}
+          <span className="site-bio-name">Peter</span>
+          <span className="sr-only"> Argany</span>
+        </h1>
+        <p className="site-bio-tagline">I build software.</p>
+      </div>
+
+      <div className="site-bio-facts">
+        <p className="site-bio-fact site-bio-location">
+          <span>Based in</span>
+          <span>San Francisco, CA</span>
+        </p>
+        <p className="site-bio-fact site-bio-role">
+          <span>Software Engineer</span>
+          <span>at OpenAI</span>
+        </p>
+      </div>
+    </header>
+  );
+}
+
+function DesktopPrompt({ time, command }) {
+  return (
+    <div className="terminal-prompt">
+      <p className="terminal-identity">
+        <span>peterargany</span>
+        <b>@</b>
+        <em>~/workspace</em>
+        <i aria-hidden="true">🐠</i>
+      </p>
+      <p className="terminal-command">
+        [{time}] &gt; {command}
+      </p>
+    </div>
+  );
+}
+
+function DesktopOverlay({ loadedTime, liveTime }) {
+  return (
+    <div className="stage-coordinate-plane" aria-hidden={false}>
+      <section className="desktop-terminal" aria-label="Projects terminal">
+        <DesktopPrompt time={loadedTime} command="ls" />
+
+        <div className="desktop-projects">
+          {projects.map((project) => (
+            <Link
+              key={project.label}
+              className="desktop-project"
+              href={project.href}
+              prefetch={false}
+            >
+              <span className="desktop-project-icon" aria-hidden="true">
+                {project.icon}
+              </span>
+              <span className="desktop-project-name">{project.label}</span>
+              <span className="desktop-project-description">{project.description}</span>
+            </Link>
+          ))}
+        </div>
+
+        <DesktopPrompt time={liveTime} command={<span className="terminal-cursor" />} />
+      </section>
+
+      <nav className="social-hotspots" aria-label="Social links">
+        {socialLinks.map(({ href, label, Icon, className }) => (
+          <SocialLink
+            key={href}
+            href={href}
+            label={label}
+            Icon={Icon}
+            className={className}
+          />
+        ))}
+      </nav>
+    </div>
+  );
+}
+
+function MobileScene({ variant, children }) {
+  return (
+    <div className={`mobile-scene mobile-scene-${variant}`}>
+      <div className="mobile-scene-image" aria-hidden="true" />
+      <div className="mobile-overlay">{children}</div>
+    </div>
+  );
+}
+
+function MobileSocialLink({ href, label, Icon }) {
+  return (
+    <a className="mobile-social-link" href={href} aria-label={label}>
+      <Icon aria-hidden="true" />
+    </a>
+  );
+}
+
+function MobileHomeScreen({ time, onOpenProjects }) {
+  return (
+    <MobileScene variant="home">
+      <time className="mobile-load-time">{time}</time>
+
+      <nav className="mobile-socials" aria-label="Social links">
+        {socialLinks.map(({ href, label, Icon }) => (
+          <MobileSocialLink key={href} href={href} label={label} Icon={Icon} />
+        ))}
+      </nav>
+
+      <button className="mobile-projects-button" onClick={onOpenProjects}>
+        Projects
+      </button>
+    </MobileScene>
+  );
+}
+
+function MobileProjectsScreen({ time, onBack }) {
+  return (
+    <MobileScene variant="projects">
+      <time className="mobile-load-time">{time}</time>
+
+      <section className="mobile-projects-panel" aria-label="Projects">
+        <span className="mobile-workspace" aria-hidden="true">
+          ~/workspace
+        </span>
+        {projects.map((project) => {
+          const content = (
+            <>
+              <span className="mobile-project-icon" aria-hidden="true">
+                {project.icon}
+              </span>
+              <span>
+                <strong>{project.label}</strong>
+                <small>{project.description}</small>
+              </span>
+            </>
+          );
+
+          return (
+            <Link
+              key={project.label}
+              className="mobile-project"
+              href={project.href}
+              prefetch={false}
+            >
+              {content}
+            </Link>
+          );
+        })}
+      </section>
+
+      <button className="mobile-back-button" onClick={onBack}>
+        Back
+      </button>
+    </MobileScene>
+  );
+}
+
+function MobileExperience({ clock, screen, onScreenChange }) {
+  return (
+    <section className="mobile-stage" aria-label="Peter Argany mobile site">
+      {screen === "home" ? (
+        <MobileHomeScreen
+          time={clock.loadedPhone}
+          onOpenProjects={() => onScreenChange("projects")}
+        />
+      ) : (
+        <MobileProjectsScreen
+          time={clock.loadedPhone}
+          onBack={() => onScreenChange("home")}
+        />
+      )}
+    </section>
+  );
+}
+
+export default function HomeClient() {
+  const clock = useClock();
+  const stageRef = useRef(null);
+  const stageGeometry = useStageGeometry(stageRef);
+  const [mobileScreen, setMobileScreen] = useState("home");
+  const stageStyle = {
+    "--stage-scale": stageGeometry.scale,
+    "--stage-x": `${stageGeometry.x}px`,
+    "--stage-y": `${stageGeometry.y}px`,
+  };
+
+  return (
+    <main className="studio-shell">
+      <PreloadMobileProjectsBackground />
+
+      <section
+        ref={stageRef}
+        className="scene-stage"
+        style={stageStyle}
+        aria-label="Peter Argany personal site"
+      >
+        <div
+          className="scene-backdrop"
+          aria-hidden="true"
+        />
+
+        <div
+          className="scene-image"
+          aria-hidden="true"
+        />
+
+        <DesktopOverlay loadedTime={clock.loadedTerminal} liveTime={clock.terminal} />
+      </section>
+
+      <SiteBio
+        mobileProjectsOpen={mobileScreen === "projects"}
+        style={stageStyle}
+      />
+
+      <MobileExperience
+        clock={clock}
+        screen={mobileScreen}
+        onScreenChange={setMobileScreen}
+      />
+    </main>
+  );
+}

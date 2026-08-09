@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
-import { HISTORICAL_EVENTS } from "../lib/when-was-it/events.js";
+import { HISTORICAL_EVENTS } from "./events.js";
 import {
   GAME_LENGTH,
   buildShareText,
@@ -9,7 +9,7 @@ import {
   qualifiesForTopThree,
   scoreGuess,
   selectRandomEvents,
-} from "../lib/when-was-it/game.js";
+} from "./game.js";
 
 test("ships 50 stable historical events with local, sourced images", async () => {
   const ids = HISTORICAL_EVENTS.map((historicalEvent) => historicalEvent.id);
@@ -36,7 +36,7 @@ test("ships 50 stable historical events with local, sourced images", async () =>
     assert.ok(historicalEvent.attribution.length > 0);
 
     const image = await readFile(
-      new URL(`../public${historicalEvent.imageUrl}`, import.meta.url),
+      new URL(`../../public${historicalEvent.imageUrl}`, import.meta.url),
     );
 
     assert.ok(image.byteLength > 5_000);
@@ -135,30 +135,32 @@ test("builds a compact score challenge without revealing answers", () => {
 });
 
 test("uses route-specific museum copy and metadata without old archive filler", async () => {
-  const [component, styles, page, homepage, store, route] = await Promise.all([
+  const [component, styles, page, homepage, homeClient, store, route] =
+    await Promise.all([
     readFile(
-      new URL("../app/when-was-it/when-was-it-game.jsx", import.meta.url),
+      new URL("./when-was-it-game.jsx", import.meta.url),
       "utf8",
     ),
     readFile(
-      new URL("../app/when-was-it/when-was-it.css", import.meta.url),
+      new URL("./when-was-it.css", import.meta.url),
       "utf8",
     ),
     readFile(
-      new URL("../app/when-was-it/page.jsx", import.meta.url),
+      new URL("../../app/when-was-it/page.jsx", import.meta.url),
       "utf8",
     ),
-    readFile(new URL("../app/page.jsx", import.meta.url), "utf8"),
+    readFile(new URL("../../app/page.jsx", import.meta.url), "utf8"),
+    readFile(new URL("../../app/home-client.jsx", import.meta.url), "utf8"),
     readFile(
       new URL(
-        "../lib/when-was-it/leaderboard-store.js",
+        "./leaderboard-store.js",
         import.meta.url,
       ),
       "utf8",
     ),
     readFile(
       new URL(
-        "../app/api/when-was-it/leaderboard/route.js",
+        "../../app/api/when-was-it/leaderboard/route.js",
         import.meta.url,
       ),
       "utf8",
@@ -188,7 +190,8 @@ test("uses route-specific museum copy and metadata without old archive filler", 
   assert.doesNotMatch(styles, /\.wwi-header > a/);
   assert.match(page, /https:\/\/peterargany\.com\/when-was-it/);
   assert.match(page, /\/when-was-it\/og\.png/);
-  assert.match(homepage, /href: "\/when-was-it"/);
+  assert.match(homepage, /<HomeClient \/>/);
+  assert.match(homeClient, /href: "\/when-was-it"/);
   assert.match(store, /upstash-sync-token/);
   assert.match(store, /HKEYS/);
   assert.doesNotMatch(

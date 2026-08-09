@@ -2,6 +2,10 @@ import Link from "next/link";
 
 export const metadata = {
   title: "World Cup Bracket | Peter Argany",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function WorldCupBracket() {
