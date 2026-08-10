@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 import { drinkMenus } from "./menu-data.js";
@@ -67,4 +68,12 @@ test("non-alcoholic soft drinks omit flavor descriptions", () => {
   );
 
   assert.ok(softDrinks.drinks.every((drink) => !drink.description));
+});
+
+test("the homepage links to Bar Argany", async () => {
+  const homepage = await readFile(new URL("../../app/page.jsx", import.meta.url), "utf8");
+
+  assert.match(homepage, /label: "bar-argany"/);
+  assert.match(homepage, /description: "A home drink menu"/);
+  assert.match(homepage, /href: "\/menu"/);
 });

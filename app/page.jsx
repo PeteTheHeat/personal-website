@@ -21,6 +21,12 @@ function PreloadMobileProjectsBackground() {
 
 const projects = [
   {
+    icon: "🍸",
+    label: "bar-argany",
+    description: "A home drink menu",
+    href: "/menu",
+  },
+  {
     icon: "🏛️",
     label: "when-was-it",
     description: "A five-round history game",
