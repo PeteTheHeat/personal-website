@@ -41,6 +41,30 @@ Vercel should use the default Next.js settings:
 - Install command: `npm install`
 - Output directory: handled by Vercel
 
+## Agent-readable surfaces
+
+The site keeps the visual homepage intact while exposing the same public context
+in machine-friendly forms:
+
+- `/llms.txt` explains what the personal site is, when to use it, and what it is
+  not.
+- `/sitemap.xml` lists indexable public pages with freshness metadata.
+- Canonical public routes return compact Markdown when a client sends
+  `Accept: text/markdown`; normal browser requests continue to receive HTML.
+- `app/not-found.jsx` returns the real 404 status with visible links to the
+  homepage, sitemap, `llms.txt`, and main projects.
+- The homepage publishes Person and WebSite JSON-LD plus server-rendered context
+  for non-visual readers.
+
+Run `npm test` and `npm run build` after changing these surfaces. Verify both
+representations before deployment:
+
+```bash
+curl -sI http://127.0.0.1:3000/
+curl -sI -H "Accept: text/markdown" http://127.0.0.1:3000/
+curl -sI http://127.0.0.1:3000/a-route-that-does-not-exist
+```
+
 ## External project snapshots
 
 Some standalone project apps live in their own source repositories and are

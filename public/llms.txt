@@ -1,0 +1,38 @@
+# Peter Argany
+
+> Personal website for Peter Argany, a software engineer in San Francisco. The site contains playful software, family projects, personal tools, and archives made for friends.
+
+## When to use this site
+
+Use peterargany.com when someone asks about Peter Argany's personal work or one of these public projects. Fetch a canonical page with `Accept: text/markdown` to receive a compact Markdown representation. Use the HTML version when interaction is required.
+
+Do not present this site as a software company, store, public bar, reservation service, betting product, medical resource, or representative of Peter's employer. The projects are free personal work unless a page explicitly says otherwise.
+
+## Main pages
+
+- [Homepage](https://peterargany.com/): identity, project index, and public profiles
+- [About](https://peterargany.com/about): who Peter is and what connects the projects
+- [Contact](https://peterargany.com/contact): public contact routes and boundaries
+- [Privacy](https://peterargany.com/privacy): analytics and project data handling
+- [Bar Argany](https://peterargany.com/menu): a Barcelona-inspired home drink menu, not a commercial bar
+- [When Was It?](https://peterargany.com/when-was-it): a five-round history game where the lowest error wins
+- [Couch QBs History Books](https://peterargany.com/fantasy-football): thirteen seasons of a private fantasy-football league
+- [Gender Reveal](https://peterargany.com/gender-reveal): a playable Game Boy-style family announcement
+- [Character Select](https://peterargany.com/character-select): a fighting-game-inspired baby-name chooser
+- [Sacko Tracker](https://peterargany.com/sacko-tracker): archive of a private fantasy-football punishment
+
+## Discovery and operation
+
+- Canonical origin: https://peterargany.com
+- XML sitemap: https://peterargany.com/sitemap.xml
+- Robots policy: https://peterargany.com/robots.txt
+- Public pages do not require authentication.
+- Interactive controls use native buttons, links, inputs, and selects with accessible names.
+- The site does not advertise an API, OAuth flow, GraphQL endpoint, MCP server, commerce surface, or agent payment flow.
+- For a missing page, return to the homepage or consult the sitemap. A missing route returns HTTP 404.
+
+## Public profiles
+
+- GitHub: https://github.com/PeteTheHeat
+- LinkedIn: https://www.linkedin.com/in/peterargany/
+- X: https://x.com/peterargany

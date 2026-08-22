@@ -1,4 +1,17 @@
 /** @type {import('next').NextConfig} */
+const markdownVariants = [
+  ["/", "home"],
+  ["/menu", "menu"],
+  ["/when-was-it", "when-was-it"],
+  ["/fantasy-football", "fantasy-football"],
+  ["/gender-reveal", "gender-reveal"],
+  ["/character-select", "character-select"],
+  ["/about", "about"],
+  ["/contact", "contact"],
+  ["/privacy", "privacy"],
+  ["/sacko-tracker", "sacko-tracker"],
+];
+
 const nextConfig = {
   async redirects() {
     return [
@@ -33,6 +46,23 @@ const nextConfig = {
         headers: noIndexHeaders,
       },
     ];
+  },
+  async rewrites() {
+    return {
+      beforeFiles: markdownVariants.map(([source, slug]) => ({
+        source,
+        destination: `/agent-content/${slug}`,
+        has: [
+          {
+            type: "header",
+            key: "accept",
+            value: "(.*)text/markdown(.*)",
+          },
+        ],
+      })),
+      afterFiles: [],
+      fallback: [],
+    };
   },
 };
 

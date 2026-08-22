@@ -1,7 +1,10 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /agent-content/
 Disallow: /projects/
 Disallow: /sacko-tracker-admin
+
+Allow: /llms.txt
 
 Sitemap: https://peterargany.com/sitemap.xml
