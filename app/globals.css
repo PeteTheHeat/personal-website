@@ -191,13 +191,13 @@ a {
   width: 250px;
 }
 
-.site-bio-heading h1,
+.site-bio-title,
 .site-bio-tagline,
 .site-bio-fact {
   margin: 0;
 }
 
-.site-bio-heading h1 {
+.site-bio-title {
   font-weight: 600;
   line-height: 0.82;
   letter-spacing: -1px;
@@ -1147,7 +1147,7 @@ a {
     width: 38%;
   }
 
-  .site-bio-heading h1 {
+  .site-bio-title {
     line-height: 0.82;
     letter-spacing: 0;
   }

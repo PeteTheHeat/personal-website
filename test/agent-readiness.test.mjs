@@ -77,10 +77,15 @@ test("homepage publishes Person and WebSite JSON-LD plus substantial context", a
   assert.match(source, /"@type": "Person"/);
   assert.match(source, /"@type": "WebSite"/);
   assert.match(source, /HomeContext/);
+  assert.match(
+    source,
+    /<h1 id="home-context-title">Peter Argany and his personal projects<\/h1>/,
+  );
   assert.match(source, /NoScriptHome/);
   assert.match(source, /<noscript>/);
   assert.match(source, /<h1>Peter Argany<\/h1>/);
   assert.match(source, /application\/ld\+json/);
   assert.match(clientSource, /useState\(\{ scale: 1, x: 0, y: 0 \}\)/);
   assert.match(clientSource, /useLayoutEffect\(\(\) =>/);
+  assert.doesNotMatch(clientSource, /<h1>/);
 });

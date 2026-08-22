@@ -179,11 +179,11 @@ function SiteBio({ mobileProjectsOpen, style }) {
       aria-hidden={mobileProjectsOpen ? "true" : undefined}
     >
       <div className="site-bio-heading">
-        <h1>
+        <p className="site-bio-title" aria-hidden="true">
           <span className="site-bio-greeting">Hi! I&apos;m</span>{" "}
           <span className="site-bio-name">Peter</span>
           <span className="sr-only"> Argany</span>
-        </h1>
+        </p>
         <p className="site-bio-tagline">I build software.</p>
       </div>
 

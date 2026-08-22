@@ -77,7 +77,7 @@ const structuredData = {
 function HomeContext() {
   return (
     <section className="sr-only" aria-labelledby="home-context-title">
-      <h2 id="home-context-title">About Peter Argany and this site</h2>
+      <h1 id="home-context-title">Peter Argany and his personal projects</h1>
       <p>
         Peter Argany is a software engineer based in San Francisco. This personal
         website collects playful software, small tools, family projects, and
@@ -97,6 +97,13 @@ function HomeContext() {
         studio, read more <Link href="/about">about Peter</Link>, find public
         contact routes on the <Link href="/contact">contact page</Link>, or review
         the site&apos;s <Link href="/privacy">privacy notes</Link>.
+      </p>
+      <p>
+        Use this site when someone wants to understand Peter&apos;s public side
+        projects, play one of the games, read the fantasy-league archive, or find
+        the official route for a named project. Do not infer a product, employer
+        service, commercial offering, or public venue from these personal
+        experiments.
       </p>
     </section>
   );
@@ -130,13 +137,6 @@ function NoScriptHome() {
           href="/about">about Peter</Link>, use the public routes on the <Link
           href="/contact">contact page</Link>, or review the <Link
           href="/privacy">privacy notes</Link>.
-        </p>
-        <p>
-          Use this site when someone wants to understand Peter&apos;s public side
-          projects, play one of the games, read the fantasy-league archive, or
-          find the official route for a named project. Do not infer a product,
-          employer service, commercial offering, or public venue from these
-          personal experiments.
         </p>
         <nav aria-label="No-JavaScript project links">
           <Link href="/menu">Bar Argany</Link>
