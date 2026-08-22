@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { preload } from "react-dom";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
 import { SiX } from "react-icons/si";
@@ -125,9 +125,9 @@ function useClock() {
 }
 
 function useStageGeometry(stageRef) {
-  const [geometry, setGeometry] = useState({ scale: 0, x: 0, y: 0 });
+  const [geometry, setGeometry] = useState({ scale: 1, x: 0, y: 0 });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const stage = stageRef.current;
     if (!stage) {
       return undefined;

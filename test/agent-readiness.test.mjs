@@ -69,6 +69,10 @@ test("custom 404 exposes human and agent recovery links", async () => {
 
 test("homepage publishes Person and WebSite JSON-LD plus substantial context", async () => {
   const source = await readFile(new URL("../app/page.jsx", import.meta.url), "utf8");
+  const clientSource = await readFile(
+    new URL("../app/home-client.jsx", import.meta.url),
+    "utf8",
+  );
 
   assert.match(source, /"@type": "Person"/);
   assert.match(source, /"@type": "WebSite"/);
@@ -77,4 +81,6 @@ test("homepage publishes Person and WebSite JSON-LD plus substantial context", a
   assert.match(source, /<noscript>/);
   assert.match(source, /<h1>Peter Argany<\/h1>/);
   assert.match(source, /application\/ld\+json/);
+  assert.match(clientSource, /useState\(\{ scale: 1, x: 0, y: 0 \}\)/);
+  assert.match(clientSource, /useLayoutEffect\(\(\) =>/);
 });
