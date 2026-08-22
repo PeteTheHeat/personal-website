@@ -81,6 +81,9 @@ test("homepage publishes Person and WebSite JSON-LD plus substantial context", a
     source,
     /<h1 id="home-context-title">Peter Argany and his personal projects<\/h1>/,
   );
+  assert.match(source, /<h2>About this site<\/h2>/);
+  assert.match(source, /<h2>Projects<\/h2>/);
+  assert.match(source, /<h2>Using this site<\/h2>/);
   assert.match(source, /NoScriptHome/);
   assert.match(source, /<noscript>/);
   assert.match(source, /<h1>Peter Argany<\/h1>/);

@@ -78,12 +78,14 @@ function HomeContext() {
   return (
     <section className="sr-only" aria-labelledby="home-context-title">
       <h1 id="home-context-title">Peter Argany and his personal projects</h1>
+      <h2>About this site</h2>
       <p>
         Peter Argany is a software engineer based in San Francisco. This personal
         website collects playful software, small tools, family projects, and
         archives made for friends. It is a portfolio, not a software company,
         storefront, public bar, or representative of Peter&apos;s employer.
       </p>
+      <h2>Projects</h2>
       <p>
         Bar Argany is a Barcelona-inspired home drink menu. When Was It? is a
         five-round history game where every year missed adds one point. Couch QBs
@@ -92,6 +94,7 @@ function HomeContext() {
         Reveal is a playable Game Boy-style family announcement. Character Select
         is a fighting-game-inspired baby-name chooser.
       </p>
+      <h2>Using this site</h2>
       <p>
         All of these projects are free to visit. Use the project links in the
         studio, read more <Link href="/about">about Peter</Link>, find public
