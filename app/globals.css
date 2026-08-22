@@ -47,6 +47,61 @@ a {
   color: inherit;
 }
 
+.no-script-home {
+  display: grid;
+  min-height: 100svh;
+  place-items: center;
+  overflow: auto;
+  padding: clamp(1rem, 4vw, 3rem);
+  background:
+    radial-gradient(circle at 50% 20%, rgba(54, 126, 91, 0.28), transparent 28rem),
+    #07100f;
+}
+
+.no-script-card {
+  width: min(100%, 50rem);
+  padding: clamp(1.25rem, 5vw, 3.5rem);
+  border: 2px solid rgba(101, 212, 91, 0.48);
+  background: rgba(4, 14, 11, 0.94);
+  box-shadow:
+    inset 0 0 0 1px rgba(117, 207, 255, 0.12),
+    0 1.5rem 4rem rgba(0, 0, 0, 0.42);
+}
+
+.no-script-kicker {
+  margin: 0 0 1rem;
+  color: var(--cyan);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.no-script-card h1 {
+  margin: 0 0 1.25rem;
+  color: var(--green-bright);
+  font-family: "Pixeloid Sans", "Courier New", ui-monospace, monospace;
+  font-size: clamp(2.3rem, 8vw, 5rem);
+  line-height: 0.95;
+}
+
+.no-script-card p {
+  color: var(--ink);
+  line-height: 1.65;
+}
+
+.no-script-card nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1.25rem;
+  margin-top: 1.5rem;
+  color: var(--green);
+}
+
+.no-script-card a:hover,
+.no-script-card a:focus-visible {
+  color: var(--green-bright);
+}
+
 .studio-shell {
   display: grid;
   position: relative;

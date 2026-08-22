@@ -102,6 +102,47 @@ function HomeContext() {
   );
 }
 
+function NoScriptHome() {
+  return (
+    <main className="no-script-home">
+      <article className="no-script-card">
+        <p className="no-script-kicker">peterargany.com / readme</p>
+        <h1>Peter Argany</h1>
+        <p>
+          Peter Argany is a software engineer based in San Francisco. This is his
+          personal portfolio of playful software, small tools, family projects,
+          and long-running archives made for friends. It is not a software
+          company, public bar, online store, or statement from Peter&apos;s employer.
+        </p>
+        <p>
+          The projects include Bar Argany, a Barcelona-inspired home drink menu;
+          When Was It?, a five-round history game; and Couch QBs History Books,
+          which preserves standings, champions, records, rivalries, and
+          punishments from a private fantasy-football league. Gender Reveal and
+          Character Select are interactive family projects made to share a
+          pregnancy announcement and possible baby names.
+        </p>
+        <p>
+          Every public project is free to visit and is designed for people, not
+          commerce. The text versions in <Link href="/llms.txt">llms.txt</Link>
+          explain the site to agents, and the <Link href="/sitemap.xml">XML
+          sitemap</Link> lists its public pages. You can also read more <Link
+          href="/about">about Peter</Link>, use the public routes on the <Link
+          href="/contact">contact page</Link>, or review the <Link
+          href="/privacy">privacy notes</Link>.
+        </p>
+        <nav aria-label="No-JavaScript project links">
+          <Link href="/menu">Bar Argany</Link>
+          <Link href="/when-was-it">When Was It?</Link>
+          <Link href="/fantasy-football">Couch QBs History Books</Link>
+          <Link href="/gender-reveal">Gender Reveal</Link>
+          <Link href="/character-select">Character Select</Link>
+        </nav>
+      </article>
+    </main>
+  );
+}
+
 export default function HomePage() {
   return (
     <>
@@ -112,6 +153,10 @@ export default function HomePage() {
         }}
       />
       <HomeContext />
+      <noscript>
+        <style>{`.studio-shell { display: none !important; }`}</style>
+        <NoScriptHome />
+      </noscript>
       <HomeClient />
     </>
   );

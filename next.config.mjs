@@ -48,20 +48,28 @@ const nextConfig = {
     ];
   },
   async rewrites() {
+    const acceptsMarkdown = [
+      {
+        type: "header",
+        key: "accept",
+        value: "(.*)text/markdown(.*)",
+      },
+    ];
+
     return {
       beforeFiles: markdownVariants.map(([source, slug]) => ({
         source,
         destination: `/agent-content/${slug}`,
-        has: [
-          {
-            type: "header",
-            key: "accept",
-            value: "(.*)text/markdown(.*)",
-          },
-        ],
+        has: acceptsMarkdown,
       })),
       afterFiles: [],
-      fallback: [],
+      fallback: [
+        {
+          source: "/:path*",
+          destination: "/agent-content/not-found",
+          has: acceptsMarkdown,
+        },
+      ],
     };
   },
 };

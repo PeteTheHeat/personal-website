@@ -26,7 +26,11 @@ test("negotiates canonical public pages to their Markdown variants", async () =>
 
   assert.equal(rewrites.length, markdownRouteKeys.length);
   assert.deepEqual(afterFiles, []);
-  assert.deepEqual(fallback, []);
+  assert.equal(fallback.length, 1);
+  assert.equal(fallback[0].source, "/:path*");
+  assert.equal(fallback[0].destination, "/agent-content/not-found");
+  assert.equal(fallback[0].has?.[0]?.key, "accept");
+  assert.match(fallback[0].has?.[0]?.value ?? "", /text\/markdown/);
   for (const rewrite of rewrites) {
     assert.equal(rewrite.has?.[0]?.key, "accept");
     assert.match(rewrite.has?.[0]?.value ?? "", /text\/markdown/);
@@ -69,5 +73,8 @@ test("homepage publishes Person and WebSite JSON-LD plus substantial context", a
   assert.match(source, /"@type": "Person"/);
   assert.match(source, /"@type": "WebSite"/);
   assert.match(source, /HomeContext/);
+  assert.match(source, /NoScriptHome/);
+  assert.match(source, /<noscript>/);
+  assert.match(source, /<h1>Peter Argany<\/h1>/);
   assert.match(source, /application\/ld\+json/);
 });
