@@ -111,6 +111,7 @@ function BookCard({ book }) {
             alt={`Pixel-art cover for ${book.title} by ${book.author}`}
             loading="eager"
             decoding="async"
+            draggable={false}
           />
           <span className="books-cover-scanlines" aria-hidden="true" />
         </span>
@@ -159,22 +160,94 @@ function Bookshelf({
   onCategoryChange,
   onBookIndexChange,
 }) {
+  const swipeStartRef = useRef(null);
+  const suppressClickRef = useRef(false);
+  const suppressClickTimeoutRef = useRef(null);
   const books = booksByCategory[category];
   const pageCount = Math.ceil(books.length / perPage);
   const page = Math.min(Math.floor(activeBookIndex / perPage), pageCount - 1);
   const visibleBooks = books.slice(page * perPage, page * perPage + perPage);
+  const isMobile = variant === "mobile";
+  const changePage = (nextPage) => {
+    const boundedPage = Math.max(0, Math.min(nextPage, pageCount - 1));
+    onBookIndexChange(boundedPage * perPage);
+  };
+  const handlePointerDown = (event) => {
+    if (!isMobile || !event.isPrimary || event.button !== 0) {
+      return;
+    }
+
+    window.clearTimeout(suppressClickTimeoutRef.current);
+    suppressClickRef.current = false;
+    swipeStartRef.current = {
+      x: event.clientX,
+      y: event.clientY,
+      pointerId: event.pointerId,
+    };
+  };
+  const handlePointerUp = (event) => {
+    const start = swipeStartRef.current;
+    swipeStartRef.current = null;
+
+    if (!isMobile || !start || start.pointerId !== event.pointerId) {
+      return;
+    }
+
+    const deltaX = event.clientX - start.x;
+    const deltaY = event.clientY - start.y;
+    const isHorizontalSwipe =
+      Math.abs(deltaX) >= 44 && Math.abs(deltaX) > Math.abs(deltaY) * 1.25;
+
+    if (!isHorizontalSwipe) {
+      return;
+    }
+
+    suppressClickRef.current = true;
+    suppressClickTimeoutRef.current = window.setTimeout(() => {
+      suppressClickRef.current = false;
+    }, 500);
+    event.preventDefault();
+    changePage(page + (deltaX < 0 ? 1 : -1));
+  };
+  const handleClickCapture = (event) => {
+    if (!suppressClickRef.current || !event.target.closest?.(".books-card a")) {
+      return;
+    }
+
+    window.clearTimeout(suppressClickTimeoutRef.current);
+    suppressClickRef.current = false;
+    event.preventDefault();
+    event.stopPropagation();
+  };
+  const handlePointerCancel = () => {
+    swipeStartRef.current = null;
+  };
 
   return (
     <section
       className={`books-library books-library-${variant}`}
       aria-label={`Peter's favorite ${category} books`}
+      aria-describedby={isMobile ? "books-mobile-swipe-instructions" : undefined}
+      onClickCapture={isMobile ? handleClickCapture : undefined}
     >
+      {isMobile ? (
+        <p className="sr-only" id="books-mobile-swipe-instructions">
+          Swipe left or right across the book covers to change pages.
+        </p>
+      ) : null}
       <p className="books-library-path">
         <span>peterargany</span> <b>@</b> <em>~/bookshelf</em>{" "}
         <i aria-hidden="true">📖</i>
       </p>
       <CategoryToggle activeCategory={category} onChange={onCategoryChange} />
-      <ul className="books-grid" key={`${category}-${page}`}>
+      <ul
+        className="books-grid"
+        key={`${category}-${page}`}
+        onDragStart={isMobile ? (event) => event.preventDefault() : undefined}
+        onPointerCancel={isMobile ? handlePointerCancel : undefined}
+        onPointerDown={isMobile ? handlePointerDown : undefined}
+        onPointerUp={isMobile ? handlePointerUp : undefined}
+      >
         {visibleBooks.map((book) => (
           <BookCard book={book} key={book.slug} />
         ))}
@@ -182,7 +255,7 @@ function Bookshelf({
       <Pagination
         page={page}
         pageCount={pageCount}
-        onPageChange={(nextPage) => onBookIndexChange(nextPage * perPage)}
+        onPageChange={changePage}
       />
     </section>
   );
@@ -235,7 +308,7 @@ function MobileBooksScene({ bookshelfProps }) {
     <section className="books-mobile-stage" aria-label="Peter's favorite books on mobile">
       <div className="books-mobile-scene">
         <div className="books-mobile-image" aria-hidden="true" />
-        <Bookshelf perPage={4} variant="mobile" {...bookshelfProps} />
+        <Bookshelf perPage={2} variant="mobile" {...bookshelfProps} />
         <Link className="books-mobile-home" href="/">
           Home
         </Link>

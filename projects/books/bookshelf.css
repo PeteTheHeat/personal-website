@@ -465,13 +465,26 @@
 
   .books-library-mobile .books-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: repeat(2, minmax(0, 1fr));
+    grid-template-rows: minmax(0, 1fr);
     gap: min(1cqh, 0.5rem) min(1.6cqh, 0.8rem);
     margin-top: min(1.2cqh, 0.58rem);
+    touch-action: pan-y;
+    user-select: none;
+    cursor: grab;
+    -webkit-user-select: none;
+  }
+
+  .books-library-mobile .books-grid:active {
+    cursor: grabbing;
+  }
+
+  .books-library-mobile .books-grid a,
+  .books-library-mobile .books-grid img {
+    -webkit-user-drag: none;
   }
 
   .books-library-mobile .books-cover-frame {
-    width: min(9cqh, 4.15rem);
+    width: clamp(5.25rem, 17cqh, 6.8rem);
     padding: min(0.42cqh, 0.2rem);
     border-width: min(0.22cqh, 0.12rem);
     box-shadow:
@@ -485,14 +498,14 @@
   }
 
   .books-library-mobile .books-card strong {
-    min-height: min(3.6cqh, 1.76rem);
+    min-height: min(3.6cqh, 1.45rem);
     margin-top: min(0.48cqh, 0.24rem);
-    font-size: min(1.28cqh, 0.62rem);
+    font-size: clamp(0.56rem, 1.55cqh, 0.69rem);
   }
 
   .books-library-mobile .books-card small {
     margin-top: min(0.12cqh, 0.06rem);
-    font-size: min(0.93cqh, 0.46rem);
+    font-size: clamp(0.5rem, 1.25cqh, 0.56rem);
   }
 
   .books-library-mobile .books-pagination,
@@ -595,14 +608,14 @@
   }
 
   .books-library-mobile .books-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-rows: minmax(0, 1fr);
     gap: clamp(7px, 2.4svh, 13px);
     margin-top: clamp(5px, 1.7svh, 9px);
   }
 
   .books-library-mobile .books-cover-frame {
-    width: clamp(48px, 18svh, 78px);
+    width: clamp(78px, 28svh, 112px);
     padding: 3px;
     border-width: 2px;
   }
