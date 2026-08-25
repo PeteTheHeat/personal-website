@@ -2,6 +2,7 @@ const siteUrl = "https://peterargany.com";
 
 const publicRoutes = [
   { path: "", changeFrequency: "monthly", priority: 1, lastModified: "2026-08-21" },
+  { path: "/books", changeFrequency: "monthly", priority: 0.8, lastModified: "2026-08-24" },
   { path: "/about", changeFrequency: "yearly", priority: 0.7, lastModified: "2026-08-21" },
   { path: "/contact", changeFrequency: "yearly", priority: 0.5, lastModified: "2026-08-21" },
   { path: "/privacy", changeFrequency: "yearly", priority: 0.4, lastModified: "2026-08-21" },

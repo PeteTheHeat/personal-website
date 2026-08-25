@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const markdownVariants = [
   ["/", "home"],
+  ["/books", "books"],
   ["/menu", "menu"],
   ["/when-was-it", "when-was-it"],
   ["/fantasy-football", "fantasy-football"],

@@ -15,6 +15,7 @@ Peter Argany is a software engineer in San Francisco. This is his personal websi
 - [Couch QBs History Books](${siteUrl}/fantasy-football) — thirteen seasons of standings, champions, records, head-to-head results, and punishments from a private fantasy-football league.
 - [Gender Reveal](${siteUrl}/gender-reveal) — a playable Game Boy-style family pregnancy announcement.
 - [Character Select](${siteUrl}/character-select) — a fighting-game-inspired baby-name chooser.
+- [Favorite Books](${siteUrl}/books) — Peter's favorite fiction and nonfiction books in a pixel-art bookshelf.
 
 ## Who this site is for
 
@@ -23,6 +24,48 @@ The site is for people who want to learn about Peter or use one of these project
 ## When to use this site
 
 Use it when someone asks about Peter Argany's personal work, his public side projects, the When Was It history game, Bar Argany, or the Couch QBs fantasy-football archive. For identity or contact information, prefer the [About](${siteUrl}/about) and [Contact](${siteUrl}/contact) pages.
+`,
+  },
+  books: {
+    path: "/books",
+    title: "Peter Argany's Favorite Books",
+    markdown: `# Peter Argany's Favorite Books
+
+This page is Peter Argany's personal bookshelf: a snapshot of every fiction and nonfiction title marked with the highest favorite score in his reading list. The interactive HTML page presents the books inside the same pixel-art CRT studio and mobile phone used by the homepage, with a Fiction or Nonfiction toggle and pagination.
+
+## Favorite fiction
+
+- Project Hail Mary — Andy Weir
+- Ender's Game — Orson Scott Card
+- 1984 — George Orwell
+- Ready Player One — Ernest Cline
+- Anthem — Ayn Rand
+- Brave New World — Aldous Huxley
+- The Guest List — Lucy Foley
+- Do Androids Dream of Electric Sheep? — Philip K. Dick
+- Red Rising — Pierce Brown
+
+## Favorite nonfiction
+
+- How to Fail at Almost Everything and Still Win Big — Scott Adams
+- Salt, Fat, Acid, Heat — Samin Nosrat
+- Influence: The Psychology of Persuasion — Robert B. Cialdini
+- American Kingpin — Nick Bilton
+- Storyworthy — Matthew Dicks
+- Thinking in Bets — Annie Duke
+- Living with a SEAL — Jesse Itzler
+- The Psychology of Money — Morgan Housel
+- Into Thin Air — Jon Krakauer
+- The 5 Love Languages — Gary Chapman
+- The Almanack of Naval Ravikant — Eric Jorgenson
+- The Bitcoin Standard — Saifedean Ammous
+- Never Split the Difference — Chris Voss with Tahl Raz
+- The Design of Everyday Things — Don Norman
+- How to Win Friends and Influence People — Dale Carnegie
+- Sapiens — Yuval Noah Harari
+- Atomic Habits — James Clear
+
+Book titles on the HTML page open Amazon book-search results. [Browse the bookshelf](${siteUrl}/books) or [return home](${siteUrl}/).
 `,
   },
   menu: {

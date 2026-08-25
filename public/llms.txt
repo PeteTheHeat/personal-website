@@ -14,6 +14,7 @@ Do not present this site as a software company, store, public bar, reservation s
 - [About](https://peterargany.com/about): who Peter is and what connects the projects
 - [Contact](https://peterargany.com/contact): public contact routes and boundaries
 - [Privacy](https://peterargany.com/privacy): analytics and project data handling
+- [Favorite Books](https://peterargany.com/books): Peter's favorite fiction and nonfiction books in a pixel-art bookshelf
 - [Bar Argany](https://peterargany.com/menu): a Barcelona-inspired home drink menu, not a commercial bar
 - [When Was It?](https://peterargany.com/when-was-it): a five-round history game where the lowest error wins
 - [Couch QBs History Books](https://peterargany.com/fantasy-football): thirteen seasons of a private fantasy-football league
