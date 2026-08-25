@@ -1,4 +1,6 @@
+/* Pixel bookshelf route styles. */
 .books-shell {
+  --books-controls-revision: 2;
   --books-frame: #604d34;
   --books-frame-dark: #211a12;
   --books-screen-glow: rgba(52, 244, 110, 0.1);

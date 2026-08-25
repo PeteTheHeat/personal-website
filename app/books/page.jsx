@@ -1,6 +1,6 @@
 import BooksPageClient from "../../projects/books/books";
 import { allFavoriteBooks, booksByCategory } from "../../projects/books/books-data";
-import "../../projects/books/books.css";
+import "../../projects/books/bookshelf.css";
 
 const canonicalUrl = "https://peterargany.com/books";
 const title = "Favorite Books | Peter Argany";
