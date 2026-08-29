@@ -290,7 +290,6 @@ function DesktopBooksScene({ stageRef, stageStyle, bookshelfProps }) {
             <span>My favorite</span>
             <strong>books</strong>
           </p>
-          <p className="books-left-tagline">Stories and ideas I keep coming back to.</p>
           <Link className="books-home-link" href="/">
             ← home
           </Link>

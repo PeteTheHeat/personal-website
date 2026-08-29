@@ -265,7 +265,7 @@ a {
   width: 560px;
   min-height: 445px;
   color: var(--ink);
-  font-size: 23px;
+  font-size: 22px;
   font-weight: 700;
   line-height: 1.18;
   letter-spacing: 0;
@@ -314,8 +314,8 @@ a {
 
 .desktop-projects {
   display: grid;
-  gap: 20px;
-  margin: 32px 0 42px;
+  gap: 14px;
+  margin: 24px 0 30px;
 }
 
 .desktop-project {
@@ -625,16 +625,16 @@ a {
   top: 16.35%;
   width: 67.8%;
   display: grid;
-  gap: min(0.5cqh, 0.27rem);
+  gap: min(0.35cqh, 0.19rem);
 }
 
 .mobile-workspace {
   justify-self: center;
-  min-height: min(4.35cqh, 2.24rem);
-  margin-bottom: min(0.5cqh, 0.27rem);
-  padding-top: min(0.25cqh, 0.14rem);
+  min-height: min(3.8cqh, 1.98rem);
+  margin-bottom: min(0.25cqh, 0.14rem);
+  padding-top: min(0.15cqh, 0.08rem);
   color: var(--cyan);
-  font-size: min(2.86cqh, 1.48rem);
+  font-size: min(2.6cqh, 1.34rem);
   line-height: 1;
   text-shadow: 0 0.12rem 0 rgba(0, 0, 0, 0.58);
   white-space: nowrap;
@@ -643,11 +643,11 @@ a {
 .mobile-project {
   position: relative;
   display: grid;
-  grid-template-columns: min(4.8cqh, 2.5rem) 1fr;
-  gap: min(0.9cqh, 0.48rem);
+  grid-template-columns: min(4.35cqh, 2.26rem) 1fr;
+  gap: min(0.72cqh, 0.38rem);
   align-items: start;
-  min-height: min(7.45cqh, 3.88rem);
-  padding: min(0.65cqh, 0.35rem) min(0.85cqh, 0.45rem);
+  min-height: min(6.35cqh, 3.3rem);
+  padding: min(0.45cqh, 0.24rem) min(0.7cqh, 0.37rem);
   border-radius: min(0.8cqh, 0.42rem);
   border-bottom: min(0.18cqh, 0.1rem) solid rgba(233, 223, 202, 0.13);
   color: var(--ink);
@@ -699,23 +699,23 @@ a {
 
 .mobile-project-icon {
   font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
-  font-size: min(2.7cqh, 1.42rem);
+  font-size: clamp(0.875rem, 2.45cqh, 1.28rem);
   line-height: 1;
 }
 
 .mobile-project strong {
   display: block;
   color: var(--green);
-  font-size: min(2.3cqh, 1.2rem);
+  font-size: clamp(0.69rem, 2.15cqh, 1.08rem);
   font-weight: 700;
   line-height: 1.05;
 }
 
 .mobile-project small {
   display: block;
-  margin-top: min(0.3cqh, 0.16rem);
+  margin-top: min(0.18cqh, 0.1rem);
   color: var(--ink);
-  font-size: min(1.7cqh, 0.88rem);
+  font-size: clamp(0.53rem, 1.58cqh, 0.82rem);
   line-height: 1.15;
 }
 
@@ -1180,6 +1180,41 @@ a {
 
   .site-bio-role {
     top: 45.7%;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 639px) {
+  .mobile-projects-panel {
+    gap: min(0.25cqh, 0.1rem);
+  }
+
+  .mobile-workspace {
+    min-height: min(3.15cqh, 1.1rem);
+    margin-bottom: min(0.12cqh, 0.05rem);
+    padding-top: 0;
+    font-size: clamp(0.5rem, 2.2cqh, 0.65rem);
+  }
+
+  .mobile-project {
+    grid-template-columns: clamp(0.7rem, 3.6cqh, 0.9rem) 1fr;
+    gap: clamp(0.12rem, 0.7cqh, 0.22rem);
+    min-height: min(6.1cqh, 1.5rem);
+    padding: min(0.2cqh, 0.06rem) min(0.35cqh, 0.12rem);
+    border-radius: min(0.4cqh, 0.12rem);
+  }
+
+  .mobile-project-icon {
+    font-size: clamp(0.68rem, 3.5cqh, 0.86rem);
+  }
+
+  .mobile-project strong {
+    font-size: clamp(0.56rem, 2.8cqh, 0.7rem);
+  }
+
+  .mobile-project small {
+    margin-top: 0;
+    font-size: clamp(0.44rem, 2.2cqh, 0.56rem);
+    line-height: 1.02;
   }
 }
 

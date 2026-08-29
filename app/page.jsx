@@ -87,12 +87,13 @@ function HomeContext() {
       </p>
       <h2>Projects</h2>
       <p>
-        Bar Argany is a Barcelona-inspired home drink menu. When Was It? is a
-        five-round history game where every year missed adds one point. Couch QBs
-        History Books preserves thirteen seasons of standings, champions, records,
-        rivalries, and punishments from a private fantasy-football league. Gender
-        Reveal is a playable Game Boy-style family announcement. Character Select
-        is a fighting-game-inspired baby-name chooser.
+        Favorite Books is Peter&apos;s pixel-art bookshelf. Bar Argany is a
+        Barcelona-inspired home drink menu. When Was It? is a five-round history
+        game where every year missed adds one point. Couch QBs History Books
+        preserves thirteen seasons of standings, champions, records, rivalries,
+        and punishments from a private fantasy-football league. Gender Reveal is a
+        playable Game Boy-style family announcement. Character Select is a
+        fighting-game-inspired baby-name chooser.
       </p>
       <h2>Using this site</h2>
       <p>
@@ -125,12 +126,13 @@ function NoScriptHome() {
           company, public bar, online store, or statement from Peter&apos;s employer.
         </p>
         <p>
-          The projects include Bar Argany, a Barcelona-inspired home drink menu;
-          When Was It?, a five-round history game; and Couch QBs History Books,
-          which preserves standings, champions, records, rivalries, and
-          punishments from a private fantasy-football league. Gender Reveal and
-          Character Select are interactive family projects made to share a
-          pregnancy announcement and possible baby names.
+          The projects include Favorite Books, Peter&apos;s pixel-art bookshelf;
+          Bar Argany, a Barcelona-inspired home drink menu; When Was It?, a
+          five-round history game; and Couch QBs History Books, which preserves
+          standings, champions, records, rivalries, and punishments from a private
+          fantasy-football league. Gender Reveal and Character Select are
+          interactive family projects made to share a pregnancy announcement and
+          possible baby names.
         </p>
         <p>
           Every public project is free to visit and is designed for people, not
@@ -142,6 +144,7 @@ function NoScriptHome() {
           href="/privacy">privacy notes</Link>.
         </p>
         <nav aria-label="No-JavaScript project links">
+          <Link href="/books">Favorite Books</Link>
           <Link href="/menu">Bar Argany</Link>
           <Link href="/when-was-it">When Was It?</Link>
           <Link href="/fantasy-football">Couch QBs History Books</Link>

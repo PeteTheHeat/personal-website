@@ -91,7 +91,6 @@ function NoScriptBooks() {
       <article className="no-script-card">
         <p className="no-script-kicker">peterargany.com / books</p>
         <h1>My favorite books</h1>
-        <p>Stories and ideas I keep coming back to.</p>
         <h2>Fiction</h2>
         <BookList books={booksByCategory.fiction} />
         <h2>Nonfiction</h2>

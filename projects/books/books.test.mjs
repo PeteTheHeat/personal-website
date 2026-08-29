@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { access } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
 import { allFavoriteBooks, booksByCategory } from "./books-data.js";
@@ -37,4 +37,17 @@ test("uses unique slugs, links, and local cover paths", async () => {
     assert.match(book.cover, /^\/books\/covers\/[a-z0-9-]+\.webp$/);
     await access(new URL(`.${book.cover}`, publicRoot));
   }
+});
+
+test("links the favorite bookshelf from every homepage experience", async () => {
+  const [clientSource, pageSource] = await Promise.all([
+    readFile(new URL("../../app/home-client.jsx", import.meta.url), "utf8"),
+    readFile(new URL("../../app/page.jsx", import.meta.url), "utf8"),
+  ]);
+
+  assert.match(clientSource, /icon: "📚"/);
+  assert.match(clientSource, /label: "books"/);
+  assert.match(clientSource, /description: "My favorite books"/);
+  assert.match(clientSource, /href: "\/books"/);
+  assert.match(pageSource, /<Link href="\/books">Favorite Books<\/Link>/);
 });
