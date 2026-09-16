@@ -140,17 +140,21 @@ function useStageGeometry(stageRef) {
     }
 
     const updateGeometry = () => {
+      // Fill the screen where possible, but keep the bio and terminal in view
+      // on tall tablets. The backdrop fills any remaining space.
       const scale = Math.min(
-        stage.clientWidth / STAGE_WIDTH,
-        stage.clientHeight / STAGE_HEIGHT,
+        Math.max(
+          stage.clientWidth / STAGE_WIDTH,
+          stage.clientHeight / STAGE_HEIGHT,
+        ),
+        stage.clientWidth / 1200,
       );
-      const width = STAGE_WIDTH * scale;
       const height = STAGE_HEIGHT * scale;
 
       setGeometry({
         scale,
-        x: (stage.clientWidth - width) / 2,
-        y: (stage.clientHeight - height) / 2,
+        x: 0,
+        y: Math.max(-60 * scale, (stage.clientHeight - height) / 2),
       });
     };
 
@@ -343,7 +347,7 @@ function MobileProjectsScreen({ time, onBack }) {
 
 function MobileExperience({ clock, screen, onScreenChange }) {
   return (
-    <section className="mobile-stage" aria-label="Peter Argany mobile site">
+    <section className={`mobile-stage mobile-stage-${screen}`} aria-label="Peter Argany mobile site">
       {screen === "home" ? (
         <MobileHomeScreen
           time={clock.loadedPhone}
@@ -380,11 +384,7 @@ export default function HomeClient() {
         style={stageStyle}
         aria-label="Peter Argany personal site"
       >
-        <div
-          className="scene-backdrop"
-          aria-hidden="true"
-        />
-
+        <div className="scene-backdrop" aria-hidden="true" />
         <div
           className="scene-image"
           aria-hidden="true"
